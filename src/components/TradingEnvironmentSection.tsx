@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Activity, BarChart3, ArrowRightLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import UATGif from "@/assets/UAT.gif";
 import PRODGif from "@/assets/PROD.gif";
 
@@ -57,11 +56,8 @@ export const TradingEnvironmentSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex flex-col group"
           >
-            <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-5 transition-colors duration-300 group-hover:text-primary/90">
-              UAT Trading Dashboard
-            </h3>
-            <div 
-              className="relative rounded-lg overflow-hidden p-3 md:p-4 flex items-center justify-center
+          <div 
+              className="relative rounded-lg overflow-hidden p-2 flex items-center justify-center
                          bg-[hsl(222_47%_10%)] border border-primary/15
                          shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]
                          transition-all duration-300 ease-out
@@ -70,10 +66,13 @@ export const TradingEnvironmentSection = () => {
             >
               <img
                 src={UATGif}
-                alt="UAT Trading Dashboard - Simulate live market conditions"
-                className="w-[48%] h-auto relative z-10 rounded"
+                alt="UAT Trading - Simulate live market conditions"
+                className="w-full h-auto relative z-10 rounded"
               />
             </div>
+            <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mt-4 text-center transition-colors duration-300 group-hover:text-primary/90">
+              UAT Trading
+            </h3>
             <p className="text-muted-foreground text-sm mt-5">
               Simulate live market conditions, place trades, and track positions in real time — without risking capital.
             </p>
@@ -87,11 +86,8 @@ export const TradingEnvironmentSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col group"
           >
-            <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-5 transition-colors duration-300 group-hover:text-primary/90">
-              Production Trading Dashboard
-            </h3>
-            <div 
-              className="relative rounded-lg overflow-hidden p-3 md:p-4 flex items-center justify-center
+          <div 
+              className="relative rounded-lg overflow-hidden p-2 flex items-center justify-center
                          bg-[hsl(222_47%_10%)] border border-primary/15
                          shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]
                          transition-all duration-300 ease-out
@@ -100,10 +96,13 @@ export const TradingEnvironmentSection = () => {
             >
               <img
                 src={PRODGif}
-                alt="Production Trading Dashboard - Monitor real positions and P&L"
-                className="w-[48%] h-auto relative z-10 rounded"
+                alt="Production Trading - Monitor real positions and P&L"
+                className="w-full h-auto relative z-10 rounded"
               />
             </div>
+            <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mt-4 text-center transition-colors duration-300 group-hover:text-primary/90">
+              Production Trading
+            </h3>
             <p className="text-muted-foreground text-sm mt-5">
               Monitor real positions, P&L, margins, and orders seamlessly in production.
             </p>
@@ -145,30 +144,6 @@ export const TradingEnvironmentSection = () => {
           </p>
         </motion.div>
 
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <Button
-            variant="outline"
-            size="lg"
-            className="group px-8 border-border/50 hover:border-primary/50 hover:bg-primary/5"
-          >
-            View API Docs
-            <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
-          </Button>
-          <Button
-            size="lg"
-            className="px-8 bg-primary hover:bg-primary/90 text-primary-foreground glow-purple"
-          >
-            Start with UAT
-            <span className="ml-2">→</span>
-          </Button>
-        </motion.div>
       </div>
     </section>
   );

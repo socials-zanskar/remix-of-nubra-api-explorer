@@ -57,7 +57,7 @@ export const APIAsset = ({
       case "left":
         return "bottom-left"; // Trading API - below and to the left
       case "right":
-        return "bottom"; // Market Data API - below
+        return "center"; // Market Data API - below and centered
       case "center":
         return "top";
       case "back":
