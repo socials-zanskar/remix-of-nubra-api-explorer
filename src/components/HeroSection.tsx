@@ -197,7 +197,7 @@ export const HeroSection = () => {
         </div>
 
         {/* 3D Asset Layout - Horizontal arrangement */}
-        <div className="relative flex items-center justify-center gap-4 md:gap-8 lg:gap-12">
+        <div className="relative flex items-center justify-center gap-4 md:gap-8 lg:gap-12 mt-16 md:mt-24">
           {/* Left side - Trading API (swapped) */}
           <APIAsset
             image={TradingAPIBG}
@@ -223,7 +223,7 @@ export const HeroSection = () => {
               onActivate={() => handleActivate("portfolio")}
               onDeactivate={handleDeactivate}
               hasActiveAsset={activeAsset !== null}
-              className="absolute -top-16 left-1/2 -translate-x-1/2 w-[180px] md:w-[200px] opacity-70 -z-10"
+              className="absolute -top-12 left-1/2 -translate-x-1/2 w-[160px] md:w-[180px] opacity-70 -z-10"
             />
 
             {/* Python REST API - center focus */}
