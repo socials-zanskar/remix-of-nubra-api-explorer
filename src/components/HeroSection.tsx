@@ -240,7 +240,7 @@ export const HeroSection = () => {
             />
 
             {/* Nubra Logo - front overlay */}
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-40 w-[80px] md:w-[100px] animate-float">
+            <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 z-40 w-[80px] md:w-[100px] animate-float">
               <img
                 src={NubraLogoBG}
                 alt="Nubra Logo"
