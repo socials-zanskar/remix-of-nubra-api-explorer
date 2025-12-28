@@ -211,7 +211,7 @@ export const HeroSection = () => {
             className="w-[240px] md:w-[280px] lg:w-[320px] flex-shrink-0"
           />
 
-          {/* Center stack - Python REST (main) with Portfolio above and Logo in front */}
+          {/* Center stack - Python REST (main) with Portfolio above */}
           <div className="relative flex-shrink-0">
             {/* Portfolio API - smaller, centered above Python REST */}
             <APIAsset
@@ -238,15 +238,6 @@ export const HeroSection = () => {
               hasActiveAsset={activeAsset !== null}
               className="w-[240px] md:w-[280px] lg:w-[320px]"
             />
-
-            {/* Nubra Logo - front overlay */}
-            <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 z-40 w-[80px] md:w-[100px] animate-float">
-              <img
-                src={NubraLogoBG}
-                alt="Nubra Logo"
-                className="w-full h-auto drop-shadow-[0_10px_40px_hsl(245_82%_67%/0.4)]"
-              />
-            </div>
           </div>
 
           {/* Right side - Market Data API (swapped) */}
@@ -261,6 +252,17 @@ export const HeroSection = () => {
             hasActiveAsset={activeAsset !== null}
             className="w-[240px] md:w-[280px] lg:w-[320px] flex-shrink-0"
           />
+        </div>
+
+        {/* Nubra Logo - centered to entire page */}
+        <div className="flex justify-center mt-8 z-40">
+          <div className="w-[80px] md:w-[100px] animate-float">
+            <img
+              src={NubraLogoBG}
+              alt="Nubra Logo"
+              className="w-full h-auto drop-shadow-[0_10px_40px_hsl(245_82%_67%/0.4)]"
+            />
+          </div>
         </div>
 
         {/* Subtle instruction */}
