@@ -25,8 +25,9 @@ export const NavBar = () => {
         <div className="flex items-center justify-center h-14 md:h-16">
           <div className="flex items-center gap-1 md:gap-2">
             {navItems.map((item) => (
-              <button
+              <a
                 key={item.label}
+                href={item.href}
                 onClick={() => !item.isButton && setActiveTab(item.label)}
                 className={`
                   relative px-3 md:px-5 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-200
@@ -41,7 +42,7 @@ export const NavBar = () => {
                 `}
               >
                 {item.label}
-              </button>
+              </a>
             ))}
           </div>
         </div>
