@@ -1,6 +1,7 @@
 import { NavBar } from "@/components/NavBar";
 import { HeroSection } from "@/components/HeroSection";
 import { TradingEnvironmentSection } from "@/components/TradingEnvironmentSection";
+import { IntegrationSection } from "@/components/IntegrationSection";
 
 const Index = () => {
   return (
@@ -8,6 +9,7 @@ const Index = () => {
       <NavBar />
       <HeroSection />
       <TradingEnvironmentSection />
+      <IntegrationSection />
     </main>
   );
 };
