@@ -55,9 +55,9 @@ export const APIAsset = ({
     }
     switch (position) {
       case "left":
-        return "left";
+        return "bottom"; // Trading API - below
       case "right":
-        return "right";
+        return "bottom"; // Market Data API - below
       case "center":
         return "top";
       case "back":
@@ -65,7 +65,7 @@ export const APIAsset = ({
       case "top":
         return "top";
       default:
-        return "right";
+        return "bottom";
     }
   };
 
