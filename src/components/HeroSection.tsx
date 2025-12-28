@@ -193,7 +193,14 @@ export const HeroSection = () => {
         </div>
 
         {/* Portfolio API - centered above, clearly secondary */}
-        <div className="flex justify-center mb-4">
+        <div className="flex flex-col items-center mb-4">
+          <span 
+            className={`text-[10px] font-medium mb-2 transition-opacity duration-150 ease-out ${
+              activeAsset === "portfolio" ? "text-muted-foreground" : "text-muted-foreground/50"
+            } ${activeAsset && activeAsset !== "portfolio" ? "opacity-40" : ""}`}
+          >
+            Portfolio APIs
+          </span>
           <APIAsset
             image={PortfolioAPIBG}
             alt="Portfolio APIs"
@@ -210,43 +217,70 @@ export const HeroSection = () => {
         {/* API Belt - Horizontal axis alignment with equal spacing */}
         <div className="relative flex items-center justify-center gap-6 md:gap-10 lg:gap-12">
           {/* Left - Trading API (reduced 10%) */}
-          <APIAsset
-            image={TradingAPIBG}
-            alt="Trading APIs"
-            info={apiData.trading}
-            position="left"
-            isActive={activeAsset === "trading"}
-            onActivate={() => handleActivate("trading")}
-            onDeactivate={handleDeactivate}
-            hasActiveAsset={activeAsset !== null}
-            className="w-[160px] md:w-[200px] lg:w-[220px] flex-shrink-0"
-          />
+          <div className="flex flex-col items-center flex-shrink-0">
+            <span 
+              className={`text-[10px] font-medium mb-2 transition-opacity duration-150 ease-out ${
+                activeAsset === "trading" ? "text-muted-foreground" : "text-muted-foreground/50"
+              } ${activeAsset && activeAsset !== "trading" ? "opacity-40" : ""}`}
+            >
+              Trading APIs
+            </span>
+            <APIAsset
+              image={TradingAPIBG}
+              alt="Trading APIs"
+              info={apiData.trading}
+              position="left"
+              isActive={activeAsset === "trading"}
+              onActivate={() => handleActivate("trading")}
+              onDeactivate={handleDeactivate}
+              hasActiveAsset={activeAsset !== null}
+              className="w-[160px] md:w-[200px] lg:w-[220px]"
+            />
+          </div>
 
-          {/* Center - Python REST (reduced 30%, still anchor) */}
-          <APIAsset
-            image={PythonRESTBG}
-            alt="Python REST APIs"
-            info={apiData.pythonRest}
-            position="center"
-            isActive={activeAsset === "pythonRest"}
-            onActivate={() => handleActivate("pythonRest")}
-            onDeactivate={handleDeactivate}
-            hasActiveAsset={activeAsset !== null}
-            className="w-[140px] md:w-[170px] lg:w-[195px] flex-shrink-0"
-          />
+          {/* Center - Python REST (reduced additional 20-25%, now ~50% of original) */}
+          <div className="flex flex-col items-center flex-shrink-0">
+            <span 
+              className={`text-[10px] font-medium mb-2 transition-opacity duration-150 ease-out ${
+                activeAsset === "pythonRest" ? "text-muted-foreground" : "text-muted-foreground/50"
+              } ${activeAsset && activeAsset !== "pythonRest" ? "opacity-40" : ""}`}
+            >
+              Python REST APIs
+            </span>
+            <APIAsset
+              image={PythonRESTBG}
+              alt="Python REST APIs"
+              info={apiData.pythonRest}
+              position="center"
+              isActive={activeAsset === "pythonRest"}
+              onActivate={() => handleActivate("pythonRest")}
+              onDeactivate={handleDeactivate}
+              hasActiveAsset={activeAsset !== null}
+              className="w-[110px] md:w-[130px] lg:w-[150px]"
+            />
+          </div>
 
           {/* Right - Market Data API (reduced 10%) */}
-          <APIAsset
-            image={MarketDataAPIBG}
-            alt="Market Data APIs"
-            info={apiData.marketData}
-            position="right"
-            isActive={activeAsset === "marketData"}
-            onActivate={() => handleActivate("marketData")}
-            onDeactivate={handleDeactivate}
-            hasActiveAsset={activeAsset !== null}
-            className="w-[160px] md:w-[200px] lg:w-[220px] flex-shrink-0"
-          />
+          <div className="flex flex-col items-center flex-shrink-0">
+            <span 
+              className={`text-[10px] font-medium mb-2 transition-opacity duration-150 ease-out ${
+                activeAsset === "marketData" ? "text-muted-foreground" : "text-muted-foreground/50"
+              } ${activeAsset && activeAsset !== "marketData" ? "opacity-40" : ""}`}
+            >
+              Market Data APIs
+            </span>
+            <APIAsset
+              image={MarketDataAPIBG}
+              alt="Market Data APIs"
+              info={apiData.marketData}
+              position="right"
+              isActive={activeAsset === "marketData"}
+              onActivate={() => handleActivate("marketData")}
+              onDeactivate={handleDeactivate}
+              hasActiveAsset={activeAsset !== null}
+              className="w-[160px] md:w-[200px] lg:w-[220px]"
+            />
+          </div>
         </div>
 
         {/* Nubra Logo - centered below */}
