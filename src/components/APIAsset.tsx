@@ -72,12 +72,14 @@ export const APIAsset = ({
   const getTransformStyles = () => {
     if (isLogo) return {};
     
-    const baseScale = isActive ? 1.03 : 1;
-    const rotation = position === "left" ? 4 : position === "right" ? -4 : 0;
+    // Reduced hover scale for gentler emphasis
+    const baseScale = isActive ? 1.02 : 1;
+    // Subtle rotation for depth
+    const rotation = position === "left" ? 2 : position === "right" ? -2 : 0;
     
     return {
       transform: `scale(${baseScale}) rotateY(${rotation}deg)`,
-      zIndex: isActive ? 30 : position === "back" ? 5 : 10,
+      zIndex: isActive ? 20 : position === "back" ? 5 : 10,
     };
   };
 
@@ -111,7 +113,7 @@ export const APIAsset = ({
         className={`
           w-full h-auto object-contain select-none
           transition-all duration-150 ease-out
-          ${isActive ? "drop-shadow-[0_0_30px_hsl(245_82%_67%/0.45)]" : "drop-shadow-[0_8px_24px_rgba(0,0,0,0.25)]"}
+          ${isActive ? "drop-shadow-[0_0_20px_hsl(245_82%_67%/0.35)]" : "drop-shadow-[0_6px_20px_rgba(0,0,0,0.22)]"}
         `}
         draggable={false}
       />
