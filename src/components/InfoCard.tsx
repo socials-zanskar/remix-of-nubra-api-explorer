@@ -11,7 +11,7 @@ export interface APIInfo {
 interface InfoCardProps {
   info: APIInfo;
   isVisible: boolean;
-  position: "left" | "right" | "center" | "bottom" | "top";
+  position: "left" | "right" | "center" | "bottom" | "top" | "bottom-left";
   isMobile?: boolean;
   isHero?: boolean;
 }
@@ -34,6 +34,8 @@ export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCa
         return "left-1/2 -translate-x-1/2 top-full mt-2";
       case "top":
         return "left-1/2 -translate-x-1/2 bottom-full mb-2";
+      case "bottom-left":
+        return "right-0 top-full mt-2";
       case "bottom":
         return "left-1/2 -translate-x-1/2 top-full mt-2";
       default:

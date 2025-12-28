@@ -49,13 +49,13 @@ export const APIAsset = ({
   }, [isTouchDevice, onDeactivate]);
 
   // Asset-specific directional placement
-  const getInfoPosition = (): "left" | "right" | "center" | "bottom" | "top" => {
+  const getInfoPosition = (): "left" | "right" | "center" | "bottom" | "top" | "bottom-left" => {
     if (isLogo) {
       return "bottom"; // Brand panel appears below logo
     }
     switch (position) {
       case "left":
-        return "bottom"; // Trading API - below
+        return "bottom-left"; // Trading API - below and to the left
       case "right":
         return "bottom"; // Market Data API - below
       case "center":
