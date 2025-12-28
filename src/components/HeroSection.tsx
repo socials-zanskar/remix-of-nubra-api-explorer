@@ -196,8 +196,23 @@ export const HeroSection = () => {
           </p>
         </div>
 
+        {/* Portfolio API - centered to entire page, above other assets */}
+        <div className="flex justify-center mb-4">
+          <APIAsset
+            image={PortfolioAPIBG}
+            alt="Portfolio APIs"
+            info={apiData.portfolio}
+            position="back"
+            isActive={activeAsset === "portfolio"}
+            onActivate={() => handleActivate("portfolio")}
+            onDeactivate={handleDeactivate}
+            hasActiveAsset={activeAsset !== null}
+            className="w-[160px] md:w-[180px] opacity-70"
+          />
+        </div>
+
         {/* 3D Asset Layout - Horizontal arrangement */}
-        <div className="relative flex items-center justify-center gap-4 md:gap-8 lg:gap-12 mt-16 md:mt-24">
+        <div className="relative flex items-center justify-center gap-4 md:gap-8 lg:gap-12 mt-4">
           {/* Left side - Trading API (swapped) */}
           <APIAsset
             image={TradingAPIBG}
@@ -211,22 +226,8 @@ export const HeroSection = () => {
             className="w-[240px] md:w-[280px] lg:w-[320px] flex-shrink-0"
           />
 
-          {/* Center stack - Python REST (main) with Portfolio above */}
+          {/* Center - Python REST (main) */}
           <div className="relative flex-shrink-0">
-            {/* Portfolio API - smaller, centered above Python REST */}
-            <APIAsset
-              image={PortfolioAPIBG}
-              alt="Portfolio APIs"
-              info={apiData.portfolio}
-              position="back"
-              isActive={activeAsset === "portfolio"}
-              onActivate={() => handleActivate("portfolio")}
-              onDeactivate={handleDeactivate}
-              hasActiveAsset={activeAsset !== null}
-              className="absolute -top-12 left-1/2 -translate-x-3/4 w-[160px] md:w-[180px] opacity-70 -z-10"
-            />
-
-            {/* Python REST API - center focus */}
             <APIAsset
               image={PythonRESTBG}
               alt="Python REST APIs"
