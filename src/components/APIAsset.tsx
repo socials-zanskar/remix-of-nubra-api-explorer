@@ -49,16 +49,21 @@ export const APIAsset = ({
     }
   }, [isTouchDevice, isLogo, onDeactivate]);
 
-  const getInfoPosition = (): "left" | "right" | "center" | "bottom" => {
+  // Asset-specific directional placement
+  const getInfoPosition = (): "left" | "right" | "center" | "bottom" | "top" => {
     switch (position) {
       case "left":
+        // Trading API on left -> info box appears on LEFT side
         return "left";
       case "right":
+        // Market Data API on right -> info box appears on RIGHT side
         return "right";
       case "center":
-        return "center";
+        // Python REST API center -> info box appears above
+        return "top";
       case "back":
-        return "bottom";
+        // Portfolio API -> info box appears on RIGHT side
+        return "right";
       default:
         return "right";
     }
@@ -67,8 +72,8 @@ export const APIAsset = ({
   const getTransformStyles = () => {
     if (isLogo) return {};
     
-    const baseScale = isActive ? 1.04 : 1;
-    const rotation = position === "left" ? 5 : position === "right" ? -5 : 0;
+    const baseScale = isActive ? 1.03 : 1;
+    const rotation = position === "left" ? 4 : position === "right" ? -4 : 0;
     
     return {
       transform: `scale(${baseScale}) rotateY(${rotation}deg)`,
@@ -80,12 +85,12 @@ export const APIAsset = ({
 
   return (
     <div
-      className={`relative transition-all duration-200 ease-out ${className} ${
+      className={`relative transition-all duration-150 ease-out ${className} ${
         !isLogo ? "cursor-pointer" : ""
       }`}
       style={{
         ...getTransformStyles(),
-        opacity: dimmed ? 0.6 : 1,
+        opacity: dimmed ? 0.5 : 1,
         perspective: "1000px",
       }}
       onClick={handleInteraction}
@@ -105,8 +110,8 @@ export const APIAsset = ({
         alt={alt}
         className={`
           w-full h-auto object-contain select-none
-          transition-all duration-200 ease-out
-          ${isActive ? "drop-shadow-[0_0_40px_hsl(245_82%_67%/0.5)]" : "drop-shadow-[0_10px_30px_rgba(0,0,0,0.3)]"}
+          transition-all duration-150 ease-out
+          ${isActive ? "drop-shadow-[0_0_30px_hsl(245_82%_67%/0.45)]" : "drop-shadow-[0_8px_24px_rgba(0,0,0,0.25)]"}
         `}
         draggable={false}
       />
