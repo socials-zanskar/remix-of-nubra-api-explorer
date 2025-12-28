@@ -36,7 +36,7 @@ export const TradingEnvironmentSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-20 md:mb-28"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Trade, Test, and Build with a{" "}
@@ -48,27 +48,34 @@ export const TradingEnvironmentSection = () => {
         </motion.div>
 
         {/* 2-Column Grid for GIFs */}
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 mb-20 md:mb-28">
           {/* UAT Environment */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-col"
+            className="flex flex-col group"
           >
-            <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-5 transition-colors duration-300 group-hover:text-primary/90">
               UAT Trading Dashboard
             </h3>
-            <div className="relative rounded-xl overflow-hidden border border-border/50 bg-card/30 backdrop-blur-sm shadow-lg shadow-primary/5">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
+            <div 
+              className="relative rounded-2xl overflow-hidden p-6 md:p-8 flex items-center justify-center
+                         bg-[hsl(222_47%_10%)] border border-primary/10
+                         shadow-[0_8px_32px_hsl(0_0%_0%/0.3),0_0_0_1px_hsl(245_82%_67%/0.05)]
+                         transition-all duration-300 ease-out
+                         hover:scale-[1.02] hover:border-primary/25
+                         hover:shadow-[0_12px_40px_hsl(0_0%_0%/0.4),0_0_30px_hsl(245_82%_67%/0.1),inset_0_0_20px_hsl(245_82%_67%/0.03)]"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent pointer-events-none" />
               <img
                 src={UATGif}
                 alt="UAT Trading Dashboard - Simulate live market conditions"
-                className="w-full h-auto relative z-10"
+                className="w-[65%] h-auto relative z-10 rounded-lg"
               />
             </div>
-            <p className="text-muted-foreground text-sm mt-4">
+            <p className="text-muted-foreground text-sm mt-5">
               Simulate live market conditions, place trades, and track positions in real time — without risking capital.
             </p>
           </motion.div>
@@ -79,20 +86,27 @@ export const TradingEnvironmentSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col"
+            className="flex flex-col group"
           >
-            <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-5 transition-colors duration-300 group-hover:text-primary/90">
               Production Trading Dashboard
             </h3>
-            <div className="relative rounded-xl overflow-hidden border border-border/50 bg-card/30 backdrop-blur-sm shadow-lg shadow-primary/5">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
+            <div 
+              className="relative rounded-2xl overflow-hidden p-6 md:p-8 flex items-center justify-center
+                         bg-[hsl(222_47%_10%)] border border-primary/10
+                         shadow-[0_8px_32px_hsl(0_0%_0%/0.3),0_0_0_1px_hsl(245_82%_67%/0.05)]
+                         transition-all duration-300 ease-out
+                         hover:scale-[1.02] hover:border-primary/25
+                         hover:shadow-[0_12px_40px_hsl(0_0%_0%/0.4),0_0_30px_hsl(245_82%_67%/0.1),inset_0_0_20px_hsl(245_82%_67%/0.03)]"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent pointer-events-none" />
               <img
                 src={PRODGif}
                 alt="Production Trading Dashboard - Monitor real positions and P&L"
-                className="w-full h-auto relative z-10"
+                className="w-[65%] h-auto relative z-10 rounded-lg"
               />
             </div>
-            <p className="text-muted-foreground text-sm mt-4">
+            <p className="text-muted-foreground text-sm mt-5">
               Monitor real positions, P&L, margins, and orders seamlessly in production.
             </p>
           </motion.div>
