@@ -54,10 +54,10 @@ export const TradingEnvironmentSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-col group"
+            className="flex flex-col items-center group"
           >
           <div 
-              className="relative rounded-lg overflow-hidden p-2 flex items-center justify-center
+              className="relative rounded-lg overflow-hidden p-2 flex items-center justify-center w-[75%]
                          bg-[hsl(222_47%_10%)] border border-primary/15
                          shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]
                          transition-all duration-300 ease-out
@@ -73,7 +73,7 @@ export const TradingEnvironmentSection = () => {
             <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mt-4 text-center transition-colors duration-300 group-hover:text-primary/90">
               UAT Trading
             </h3>
-            <p className="text-muted-foreground text-sm mt-5">
+            <p className="text-muted-foreground text-sm mt-5 text-center max-w-[75%]">
               Simulate live market conditions, place trades, and track positions in real time — without risking capital.
             </p>
           </motion.div>
@@ -84,10 +84,10 @@ export const TradingEnvironmentSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col group"
+            className="flex flex-col items-center group"
           >
           <div 
-              className="relative rounded-lg overflow-hidden p-2 flex items-center justify-center
+              className="relative rounded-lg overflow-hidden p-2 flex items-center justify-center w-[75%]
                          bg-[hsl(222_47%_10%)] border border-primary/15
                          shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]
                          transition-all duration-300 ease-out
@@ -103,7 +103,7 @@ export const TradingEnvironmentSection = () => {
             <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mt-4 text-center transition-colors duration-300 group-hover:text-primary/90">
               Production Trading
             </h3>
-            <p className="text-muted-foreground text-sm mt-5">
+            <p className="text-muted-foreground text-sm mt-5 text-center max-w-[75%]">
               Monitor real positions, P&L, margins, and orders seamlessly in production.
             </p>
           </motion.div>
