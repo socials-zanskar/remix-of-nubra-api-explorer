@@ -50,21 +50,19 @@ export const APIAsset = ({
 
   // Asset-specific directional placement
   const getInfoPosition = (): "left" | "right" | "center" | "bottom" | "top" => {
+    if (isLogo) {
+      return "bottom"; // Brand panel appears below logo
+    }
     switch (position) {
       case "left":
-        // Trading API on left -> info box appears on LEFT side
         return "left";
       case "right":
-        // Market Data API on right -> info box appears on RIGHT side
         return "right";
       case "center":
-        // Python REST API center -> info box appears above
         return "top";
       case "back":
-        // Portfolio API -> info box appears on RIGHT side
         return "right";
       case "top":
-        // Nubra logo -> info box appears above
         return "top";
       default:
         return "right";
@@ -72,11 +70,14 @@ export const APIAsset = ({
   };
 
   const getTransformStyles = () => {
-    if (isLogo) return {};
+    if (isLogo) {
+      return {
+        transform: isActive ? 'scale(1.03)' : 'scale(1)',
+        zIndex: isActive ? 30 : 5,
+      };
+    }
     
-    // Reduced hover scale for gentler emphasis
-    const baseScale = isActive ? 1.02 : 1;
-    // Subtle rotation for depth
+    const baseScale = isActive ? 1.03 : 1;
     const rotation = position === "left" ? 2 : position === "right" ? -2 : 0;
     
     return {
@@ -85,25 +86,25 @@ export const APIAsset = ({
     };
   };
 
-  const dimmed = hasActiveAsset && !isActive && !isLogo;
+  // When Nubra logo is active, dim other assets more significantly
+  const isNubraActive = hasActiveAsset && isLogo === false && info.id !== "nubraLogo";
+  const dimmed = hasActiveAsset && !isActive;
 
   return (
     <div
-      className={`relative transition-all duration-150 ease-out ${className} ${
-        !isLogo ? "cursor-pointer" : ""
-      }`}
+      className={`relative transition-all duration-200 ease-out cursor-pointer ${className}`}
       style={{
         ...getTransformStyles(),
-        opacity: dimmed ? 0.5 : 1,
+        opacity: dimmed ? (isLogo ? 0.7 : 0.45) : 1,
         perspective: "1000px",
       }}
       onClick={handleInteraction}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      role={isLogo ? undefined : "button"}
-      tabIndex={isLogo ? undefined : 0}
+      role="button"
+      tabIndex={0}
       onKeyDown={(e) => {
-        if (!isLogo && (e.key === "Enter" || e.key === " ")) {
+        if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           handleInteraction();
         }
@@ -114,8 +115,13 @@ export const APIAsset = ({
         alt={alt}
         className={`
           w-full h-auto object-contain select-none
-          transition-all duration-150 ease-out
-          ${isActive ? "drop-shadow-[0_0_20px_hsl(245_82%_67%/0.35)]" : "drop-shadow-[0_6px_20px_rgba(0,0,0,0.22)]"}
+          transition-all duration-200 ease-out
+          ${isActive 
+            ? isLogo 
+              ? "drop-shadow-[0_0_30px_hsl(245_82%_67%/0.5)]" 
+              : "drop-shadow-[0_0_24px_hsl(245_82%_67%/0.35)]" 
+            : "drop-shadow-[0_8px_24px_rgba(0,0,0,0.25)]"
+          }
         `}
         draggable={false}
       />
