@@ -84,26 +84,30 @@ export const InfoCard = ({ info, isVisible, position, isMobile }: InfoCardProps)
           transition={{ duration: 0.15, ease: "easeOut" }}
         >
           <div className="backdrop-blur-card border border-border/30 rounded px-3 py-2 shadow-md whitespace-nowrap">
-            <h3 className="text-[11px] font-medium text-foreground mb-1.5 leading-none">
-              {info.title}
-            </h3>
-            <ul className="space-y-0.5 mb-2">
+            {info.title && (
+              <h3 className="text-[11px] font-medium text-foreground mb-1.5 leading-none">
+                {info.title}
+              </h3>
+            )}
+            <ul className={`space-y-0.5 ${info.cta ? 'mb-2' : ''}`}>
               {info.bullets.map((bullet, index) => (
                 <li
                   key={index}
-                  className="flex items-center gap-1.5 text-[10px] leading-none text-muted-foreground"
+                  className={`flex items-center gap-1.5 text-[10px] leading-tight text-muted-foreground ${!info.title && info.bullets.length === 1 ? 'max-w-[280px] whitespace-normal' : ''}`}
                 >
-                  <span className="w-1 h-1 rounded-full bg-primary/60 flex-shrink-0" />
+                  {info.title && <span className="w-1 h-1 rounded-full bg-primary/60 flex-shrink-0" />}
                   {bullet}
                 </li>
               ))}
             </ul>
-            <a
-              href={info.ctaLink}
-              className="inline-flex items-center gap-0.5 text-[10px] font-medium text-primary hover:text-primary/80 transition-colors duration-150"
-            >
-              {info.cta} <span aria-hidden>→</span>
-            </a>
+            {info.cta && info.ctaLink && (
+              <a
+                href={info.ctaLink}
+                className="inline-flex items-center gap-0.5 text-[10px] font-medium text-primary hover:text-primary/80 transition-colors duration-150"
+              >
+                {info.cta} <span aria-hidden>→</span>
+              </a>
+            )}
           </div>
         </motion.div>
       )}

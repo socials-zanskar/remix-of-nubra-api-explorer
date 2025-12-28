@@ -5,7 +5,7 @@ interface APIAssetProps {
   image: string;
   alt: string;
   info: APIInfo;
-  position: "left" | "right" | "center" | "back";
+  position: "left" | "right" | "center" | "back" | "top";
   isActive: boolean;
   onActivate: () => void;
   onDeactivate: () => void;
@@ -29,25 +29,24 @@ export const APIAsset = ({
   const [isTouchDevice] = useState(() => 'ontouchstart' in window);
 
   const handleInteraction = useCallback(() => {
-    if (isLogo) return;
     if (isActive) {
       onDeactivate();
     } else {
       onActivate();
     }
-  }, [isActive, isLogo, onActivate, onDeactivate]);
+  }, [isActive, onActivate, onDeactivate]);
 
   const handleMouseEnter = useCallback(() => {
-    if (!isTouchDevice && !isLogo) {
+    if (!isTouchDevice) {
       onActivate();
     }
-  }, [isTouchDevice, isLogo, onActivate]);
+  }, [isTouchDevice, onActivate]);
 
   const handleMouseLeave = useCallback(() => {
-    if (!isTouchDevice && !isLogo) {
+    if (!isTouchDevice) {
       onDeactivate();
     }
-  }, [isTouchDevice, isLogo, onDeactivate]);
+  }, [isTouchDevice, onDeactivate]);
 
   // Asset-specific directional placement
   const getInfoPosition = (): "left" | "right" | "center" | "bottom" | "top" => {
@@ -64,6 +63,9 @@ export const APIAsset = ({
       case "back":
         // Portfolio API -> info box appears on RIGHT side
         return "right";
+      case "top":
+        // Nubra logo -> info box appears above
+        return "top";
       default:
         return "right";
     }
@@ -117,14 +119,12 @@ export const APIAsset = ({
         `}
         draggable={false}
       />
-      {!isLogo && (
-        <InfoCard
-          info={info}
-          isVisible={isActive}
-          position={getInfoPosition()}
-          isMobile={window.innerWidth < 768}
-        />
-      )}
+      <InfoCard
+        info={info}
+        isVisible={isActive}
+        position={getInfoPosition()}
+        isMobile={window.innerWidth < 768}
+      />
     </div>
   );
 };
