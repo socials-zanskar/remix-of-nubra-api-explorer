@@ -9,12 +9,21 @@ import MarketDataAPIBG from "@/assets/MarketDataAPIBG.png";
 import PortfolioAPIBG from "@/assets/PortfolioAPIBG.png";
 
 const apiData: Record<string, APIInfo> = {
+  nubraLogo: {
+    id: "nubraLogo",
+    title: "",
+    bullets: [
+      "Powered by HFT-grade infrastructure, bringing institutional-level features and performance to retail and professional traders.",
+    ],
+    cta: "",
+    ctaLink: "",
+  },
   pythonRest: {
     id: "pythonRest",
-    title: "Python REST APIs",
+    title: "",
     bullets: [
-      "Simple & powerful SDKs",
-      "Built for automation",
+      "Low-level REST APIs for direct system integration",
+      "Python SDKs for beginner-to-expert workflows",
     ],
     cta: "View Docs",
     ctaLink: "#",
@@ -23,9 +32,10 @@ const apiData: Record<string, APIInfo> = {
     id: "marketData",
     title: "Market Data APIs",
     bullets: [
-      "REST snapshot data for orderbook and option chain",
-      "Historical data including expired options",
-      "Real-time 20-level orderbook, Greeks, OHLCV, and option chain",
+      "Snapshot data for Order Book and Option Chain",
+      "Historical data including Expired Options",
+      "Real-time 20-level Order Book and OHLCV",
+      "Real-time and Option Chain and Greeks",
     ],
     cta: "View Docs",
     ctaLink: "#",
@@ -47,8 +57,8 @@ const apiData: Record<string, APIInfo> = {
     title: "Portfolio APIs",
     bullets: [
       "Real-time PnL tracking",
-      "Funds APIs with live cash, margin, and collateral breakdown",
-      "Holdings APIs with detailed position, PnL, margin benefit, and pledge data",
+      "Real-time live cash, margin, and collateral",
+      "Detailed position, PnL, margin benefit, and more",
     ],
     cta: "View Docs",
     ctaLink: "#",
@@ -287,15 +297,20 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        {/* Nubra Logo - centered below */}
+        {/* Nubra Logo - centered below, now interactive */}
         <div className="flex justify-center mt-8">
-          <div className="w-[55px] md:w-[65px]">
-            <img
-              src={NubraLogoBG}
-              alt="Nubra Logo"
-              className="w-full h-auto drop-shadow-[0_6px_24px_hsl(245_82%_67%/0.3)]"
-            />
-          </div>
+          <APIAsset
+            image={NubraLogoBG}
+            alt="Nubra Logo"
+            info={apiData.nubraLogo}
+            position="top"
+            isActive={activeAsset === "nubraLogo"}
+            onActivate={() => handleActivate("nubraLogo")}
+            onDeactivate={handleDeactivate}
+            hasActiveAsset={activeAsset !== null}
+            isLogo={true}
+            className="w-[55px] md:w-[65px]"
+          />
         </div>
 
         {/* Subtle instruction */}
