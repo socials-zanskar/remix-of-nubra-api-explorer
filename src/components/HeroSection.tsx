@@ -223,7 +223,7 @@ export const HeroSection = () => {
               onActivate={() => handleActivate("portfolio")}
               onDeactivate={handleDeactivate}
               hasActiveAsset={activeAsset !== null}
-              className="absolute -top-12 left-1/2 -translate-x-1/2 w-[160px] md:w-[180px] opacity-70 -z-10"
+              className="absolute -top-12 left-1/2 -translate-x-1/4 w-[160px] md:w-[180px] opacity-70 -z-10"
             />
 
             {/* Python REST API - center focus */}
