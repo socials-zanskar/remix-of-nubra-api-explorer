@@ -18,12 +18,12 @@ interface InfoCardProps {
 
 export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCardProps) => {
   const getPositionClasses = () => {
+    if (isHero) {
+      // Premium brand panel - fixed to screen center
+      return "fixed left-1/2 -translate-x-1/2";
+    }
     if (isMobile) {
       return "left-1/2 -translate-x-1/2 top-full mt-2";
-    }
-    if (isHero) {
-      // Premium brand panel - positioned below the logo
-      return "left-1/2 -translate-x-1/2 top-full mt-3";
     }
     switch (position) {
       case "left":
@@ -85,7 +85,8 @@ export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCa
       <AnimatePresence>
         {isVisible && (
           <motion.div
-            className={`absolute z-50 ${getPositionClasses()}`}
+            className="fixed left-1/2 -translate-x-1/2 z-50"
+            style={{ bottom: '60px' }}
             variants={getAnimationVariants()}
             initial="hidden"
             animate="visible"
