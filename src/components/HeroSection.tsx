@@ -13,8 +13,7 @@ const apiData: Record<string, APIInfo> = {
     id: "pythonRest",
     title: "Python REST APIs",
     bullets: [
-      "Simple & powerful Python SDKs",
-      "REST-based trading & data access",
+      "Simple & powerful SDKs",
       "Built for automation",
     ],
     cta: "View Docs",
@@ -24,9 +23,8 @@ const apiData: Record<string, APIInfo> = {
     id: "marketData",
     title: "Market Data APIs",
     bullets: [
-      "Live quotes & option chains",
-      "Snapshot + WebSocket feeds",
-      "Low-latency data delivery",
+      "Live quotes & chains",
+      "Low-latency delivery",
     ],
     cta: "View Docs",
     ctaLink: "#",
@@ -35,9 +33,8 @@ const apiData: Record<string, APIInfo> = {
     id: "trading",
     title: "Trading APIs",
     bullets: [
-      "Single, multi-leg & flexi baskets",
-      "Modify, cancel & manage orders",
-      "Strategy-first execution",
+      "Multi-leg & flexi baskets",
+      "Modify & manage orders",
     ],
     cta: "View Docs",
     ctaLink: "#",
@@ -47,7 +44,6 @@ const apiData: Record<string, APIInfo> = {
     title: "Portfolio APIs",
     bullets: [
       "Real-time PnL & holdings",
-      "Strategy-level analytics",
       "Margin & risk insights",
     ],
     cta: "View Docs",
@@ -83,7 +79,7 @@ export const HeroSection = () => {
   if (isMobile) {
     return (
       <section 
-        className="relative min-h-screen pt-24 pb-16 px-4 overflow-hidden"
+        className="relative min-h-screen pt-20 pb-12 px-4 overflow-hidden"
         onClick={handleOutsideClick}
       >
         {/* Background gradient */}
@@ -95,28 +91,28 @@ export const HeroSection = () => {
           }}
         />
 
-        <div className="relative z-10 flex flex-col items-center gap-8">
+        <div className="relative z-10 flex flex-col items-center gap-6">
           {/* Nubra Logo */}
-          <div className="w-32">
+          <div className="w-24">
             <img
               src={NubraLogoBG}
               alt="Nubra Logo"
-              className="w-full h-auto drop-shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+              className="w-full h-auto drop-shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
             />
           </div>
 
           {/* Title */}
-          <div className="text-center mb-4">
-            <h1 className="text-3xl font-bold text-foreground mb-2">
+          <div className="text-center mb-2">
+            <h1 className="text-2xl font-bold text-foreground mb-1">
               Nubra <span className="text-gradient">APIs</span>
             </h1>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground text-xs">
               Powerful trading infrastructure for developers
             </p>
           </div>
 
           {/* Stacked Assets */}
-          <div className="flex flex-col items-center gap-10 w-full max-w-sm">
+          <div className="flex flex-col items-center gap-8 w-full max-w-xs">
             <APIAsset
               image={PythonRESTBG}
               alt="Python REST APIs"
@@ -126,7 +122,7 @@ export const HeroSection = () => {
               onActivate={() => handleActivate("pythonRest")}
               onDeactivate={handleDeactivate}
               hasActiveAsset={activeAsset !== null}
-              className="w-full max-w-[280px]"
+              className="w-full max-w-[240px]"
             />
 
             <APIAsset
@@ -138,7 +134,7 @@ export const HeroSection = () => {
               onActivate={() => handleActivate("marketData")}
               onDeactivate={handleDeactivate}
               hasActiveAsset={activeAsset !== null}
-              className="w-full max-w-[260px]"
+              className="w-full max-w-[220px]"
             />
 
             <APIAsset
@@ -150,7 +146,7 @@ export const HeroSection = () => {
               onActivate={() => handleActivate("trading")}
               onDeactivate={handleDeactivate}
               hasActiveAsset={activeAsset !== null}
-              className="w-full max-w-[260px]"
+              className="w-full max-w-[220px]"
             />
 
             <APIAsset
@@ -162,7 +158,7 @@ export const HeroSection = () => {
               onActivate={() => handleActivate("portfolio")}
               onDeactivate={handleDeactivate}
               hasActiveAsset={activeAsset !== null}
-              className="w-full max-w-[300px]"
+              className="w-full max-w-[260px]"
             />
           </div>
         </div>
@@ -185,19 +181,19 @@ export const HeroSection = () => {
       />
 
       {/* Main content container */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-8">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6">
         {/* Header text */}
-        <div className="text-center mb-8">
-          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-3">
+        <div className="text-center mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
             Nubra <span className="text-gradient">APIs</span>
           </h1>
-          <p className="text-base text-muted-foreground max-w-lg mx-auto">
+          <p className="text-sm text-muted-foreground max-w-md mx-auto">
             Powerful trading infrastructure for developers
           </p>
         </div>
 
-        {/* Portfolio API - centered to entire page, above other assets */}
-        <div className="flex justify-center mb-4">
+        {/* Portfolio API - centered above other assets (back layer) */}
+        <div className="flex justify-center mb-2">
           <APIAsset
             image={PortfolioAPIBG}
             alt="Portfolio APIs"
@@ -207,13 +203,13 @@ export const HeroSection = () => {
             onActivate={() => handleActivate("portfolio")}
             onDeactivate={handleDeactivate}
             hasActiveAsset={activeAsset !== null}
-            className="w-[160px] md:w-[180px] opacity-70"
+            className="w-[140px] md:w-[160px] opacity-65"
           />
         </div>
 
         {/* 3D Asset Layout - Horizontal arrangement */}
-        <div className="relative flex items-center justify-center gap-4 md:gap-8 lg:gap-12 mt-4">
-          {/* Left side - Trading API (swapped) */}
+        <div className="relative flex items-center justify-center gap-3 md:gap-6 lg:gap-10">
+          {/* Left side - Trading API */}
           <APIAsset
             image={TradingAPIBG}
             alt="Trading APIs"
@@ -223,7 +219,7 @@ export const HeroSection = () => {
             onActivate={() => handleActivate("trading")}
             onDeactivate={handleDeactivate}
             hasActiveAsset={activeAsset !== null}
-            className="w-[240px] md:w-[280px] lg:w-[320px] flex-shrink-0"
+            className="w-[200px] md:w-[240px] lg:w-[280px] flex-shrink-0"
           />
 
           {/* Center - Python REST (main) */}
@@ -237,11 +233,11 @@ export const HeroSection = () => {
               onActivate={() => handleActivate("pythonRest")}
               onDeactivate={handleDeactivate}
               hasActiveAsset={activeAsset !== null}
-              className="w-[240px] md:w-[280px] lg:w-[320px]"
+              className="w-[200px] md:w-[240px] lg:w-[280px]"
             />
           </div>
 
-          {/* Right side - Market Data API (swapped) */}
+          {/* Right side - Market Data API */}
           <APIAsset
             image={MarketDataAPIBG}
             alt="Market Data APIs"
@@ -251,23 +247,23 @@ export const HeroSection = () => {
             onActivate={() => handleActivate("marketData")}
             onDeactivate={handleDeactivate}
             hasActiveAsset={activeAsset !== null}
-            className="w-[240px] md:w-[280px] lg:w-[320px] flex-shrink-0"
+            className="w-[200px] md:w-[240px] lg:w-[280px] flex-shrink-0"
           />
         </div>
 
-        {/* Nubra Logo - centered to entire page */}
-        <div className="flex justify-center mt-8 z-40">
-          <div className="w-[80px] md:w-[100px] animate-float">
+        {/* Nubra Logo - centered below */}
+        <div className="flex justify-center mt-6 z-40">
+          <div className="w-[70px] md:w-[80px] animate-float">
             <img
               src={NubraLogoBG}
               alt="Nubra Logo"
-              className="w-full h-auto drop-shadow-[0_10px_40px_hsl(245_82%_67%/0.4)]"
+              className="w-full h-auto drop-shadow-[0_8px_32px_hsl(245_82%_67%/0.35)]"
             />
           </div>
         </div>
 
         {/* Subtle instruction */}
-        <p className="text-center text-xs text-muted-foreground mt-16 opacity-60">
+        <p className="text-center text-[10px] text-muted-foreground mt-10 opacity-50">
           Hover or tap on any API to explore
         </p>
       </div>
