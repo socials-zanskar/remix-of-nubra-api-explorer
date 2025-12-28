@@ -124,6 +124,7 @@ export const APIAsset = ({
         isVisible={isActive}
         position={getInfoPosition()}
         isMobile={window.innerWidth < 768}
+        isHero={isLogo}
       />
     </div>
   );

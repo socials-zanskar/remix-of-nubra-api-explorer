@@ -259,7 +259,7 @@ export const HeroSection = () => {
                 activeAsset === "pythonRest" ? "text-muted-foreground" : "text-muted-foreground/50"
               } ${activeAsset && activeAsset !== "pythonRest" ? "opacity-40" : ""}`}
             >
-              Python REST APIs
+              Python/REST
             </span>
             <APIAsset
               image={PythonRESTBG}
@@ -313,10 +313,6 @@ export const HeroSection = () => {
           />
         </div>
 
-        {/* Subtle instruction */}
-        <p className="text-center text-[9px] text-muted-foreground mt-8 opacity-40">
-          Hover or tap on any API to explore
-        </p>
       </div>
     </section>
   );
