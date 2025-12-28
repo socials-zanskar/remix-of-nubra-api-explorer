@@ -19,60 +19,105 @@ interface InfoCardProps {
 export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCardProps) => {
   const getPositionClasses = () => {
     if (isMobile) {
-      return "left-1/2 -translate-x-1/2 top-full mt-1.5";
+      return "left-1/2 -translate-x-1/2 top-full mt-2";
+    }
+    if (isHero) {
+      // Premium brand panel - positioned below the logo
+      return "left-1/2 -translate-x-1/2 top-full mt-3";
     }
     switch (position) {
       case "left":
-        return "right-full mr-2 top-1/2 -translate-y-1/2";
+        return "right-full mr-3 top-1/2 -translate-y-1/2";
       case "right":
-        return "left-full ml-2 top-1/2 -translate-y-1/2";
+        return "left-full ml-3 top-1/2 -translate-y-1/2";
       case "center":
-        return "left-1/2 -translate-x-1/2 top-full mt-1.5";
+        return "left-1/2 -translate-x-1/2 top-full mt-2";
       case "top":
-        return "left-1/2 -translate-x-1/2 bottom-full mb-1.5";
+        return "left-1/2 -translate-x-1/2 bottom-full mb-2";
       case "bottom":
-        return "left-1/2 -translate-x-1/2 top-full mt-1.5";
+        return "left-1/2 -translate-x-1/2 top-full mt-2";
       default:
-        return "left-full ml-2 top-1/2 -translate-y-1/2";
+        return "left-full ml-3 top-1/2 -translate-y-1/2";
     }
   };
 
   const getAnimationVariants = () => {
-    if (isMobile) {
+    if (isMobile || isHero) {
       return {
-        hidden: { opacity: 0, y: -6, scale: 0.97 },
+        hidden: { opacity: 0, y: -8, scale: 0.96 },
         visible: { opacity: 1, y: 0, scale: 1 },
-        exit: { opacity: 0, y: -6, scale: 0.97 },
+        exit: { opacity: 0, y: -8, scale: 0.96 },
       };
     }
     switch (position) {
       case "left":
         return {
-          hidden: { opacity: 0, x: 8, scale: 0.97 },
+          hidden: { opacity: 0, x: 10, scale: 0.96 },
           visible: { opacity: 1, x: 0, scale: 1 },
-          exit: { opacity: 0, x: 8, scale: 0.97 },
+          exit: { opacity: 0, x: 10, scale: 0.96 },
         };
       case "right":
         return {
-          hidden: { opacity: 0, x: -8, scale: 0.97 },
+          hidden: { opacity: 0, x: -10, scale: 0.96 },
           visible: { opacity: 1, x: 0, scale: 1 },
-          exit: { opacity: 0, x: -8, scale: 0.97 },
+          exit: { opacity: 0, x: -10, scale: 0.96 },
         };
       case "top":
         return {
-          hidden: { opacity: 0, y: 6, scale: 0.97 },
+          hidden: { opacity: 0, y: 8, scale: 0.96 },
           visible: { opacity: 1, y: 0, scale: 1 },
-          exit: { opacity: 0, y: 6, scale: 0.97 },
+          exit: { opacity: 0, y: 8, scale: 0.96 },
         };
       default:
         return {
-          hidden: { opacity: 0, y: -6, scale: 0.97 },
+          hidden: { opacity: 0, y: -8, scale: 0.96 },
           visible: { opacity: 1, y: 0, scale: 1 },
-          exit: { opacity: 0, y: -6, scale: 0.97 },
+          exit: { opacity: 0, y: -8, scale: 0.96 },
         };
     }
   };
 
+  // Hero brand panel - premium styling
+  if (isHero) {
+    return (
+      <AnimatePresence>
+        {isVisible && (
+          <motion.div
+            className={`absolute z-50 ${getPositionClasses()}`}
+            variants={getAnimationVariants()}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            <div 
+              className="relative px-6 py-4 rounded-xl border border-primary/30"
+              style={{
+                background: 'linear-gradient(135deg, hsl(245 82% 67% / 0.12) 0%, hsl(260 82% 55% / 0.08) 100%)',
+                backdropFilter: 'blur(20px)',
+                boxShadow: '0 8px 40px hsl(245 82% 67% / 0.2), 0 2px 8px hsl(0 0% 0% / 0.3)',
+                minWidth: '380px',
+                maxWidth: '420px',
+              }}
+            >
+              {/* Subtle inner glow */}
+              <div 
+                className="absolute inset-0 rounded-xl opacity-40 pointer-events-none"
+                style={{
+                  background: 'radial-gradient(ellipse at top, hsl(245 82% 75% / 0.15), transparent 60%)',
+                }}
+              />
+              <p className="relative text-[13px] md:text-[14px] text-foreground/95 font-medium leading-relaxed text-center">
+                {info.bullets[0]}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    );
+  }
+
+  // Standard API info cards
   return (
     <AnimatePresence>
       {isVisible && (
@@ -84,39 +129,36 @@ export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCa
           exit="exit"
           transition={{ duration: 0.15, ease: "easeOut" }}
         >
-          <div className={`backdrop-blur-card border rounded shadow-md whitespace-nowrap ${
-            isHero 
-              ? 'border-primary/40 px-4 py-3 bg-primary/10' 
-              : 'border-border/30 px-3 py-2'
-          }`}>
+          <div 
+            className="backdrop-blur-xl bg-card/85 border border-border/40 rounded-lg px-4 py-3 shadow-lg"
+            style={{
+              boxShadow: '0 4px 20px hsl(0 0% 0% / 0.3)',
+            }}
+          >
             {info.title && (
-              <h3 className={`font-medium text-foreground mb-1.5 leading-none ${
-                isHero ? 'text-[13px] font-semibold' : 'text-[11px]'
-              }`}>
+              <h3 className="text-[12px] font-semibold text-foreground mb-2 leading-none">
                 {info.title}
               </h3>
             )}
-            <ul className={`space-y-0.5 ${info.cta ? 'mb-2' : ''}`}>
+            <ul className={`space-y-1 ${info.cta ? 'mb-2.5' : ''}`}>
               {info.bullets.map((bullet, index) => (
                 <li
                   key={index}
-                  className={`flex items-center gap-1.5 leading-tight ${
-                    isHero 
-                      ? 'text-[11px] text-foreground/90 font-medium max-w-[320px] whitespace-normal' 
-                      : `text-[10px] text-muted-foreground ${!info.title && info.bullets.length === 1 ? 'max-w-[280px] whitespace-normal' : ''}`
-                  }`}
+                  className="flex items-start gap-2 text-[11px] leading-snug text-muted-foreground whitespace-nowrap"
                 >
-                  {info.title && <span className={`w-1 h-1 rounded-full flex-shrink-0 ${isHero ? 'bg-primary' : 'bg-primary/60'}`} />}
-                  {bullet}
+                  {info.title && (
+                    <span className="w-1 h-1 rounded-full bg-primary/70 flex-shrink-0 mt-1.5" />
+                  )}
+                  <span className={!info.title ? 'max-w-[300px] whitespace-normal' : ''}>
+                    {bullet}
+                  </span>
                 </li>
               ))}
             </ul>
             {info.cta && info.ctaLink && (
               <a
                 href={info.ctaLink}
-                className={`inline-flex items-center gap-0.5 font-medium text-primary hover:text-primary/80 transition-colors duration-150 ${
-                  isHero ? 'text-[11px]' : 'text-[10px]'
-                }`}
+                className="inline-flex items-center gap-1 text-[11px] font-semibold text-primary hover:text-primary/80 transition-colors duration-150 mt-1"
               >
                 {info.cta} <span aria-hidden>→</span>
               </a>

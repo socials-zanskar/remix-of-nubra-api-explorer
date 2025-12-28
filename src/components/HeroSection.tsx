@@ -20,7 +20,7 @@ const apiData: Record<string, APIInfo> = {
   },
   pythonRest: {
     id: "pythonRest",
-    title: "",
+    title: "Python/REST",
     bullets: [
       "Low-level REST APIs for direct system integration",
       "Python SDKs for beginner-to-expert workflows",
@@ -35,7 +35,7 @@ const apiData: Record<string, APIInfo> = {
       "Snapshot data for Order Book and Option Chain",
       "Historical data including Expired Options",
       "Real-time 20-level Order Book and OHLCV",
-      "Real-time and Option Chain and Greeks",
+      "Real-time Option Chain and Greeks",
     ],
     cta: "View Docs",
     ctaLink: "#",
@@ -93,87 +93,129 @@ export const HeroSection = () => {
   if (isMobile) {
     return (
       <section 
-        className="relative min-h-screen pt-20 pb-12 px-4 overflow-hidden"
+        className="relative min-h-screen pt-24 pb-12 px-4 overflow-hidden"
         onClick={handleOutsideClick}
       >
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-nubra-darker" />
         <div 
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-25"
           style={{
-            background: "radial-gradient(ellipse at 50% 30%, hsl(245 82% 67% / 0.15), transparent 60%)",
+            background: "radial-gradient(ellipse at 50% 40%, hsl(245 82% 67% / 0.12), transparent 55%)",
           }}
         />
 
-        <div className="relative z-10 flex flex-col items-center gap-6">
-          {/* Nubra Logo */}
-          <div className="w-24">
-            <img
-              src={NubraLogoBG}
-              alt="Nubra Logo"
-              className="w-full h-auto drop-shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
-            />
-          </div>
-
-          {/* Title */}
-          <div className="text-center mb-2">
-            <h1 className="text-2xl font-bold text-foreground mb-1">
+        <div className="relative z-10 flex flex-col items-center">
+          {/* Hero Text */}
+          <div className="text-center mb-10">
+            <h1 className="text-3xl font-bold text-foreground mb-2">
               Nubra <span className="text-gradient">APIs</span>
             </h1>
-            <p className="text-muted-foreground text-xs">
+            <p className="text-muted-foreground text-sm mb-2">
               Powerful trading infrastructure for developers
+            </p>
+            <p className="text-muted-foreground/60 text-xs max-w-xs mx-auto">
+              Build, automate, and scale trading systems with institutional-grade APIs
             </p>
           </div>
 
           {/* Stacked Assets */}
-          <div className="flex flex-col items-center gap-8 w-full max-w-xs">
-            <APIAsset
-              image={PythonRESTBG}
-              alt="Python REST APIs"
-              info={apiData.pythonRest}
-              position="center"
-              isActive={activeAsset === "pythonRest"}
-              onActivate={() => handleActivate("pythonRest")}
-              onDeactivate={handleDeactivate}
-              hasActiveAsset={activeAsset !== null}
-              className="w-full max-w-[240px]"
-            />
+          <div className="flex flex-col items-center gap-10 w-full max-w-xs">
+            {/* Python REST */}
+            <div className="flex flex-col items-center">
+              <span className={`text-[10px] font-medium mb-2 transition-opacity duration-150 ${
+                activeAsset === "pythonRest" ? "text-muted-foreground" : "text-muted-foreground/50"
+              }`}>
+                Python/REST
+              </span>
+              <APIAsset
+                image={PythonRESTBG}
+                alt="Python REST APIs"
+                info={apiData.pythonRest}
+                position="center"
+                isActive={activeAsset === "pythonRest"}
+                onActivate={() => handleActivate("pythonRest")}
+                onDeactivate={handleDeactivate}
+                hasActiveAsset={activeAsset !== null}
+                className="w-full max-w-[180px]"
+              />
+            </div>
 
-            <APIAsset
-              image={MarketDataAPIBG}
-              alt="Market Data APIs"
-              info={apiData.marketData}
-              position="center"
-              isActive={activeAsset === "marketData"}
-              onActivate={() => handleActivate("marketData")}
-              onDeactivate={handleDeactivate}
-              hasActiveAsset={activeAsset !== null}
-              className="w-full max-w-[220px]"
-            />
+            {/* Trading */}
+            <div className="flex flex-col items-center">
+              <span className={`text-[10px] font-medium mb-2 transition-opacity duration-150 ${
+                activeAsset === "trading" ? "text-muted-foreground" : "text-muted-foreground/50"
+              }`}>
+                Trading APIs
+              </span>
+              <APIAsset
+                image={TradingAPIBG}
+                alt="Trading APIs"
+                info={apiData.trading}
+                position="center"
+                isActive={activeAsset === "trading"}
+                onActivate={() => handleActivate("trading")}
+                onDeactivate={handleDeactivate}
+                hasActiveAsset={activeAsset !== null}
+                className="w-full max-w-[200px]"
+              />
+            </div>
 
-            <APIAsset
-              image={TradingAPIBG}
-              alt="Trading APIs"
-              info={apiData.trading}
-              position="center"
-              isActive={activeAsset === "trading"}
-              onActivate={() => handleActivate("trading")}
-              onDeactivate={handleDeactivate}
-              hasActiveAsset={activeAsset !== null}
-              className="w-full max-w-[220px]"
-            />
+            {/* Market Data */}
+            <div className="flex flex-col items-center">
+              <span className={`text-[10px] font-medium mb-2 transition-opacity duration-150 ${
+                activeAsset === "marketData" ? "text-muted-foreground" : "text-muted-foreground/50"
+              }`}>
+                Market Data APIs
+              </span>
+              <APIAsset
+                image={MarketDataAPIBG}
+                alt="Market Data APIs"
+                info={apiData.marketData}
+                position="center"
+                isActive={activeAsset === "marketData"}
+                onActivate={() => handleActivate("marketData")}
+                onDeactivate={handleDeactivate}
+                hasActiveAsset={activeAsset !== null}
+                className="w-full max-w-[200px]"
+              />
+            </div>
 
-            <APIAsset
-              image={PortfolioAPIBG}
-              alt="Portfolio APIs"
-              info={apiData.portfolio}
-              position="center"
-              isActive={activeAsset === "portfolio"}
-              onActivate={() => handleActivate("portfolio")}
-              onDeactivate={handleDeactivate}
-              hasActiveAsset={activeAsset !== null}
-              className="w-full max-w-[260px]"
-            />
+            {/* Portfolio */}
+            <div className="flex flex-col items-center">
+              <span className={`text-[10px] font-medium mb-2 transition-opacity duration-150 ${
+                activeAsset === "portfolio" ? "text-muted-foreground" : "text-muted-foreground/50"
+              }`}>
+                Portfolio APIs
+              </span>
+              <APIAsset
+                image={PortfolioAPIBG}
+                alt="Portfolio APIs"
+                info={apiData.portfolio}
+                position="center"
+                isActive={activeAsset === "portfolio"}
+                onActivate={() => handleActivate("portfolio")}
+                onDeactivate={handleDeactivate}
+                hasActiveAsset={activeAsset !== null}
+                className="w-full max-w-[220px]"
+              />
+            </div>
+
+            {/* Nubra Logo */}
+            <div className="mt-4">
+              <APIAsset
+                image={NubraLogoBG}
+                alt="Nubra Logo"
+                info={apiData.nubraLogo}
+                position="top"
+                isActive={activeAsset === "nubraLogo"}
+                onActivate={() => handleActivate("nubraLogo")}
+                onDeactivate={handleDeactivate}
+                hasActiveAsset={activeAsset !== null}
+                isLogo={true}
+                className="w-[80px]"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -182,32 +224,35 @@ export const HeroSection = () => {
 
   return (
     <section 
-      className="relative h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-20"
       onClick={handleOutsideClick}
     >
-      {/* Background gradient - reduced contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-nubra-darker/80" />
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-nubra-darker/70" />
       <div 
-        className="absolute inset-0 opacity-25"
+        className="absolute inset-0 opacity-20"
         style={{
-          background: "radial-gradient(ellipse at 50% 50%, hsl(245 82% 67% / 0.12), transparent 55%)",
+          background: "radial-gradient(ellipse at 50% 45%, hsl(245 82% 67% / 0.15), transparent 50%)",
         }}
       />
 
       {/* Main content container */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-6">
-        {/* Header text */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6">
+        {/* Hero Text */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-3 tracking-tight">
             Nubra <span className="text-gradient">APIs</span>
           </h1>
-          <p className="text-xs text-muted-foreground max-w-sm mx-auto">
+          <p className="text-sm md:text-base text-muted-foreground mb-2">
             Powerful trading infrastructure for developers
+          </p>
+          <p className="text-xs md:text-sm text-muted-foreground/50 max-w-md mx-auto">
+            Build, automate, and scale trading systems with institutional-grade APIs
           </p>
         </div>
 
-        {/* Portfolio API - centered above, clearly secondary */}
-        <div className="flex flex-col items-center mb-4">
+        {/* Portfolio API - centered above, secondary */}
+        <div className="flex flex-col items-center mb-6">
           <span 
             className={`text-[10px] font-medium mb-2 transition-opacity duration-150 ease-out ${
               activeAsset === "portfolio" ? "text-muted-foreground" : "text-muted-foreground/50"
@@ -224,13 +269,13 @@ export const HeroSection = () => {
             onActivate={() => handleActivate("portfolio")}
             onDeactivate={handleDeactivate}
             hasActiveAsset={activeAsset !== null}
-            className="w-[100px] md:w-[120px] opacity-55"
+            className="w-[100px] md:w-[120px] lg:w-[140px] opacity-60"
           />
         </div>
 
-        {/* API Belt - Horizontal axis alignment with equal spacing */}
-        <div className="relative flex items-center justify-center gap-6 md:gap-10 lg:gap-12">
-          {/* Left - Trading API (reduced 10%) */}
+        {/* API Belt - Horizontal axis */}
+        <div className="relative flex items-center justify-center gap-8 md:gap-12 lg:gap-16">
+          {/* Left - Trading API */}
           <div className="flex flex-col items-center flex-shrink-0">
             <span 
               className={`text-[10px] font-medium mb-2 transition-opacity duration-150 ease-out ${
@@ -248,11 +293,11 @@ export const HeroSection = () => {
               onActivate={() => handleActivate("trading")}
               onDeactivate={handleDeactivate}
               hasActiveAsset={activeAsset !== null}
-              className="w-[160px] md:w-[200px] lg:w-[220px]"
+              className="w-[160px] md:w-[200px] lg:w-[240px]"
             />
           </div>
 
-          {/* Center - Python REST (reduced additional 20-25%, now ~50% of original) */}
+          {/* Center - Python REST */}
           <div className="flex flex-col items-center flex-shrink-0">
             <span 
               className={`text-[10px] font-medium mb-2 transition-opacity duration-150 ease-out ${
@@ -270,11 +315,11 @@ export const HeroSection = () => {
               onActivate={() => handleActivate("pythonRest")}
               onDeactivate={handleDeactivate}
               hasActiveAsset={activeAsset !== null}
-              className="w-[110px] md:w-[130px] lg:w-[150px]"
+              className="w-[120px] md:w-[150px] lg:w-[170px]"
             />
           </div>
 
-          {/* Right - Market Data API (reduced 10%) */}
+          {/* Right - Market Data API */}
           <div className="flex flex-col items-center flex-shrink-0">
             <span 
               className={`text-[10px] font-medium mb-2 transition-opacity duration-150 ease-out ${
@@ -292,13 +337,13 @@ export const HeroSection = () => {
               onActivate={() => handleActivate("marketData")}
               onDeactivate={handleDeactivate}
               hasActiveAsset={activeAsset !== null}
-              className="w-[160px] md:w-[200px] lg:w-[220px]"
+              className="w-[160px] md:w-[200px] lg:w-[240px]"
             />
           </div>
         </div>
 
-        {/* Nubra Logo - centered below, now interactive */}
-        <div className="flex justify-center mt-8">
+        {/* Nubra Logo - Foundation layer, 2x size */}
+        <div className="flex justify-center mt-10">
           <APIAsset
             image={NubraLogoBG}
             alt="Nubra Logo"
@@ -309,10 +354,9 @@ export const HeroSection = () => {
             onDeactivate={handleDeactivate}
             hasActiveAsset={activeAsset !== null}
             isLogo={true}
-            className="w-[55px] md:w-[65px]"
+            className="w-[110px] md:w-[130px] lg:w-[150px]"
           />
         </div>
-
       </div>
     </section>
   );
