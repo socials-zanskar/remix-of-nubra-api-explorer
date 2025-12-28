@@ -43,7 +43,7 @@ export const TradingEnvironmentSection = () => {
             <span className="text-gradient">Real UAT Environment</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-            Nubra is the first broker to offer a full-featured UAT environment with a real trading dashboard — not just APIs.
+            Full featured UAT environment with a real trading dashboard
           </p>
         </motion.div>
 
@@ -61,18 +61,17 @@ export const TradingEnvironmentSection = () => {
               UAT Trading Dashboard
             </h3>
             <div 
-              className="relative rounded-2xl overflow-hidden p-6 md:p-8 flex items-center justify-center
-                         bg-[hsl(222_47%_10%)] border border-primary/10
-                         shadow-[0_8px_32px_hsl(0_0%_0%/0.3),0_0_0_1px_hsl(245_82%_67%/0.05)]
+              className="relative rounded-lg overflow-hidden p-3 md:p-4 flex items-center justify-center
+                         bg-[hsl(222_47%_10%)] border border-primary/15
+                         shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]
                          transition-all duration-300 ease-out
-                         hover:scale-[1.02] hover:border-primary/25
-                         hover:shadow-[0_12px_40px_hsl(0_0%_0%/0.4),0_0_30px_hsl(245_82%_67%/0.1),inset_0_0_20px_hsl(245_82%_67%/0.03)]"
+                         hover:scale-[1.02] hover:border-primary/30
+                         hover:shadow-[0_8px_24px_hsl(0_0%_0%/0.35),0_0_20px_hsl(245_82%_67%/0.08)]"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent pointer-events-none" />
               <img
                 src={UATGif}
                 alt="UAT Trading Dashboard - Simulate live market conditions"
-                className="w-[65%] h-auto relative z-10 rounded-lg"
+                className="w-[48%] h-auto relative z-10 rounded"
               />
             </div>
             <p className="text-muted-foreground text-sm mt-5">
@@ -92,18 +91,17 @@ export const TradingEnvironmentSection = () => {
               Production Trading Dashboard
             </h3>
             <div 
-              className="relative rounded-2xl overflow-hidden p-6 md:p-8 flex items-center justify-center
-                         bg-[hsl(222_47%_10%)] border border-primary/10
-                         shadow-[0_8px_32px_hsl(0_0%_0%/0.3),0_0_0_1px_hsl(245_82%_67%/0.05)]
+              className="relative rounded-lg overflow-hidden p-3 md:p-4 flex items-center justify-center
+                         bg-[hsl(222_47%_10%)] border border-primary/15
+                         shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]
                          transition-all duration-300 ease-out
-                         hover:scale-[1.02] hover:border-primary/25
-                         hover:shadow-[0_12px_40px_hsl(0_0%_0%/0.4),0_0_30px_hsl(245_82%_67%/0.1),inset_0_0_20px_hsl(245_82%_67%/0.03)]"
+                         hover:scale-[1.02] hover:border-primary/30
+                         hover:shadow-[0_8px_24px_hsl(0_0%_0%/0.35),0_0_20px_hsl(245_82%_67%/0.08)]"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent pointer-events-none" />
               <img
                 src={PRODGif}
                 alt="Production Trading Dashboard - Monitor real positions and P&L"
-                className="w-[65%] h-auto relative z-10 rounded-lg"
+                className="w-[48%] h-auto relative z-10 rounded"
               />
             </div>
             <p className="text-muted-foreground text-sm mt-5">
