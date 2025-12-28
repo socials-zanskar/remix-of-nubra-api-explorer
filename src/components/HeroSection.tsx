@@ -269,7 +269,7 @@ export const HeroSection = () => {
             onActivate={() => handleActivate("portfolio")}
             onDeactivate={handleDeactivate}
             hasActiveAsset={activeAsset !== null}
-            className="w-[100px] md:w-[120px] lg:w-[140px] opacity-60"
+            className="w-[150px] md:w-[180px] lg:w-[210px] opacity-60"
           />
         </div>
 
@@ -293,7 +293,7 @@ export const HeroSection = () => {
               onActivate={() => handleActivate("trading")}
               onDeactivate={handleDeactivate}
               hasActiveAsset={activeAsset !== null}
-              className="w-[160px] md:w-[200px] lg:w-[240px]"
+              className="w-[240px] md:w-[300px] lg:w-[360px]"
             />
           </div>
 
@@ -315,7 +315,7 @@ export const HeroSection = () => {
               onActivate={() => handleActivate("pythonRest")}
               onDeactivate={handleDeactivate}
               hasActiveAsset={activeAsset !== null}
-              className="w-[120px] md:w-[150px] lg:w-[170px]"
+              className="w-[180px] md:w-[225px] lg:w-[255px]"
             />
           </div>
 
@@ -337,7 +337,7 @@ export const HeroSection = () => {
               onActivate={() => handleActivate("marketData")}
               onDeactivate={handleDeactivate}
               hasActiveAsset={activeAsset !== null}
-              className="w-[160px] md:w-[200px] lg:w-[240px]"
+              className="w-[240px] md:w-[300px] lg:w-[360px]"
             />
           </div>
         </div>
@@ -354,7 +354,7 @@ export const HeroSection = () => {
             onDeactivate={handleDeactivate}
             hasActiveAsset={activeAsset !== null}
             isLogo={true}
-            className="w-[110px] md:w-[130px] lg:w-[150px]"
+            className="w-[165px] md:w-[195px] lg:w-[225px]"
           />
         </div>
       </div>
