@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { NavBar } from "@/components/NavBar";
 import WebinarHero from "@/components/webinars/WebinarHero";
 import WebinarMainContent from "@/components/webinars/WebinarMainContent";
 import BlogSidebar from "@/components/webinars/BlogSidebar";
@@ -6,6 +7,7 @@ import BlogSidebar from "@/components/webinars/BlogSidebar";
 const Webinars = () => {
   return (
     <div className="min-h-screen bg-background">
+      <NavBar />
       <WebinarHero />
       
       <div className="container mx-auto px-4 lg:px-8 pb-20">
