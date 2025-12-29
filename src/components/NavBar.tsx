@@ -1,29 +1,40 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 interface NavItem {
   label: string;
   href: string;
   isButton?: boolean;
-  isRoute?: boolean;
+  isExternal?: boolean;
 }
 
 const navItems: NavItem[] = [
+  { label: "Nubra API", href: "/" },
+  { label: "Webinars", href: "/webinars" },
+  { label: "Blogs", href: "/blogs" },
   { label: "API Docs", href: "#api-docs" },
-  { label: "Webinar", href: "/webinars", isRoute: true },
-  { label: "Blogs", href: "#blogs" },
   { label: "Integrate with Nubra", href: "#integrate", isButton: true },
 ];
 
 export const NavBar = () => {
-  const [activeTab, setActiveTab] = useState("API Docs");
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isActive = (item: NavItem) => {
-    if (item.isRoute) {
-      return location.pathname === item.href;
+    if (item.isButton) return false;
+    return location.pathname === item.href;
+  };
+
+  const handleIntegrateClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname !== "/") {
+      navigate("/");
+      // Wait for navigation then scroll
+      setTimeout(() => {
+        document.getElementById("integrate")?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      document.getElementById("integrate")?.scrollIntoView({ behavior: "smooth" });
     }
-    return activeTab === item.label;
   };
 
   return (
@@ -47,27 +58,41 @@ export const NavBar = () => {
                 }
               `;
 
-              if (item.isRoute) {
+              // CTA button with special scroll behavior
+              if (item.isButton) {
                 return (
-                  <Link
+                  <button
                     key={item.label}
-                    to={item.href}
+                    onClick={handleIntegrateClick}
                     className={className}
                   >
                     {item.label}
-                  </Link>
+                  </button>
                 );
               }
 
+              // Hash links for same-page sections
+              if (item.href.startsWith("#")) {
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className={className}
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+
+              // React Router links for routes
               return (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
-                  onClick={() => !item.isButton && setActiveTab(item.label)}
+                  to={item.href}
                   className={className}
                 >
                   {item.label}
-                </a>
+                </Link>
               );
             })}
           </div>
