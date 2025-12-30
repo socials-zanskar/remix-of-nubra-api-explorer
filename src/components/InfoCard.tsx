@@ -85,7 +85,7 @@ export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCa
       <AnimatePresence>
         {isVisible && (
           <motion.div
-            className="absolute left-1/2 -translate-x-[60%] top-full mt-3 z-50"
+            className="absolute left-1/2 -translate-x-[75%] top-full mt-3 z-50"
             variants={getAnimationVariants()}
             initial="hidden"
             animate="visible"
