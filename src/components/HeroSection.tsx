@@ -13,7 +13,7 @@ const apiData: Record<string, APIInfo> = {
     id: "nubraLogo",
     title: "",
     bullets: [
-      "Powered by HFT-grade infrastructure, bringing institutional-level features and performance to retail and professional traders.",
+      "Nubra APIs are powered by HFT-grade infrastructure, bringing institutional-level features and performance to retail and professional traders",
     ],
     cta: "",
     ctaLink: "",
