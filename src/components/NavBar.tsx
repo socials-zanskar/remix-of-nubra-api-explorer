@@ -11,7 +11,7 @@ const navItems: NavItem[] = [
   { label: "Nubra API", href: "/" },
   { label: "Webinars", href: "/webinars" },
   { label: "Blogs", href: "/blogs" },
-  { label: "API Docs", href: "#api-docs" },
+  { label: "API Docs", href: "https://nubra.io/products/api/docs/", isExternal: true },
   { label: "Integrate with Nubra", href: "#integrate", isButton: true },
 ];
 
@@ -68,6 +68,21 @@ export const NavBar = () => {
                   >
                     {item.label}
                   </button>
+                );
+              }
+
+              // External links
+              if (item.isExternal) {
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={className}
+                  >
+                    {item.label}
+                  </a>
                 );
               }
 
