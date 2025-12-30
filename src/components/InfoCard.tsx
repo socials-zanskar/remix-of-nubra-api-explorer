@@ -31,7 +31,7 @@ export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCa
       case "right":
         return "left-full ml-3 top-1/2 -translate-y-1/2";
       case "center":
-        return "left-1/2 -translate-x-1/2 top-full mt-2";
+        return "right-0 top-full mt-2"; // Right-aligned to prevent viewport overflow
       case "top":
         return "left-1/2 -translate-x-1/2 bottom-full mb-2";
       case "bottom-left":
