@@ -7,33 +7,71 @@ interface MarkdownRendererProps {
   content: string;
 }
 
+// Generate anchor ID from heading text
+function generateAnchorId(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .trim();
+}
+
 export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
   return (
     <div className="prose prose-invert prose-lg max-w-none">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          // Headings
-          h1: ({ children }) => (
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mt-8 mb-6 first:mt-0">
-              {children}
-            </h1>
-          ),
-          h2: ({ children }) => (
-            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mt-10 mb-4 pb-2 border-b border-border/40">
-              {children}
-            </h2>
-          ),
-          h3: ({ children }) => (
-            <h3 className="text-xl md:text-2xl font-semibold text-foreground mt-8 mb-3">
-              {children}
-            </h3>
-          ),
-          h4: ({ children }) => (
-            <h4 className="text-lg font-semibold text-foreground mt-6 mb-2">
-              {children}
-            </h4>
-          ),
+          // Headings with anchor links
+          h1: ({ children }) => {
+            const text = String(children);
+            const id = generateAnchorId(text);
+            return (
+              <h1 id={id} className="group text-3xl md:text-4xl font-bold text-foreground mt-8 mb-6 first:mt-0 scroll-mt-24">
+                <a href={`#${id}`} className="no-underline hover:no-underline">
+                  {children}
+                  <span className="ml-2 opacity-0 group-hover:opacity-50 transition-opacity text-muted-foreground">#</span>
+                </a>
+              </h1>
+            );
+          },
+          h2: ({ children }) => {
+            const text = String(children);
+            const id = generateAnchorId(text);
+            return (
+              <h2 id={id} className="group text-2xl md:text-3xl font-semibold text-foreground mt-10 mb-4 pb-2 border-b border-border/40 scroll-mt-24">
+                <a href={`#${id}`} className="no-underline hover:no-underline">
+                  {children}
+                  <span className="ml-2 opacity-0 group-hover:opacity-50 transition-opacity text-muted-foreground">#</span>
+                </a>
+              </h2>
+            );
+          },
+          h3: ({ children }) => {
+            const text = String(children);
+            const id = generateAnchorId(text);
+            return (
+              <h3 id={id} className="group text-xl md:text-2xl font-semibold text-foreground mt-8 mb-3 scroll-mt-24">
+                <a href={`#${id}`} className="no-underline hover:no-underline">
+                  {children}
+                  <span className="ml-2 opacity-0 group-hover:opacity-50 transition-opacity text-muted-foreground">#</span>
+                </a>
+              </h3>
+            );
+          },
+          h4: ({ children }) => {
+            const text = String(children);
+            const id = generateAnchorId(text);
+            return (
+              <h4 id={id} className="group text-lg font-semibold text-foreground mt-6 mb-2 scroll-mt-24">
+                <a href={`#${id}`} className="no-underline hover:no-underline">
+                  {children}
+                  <span className="ml-2 opacity-0 group-hover:opacity-50 transition-opacity text-muted-foreground">#</span>
+                </a>
+              </h4>
+            );
+          },
           
           // Paragraphs
           p: ({ children }) => (
@@ -81,6 +119,19 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             >
               {children}
             </a>
+          ),
+          
+          // Images - render from markdown as-is
+          img: ({ src, alt }) => (
+            <figure className="my-6">
+              <img 
+                src={src} 
+                alt={alt || ''} 
+                className="rounded-lg border border-border/40 max-w-full h-auto"
+                loading="lazy"
+              />
+              {alt && <figcaption className="text-sm text-muted-foreground mt-2 text-center">{alt}</figcaption>}
+            </figure>
           ),
           
           // Inline code
@@ -164,6 +215,19 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
               {children}
             </td>
           ),
+          
+          // Handle raw HTML div elements (render as styled containers)
+          div: ({ className, children }) => {
+            // Style custom div classes from the markdown
+            if (className) {
+              return (
+                <div className={`my-4 ${className}`}>
+                  {children}
+                </div>
+              );
+            }
+            return <div>{children}</div>;
+          },
         }}
       >
         {content}
