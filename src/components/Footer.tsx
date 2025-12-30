@@ -7,13 +7,17 @@ const Footer = () => {
         {/* Quick Links Row */}
         <div className="flex justify-center gap-8 mb-10">
           <a
-            href="#"
+            href="https://nubra.io/products/api/docs/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground/80 transition-colors font-medium"
           >
             API Documentation
           </a>
           <a
-            href="#"
+            href="https://test.pypi.org/project/nubra-sdk/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground/80 transition-colors font-medium"
           >
             Python SDK
