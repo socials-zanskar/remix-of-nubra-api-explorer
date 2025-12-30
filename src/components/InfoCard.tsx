@@ -79,14 +79,13 @@ export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCa
     }
   };
 
-  // Hero brand panel - premium styling (fixed centered to screen)
+  // Hero brand panel - premium styling (centered below logo)
   if (isHero) {
     return (
       <AnimatePresence>
         {isVisible && (
           <motion.div
-            className="fixed left-1/2 -translate-x-1/2 z-50"
-            style={{ top: 'calc(50% + 180px)' }}
+            className="absolute left-1/2 -translate-x-1/2 top-full mt-3 z-50"
             variants={getAnimationVariants()}
             initial="hidden"
             animate="visible"
