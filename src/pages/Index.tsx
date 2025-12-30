@@ -2,6 +2,7 @@ import { NavBar } from "@/components/NavBar";
 import { HeroSection } from "@/components/HeroSection";
 import { TradingEnvironmentSection } from "@/components/TradingEnvironmentSection";
 import { IntegrationSection } from "@/components/IntegrationSection";
+import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -10,6 +11,7 @@ const Index = () => {
       <HeroSection />
       <TradingEnvironmentSection />
       <IntegrationSection />
+      <Footer />
     </main>
   );
 };
