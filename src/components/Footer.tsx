@@ -43,13 +43,12 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Left - Logo */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center">
             <img
               src={nubraLogo}
               alt="Nubra"
               className="h-6 w-auto"
             />
-            <span className="text-foreground font-medium">Nubra</span>
           </div>
 
           {/* Right - Copyright & Links */}
