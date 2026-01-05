@@ -114,7 +114,7 @@ export const TradingEnvironmentSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex items-center justify-center gap-3 p-4 rounded-lg bg-secondary/30 border border-border/30"
+              className="flex items-center justify-center gap-3 p-4 rounded-lg bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40"
             >
               <feature.icon className="w-5 h-5 text-primary flex-shrink-0" />
               <span className="text-foreground font-medium text-sm md:text-base">
