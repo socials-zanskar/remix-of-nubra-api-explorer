@@ -34,7 +34,7 @@ export const TradingEnvironmentSection = () => {
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Trade, Test, and Build with a{" "}
-            <span className="text-gradient">Real UAT Environment</span>
+            <span className="text-[#6E83FB]">Real UAT Environment</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
             Full featured UAT environment with a real trading dashboard
@@ -121,7 +121,7 @@ export const TradingEnvironmentSection = () => {
         >
           <p className="text-lg md:text-xl text-foreground/90 font-medium">
             Build once. Test in UAT. Deploy to production —{" "}
-            <span className="text-primary">without changing your code.</span>
+            <span className="text-[#6E83FB]">without changing your code.</span>
           </p>
         </motion.div>
 
