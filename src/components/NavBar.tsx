@@ -1,5 +1,6 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Zap } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 interface NavItem {
   label: string;
@@ -17,6 +18,26 @@ const navItems: NavItem[] = [
 
 export const NavBar = () => {
   const location = useLocation();
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 120 });
+  const navRef = useRef<HTMLDivElement>(null);
+
+  const getActiveIndex = () => {
+    const index = navItems.findIndex((item) => {
+      if (item.isExternal) return false;
+      return location.pathname === item.href;
+    });
+    return index >= 0 ? index : 0;
+  };
+
+  useEffect(() => {
+    const activeIndex = getActiveIndex();
+    // Each item is 120px + 4px gap (gap-1)
+    const itemWidth = 120;
+    const gap = 4;
+    const padding = 6; // px-1.5 = 6px
+    const left = padding + activeIndex * (itemWidth + gap);
+    setIndicatorStyle({ left, width: itemWidth });
+  }, [location.pathname]);
 
   const isActive = (item: NavItem) => {
     if (item.isExternal) return false;
@@ -26,23 +47,32 @@ export const NavBar = () => {
   return (
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
       {/* Pill container */}
-      <div className="relative flex items-center gap-1 px-1.5 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/20 overflow-hidden">
-        {/* Inner glow at bottom */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-4 bg-primary/20 blur-md" />
+      <div 
+        ref={navRef}
+        className="relative flex items-center gap-1 px-1.5 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/20"
+      >
+        {/* Sliding glow indicator */}
+        <div
+          className="absolute top-1.5 bottom-1.5 rounded-full bg-gradient-to-b from-primary/30 to-primary/10 shadow-[0_0_20px_rgba(139,92,246,0.3),inset_0_1px_1px_rgba(255,255,255,0.1)] transition-all duration-300 ease-out"
+          style={{
+            left: indicatorStyle.left,
+            width: indicatorStyle.width,
+          }}
+        />
+
         {navItems.map((item) => {
           const active = isActive(item);
           
           const baseClass = `
-            relative flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            relative z-10 flex items-center justify-center gap-2 w-[120px] py-2 rounded-full text-sm font-medium transition-colors duration-200
             focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50
           `;
           
-          const activeClass = active
-            ? "bg-primary/20 text-primary-foreground"
-            : "text-muted-foreground hover:text-foreground hover:bg-white/5";
+          const colorClass = active
+            ? "text-primary-foreground"
+            : "text-muted-foreground hover:text-foreground";
 
-          const className = `${baseClass} ${activeClass}`;
+          const className = `${baseClass} ${colorClass}`;
 
           // External links
           if (item.isExternal) {
