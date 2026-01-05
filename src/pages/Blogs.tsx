@@ -48,7 +48,7 @@ const Blogs = () => {
           <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-primary/3 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative container mx-auto px-4">
+        <div className="relative container mx-auto px-6 md:px-12 lg:px-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ const Blogs = () => {
 
       {/* Blog Grid */}
       <section className="pb-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6 md:px-12 lg:px-16">
           {isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(6)].map((_, i) => (
