@@ -31,9 +31,9 @@ const BlogSidebar = () => {
   }, []);
 
   return (
-    <GlassCard className="lg:sticky lg:top-24 overflow-hidden">
+    <div className="lg:sticky lg:top-24 overflow-hidden rounded-[12px] bg-white/[0.01] backdrop-blur-sm border border-[#5E5E76]/10">
       {/* Header */}
-      <div className="px-5 py-4 border-b border-border/30 bg-card/50">
+      <div className="px-5 py-4 border-b border-[#5E5E76]/10">
         <div className="flex items-center gap-2">
           <BookOpen className="h-4 w-4 text-primary" />
           <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
@@ -107,7 +107,7 @@ const BlogSidebar = () => {
       </ScrollArea>
 
       {/* Footer */}
-      <div className="px-5 py-3 border-t border-border/30 bg-card/50">
+      <div className="px-5 py-3 border-t border-[#5E5E76]/10">
         <Link 
           to="/blogs" 
           className="text-xs text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-colors"
@@ -116,7 +116,7 @@ const BlogSidebar = () => {
           <ChevronRight className="h-3 w-3" />
         </Link>
       </div>
-    </GlassCard>
+    </div>
   );
 };
 
