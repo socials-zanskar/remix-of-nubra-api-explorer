@@ -43,7 +43,7 @@ export const BlogCard = ({ post, index }: BlogCardProps) => {
             </div>
 
             {/* Title */}
-            <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary/90 transition-colors line-clamp-2">
+            <h3 className="text-xl font-semibold text-foreground mb-3 transition-colors line-clamp-2">
               {post.title}
             </h3>
 
@@ -66,7 +66,7 @@ export const BlogCard = ({ post, index }: BlogCardProps) => {
               </div>
 
               {/* Read more indicator */}
-              <span className="flex items-center gap-1 text-xs text-primary/70 group-hover:text-primary transition-colors">
+              <span className="flex items-center gap-1 text-xs text-[#6E83FB] group-hover:text-[#6E83FB] transition-colors">
                 Read
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </span>
