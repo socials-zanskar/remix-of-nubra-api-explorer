@@ -207,8 +207,8 @@ export const IntegrationSection = () => {
                         onClick={() => setSelectedUserType(type)}
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                           selectedUserType === type
-                            ? "bg-primary/20 text-primary border border-transparent"
-                            : "bg-transparent text-white/40 border border-[#5E5E76]/40 hover:border-[#5E5E76]/60 hover:text-white/60"
+                            ? "bg-[#586fed]/20 text-white border border-[#F5F5FF]/40"
+                            : "bg-transparent text-white/60 border border-[#5E5E76]/40 hover:border-[#5E5E76]/60 hover:text-white/80"
                         }`}
                       >
                         {type}
