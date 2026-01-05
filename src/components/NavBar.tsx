@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-
+import activePill from "@/assets/active-pill.png";
 interface NavItem {
   label: string;
   href: string;
@@ -52,8 +52,10 @@ export const NavBar = () => {
         className="relative flex items-center gap-1 px-1.5 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/20"
       >
         {/* Sliding glow indicator */}
-        <div
-          className="absolute top-1.5 bottom-1.5 rounded-full bg-gradient-to-b from-primary/30 to-primary/10 shadow-[0_0_20px_rgba(139,92,246,0.3),inset_0_1px_1px_rgba(255,255,255,0.1)] transition-all duration-300 ease-out"
+        <img
+          src={activePill}
+          alt=""
+          className="absolute top-1.5 bottom-1.5 h-[calc(100%-12px)] object-contain transition-all duration-300 ease-out pointer-events-none"
           style={{
             left: indicatorStyle.left,
             width: indicatorStyle.width,
