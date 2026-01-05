@@ -70,7 +70,7 @@ const WebinarMainContent = () => {
         <UpcomingWebinarCard webinar={upcomingWebinar} />
       </section>
 
-      <section id="webinar-agenda">
+      <section id="webinar-agenda" className="scroll-mt-24">
         <WebinarAgenda items={agendaItems} />
       </section>
 
