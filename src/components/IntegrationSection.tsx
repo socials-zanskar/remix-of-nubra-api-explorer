@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { toast } from "sonner";
+import { GlassCard } from "@/components/ui/glass-card";
 
 // Country codes for phone input
 const countryCodes = [
@@ -135,7 +136,7 @@ export const IntegrationSection = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="max-w-2xl mx-auto"
         >
-          <div className="rounded-[12px] bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40 shadow-[0_4px_16px_hsl(0_0%_0%/0.25)] p-8 md:p-10">
+          <GlassCard className="p-8 md:p-10">
             <form onSubmit={handleSubmit} className="space-y-10">
               {/* Step 1: Contact Details */}
               <div className="space-y-5">
@@ -275,7 +276,7 @@ export const IntegrationSection = () => {
                 </button>
               </div>
             </form>
-          </div>
+          </GlassCard>
         </motion.div>
       </div>
     </section>

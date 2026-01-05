@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Activity, BarChart3, ArrowRightLeft } from "lucide-react";
 import UATGif from "@/assets/UAT.gif";
 import PRODGif from "@/assets/PROD.gif";
+import { GlassCard } from "@/components/ui/glass-card";
 
 const features = [
   {
@@ -53,20 +54,13 @@ export const TradingEnvironmentSection = () => {
             <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4 text-center transition-colors duration-300 group-hover:text-primary/90">
               UAT Trading
             </h3>
-            <div 
-              className="relative rounded-[12px] overflow-hidden p-2 flex items-center justify-center w-[75%]
-                         bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40
-                         shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]
-                         transition-all duration-300 ease-out
-                         hover:scale-[1.02] hover:border-[#5E5E76]/60
-                         hover:shadow-[0_8px_24px_hsl(0_0%_0%/0.35),0_0_20px_hsl(245_82%_67%/0.08)]"
-            >
+            <GlassCard hover className="relative overflow-hidden p-2 flex items-center justify-center w-[75%]">
               <img
                 src={UATGif}
                 alt="UAT Trading - Simulate live market conditions"
                 className="w-full h-auto relative z-10 rounded"
               />
-            </div>
+            </GlassCard>
             <p className="text-muted-foreground text-sm mt-5 text-center max-w-[75%]">
               Simulate live market conditions, place trades, and track positions in real time — without risking capital.
             </p>
@@ -83,20 +77,13 @@ export const TradingEnvironmentSection = () => {
             <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4 text-center transition-colors duration-300 group-hover:text-primary/90">
               Live Trading
             </h3>
-            <div 
-              className="relative rounded-[12px] overflow-hidden p-2 flex items-center justify-center w-[75%]
-                         bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40
-                         shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]
-                         transition-all duration-300 ease-out
-                         hover:scale-[1.02] hover:border-[#5E5E76]/60
-                         hover:shadow-[0_8px_24px_hsl(0_0%_0%/0.35),0_0_20px_hsl(245_82%_67%/0.08)]"
-            >
+            <GlassCard hover className="relative overflow-hidden p-2 flex items-center justify-center w-[75%]">
               <img
                 src={PRODGif}
                 alt="Live Trading - Monitor real positions and P&L"
                 className="w-full h-auto relative z-10 rounded"
               />
-            </div>
+            </GlassCard>
             <p className="text-muted-foreground text-sm mt-5 text-center max-w-[75%]">
               Monitor real positions, P&L, margins, and orders seamlessly in production.
             </p>
@@ -112,15 +99,15 @@ export const TradingEnvironmentSection = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20"
         >
           {features.map((feature, index) => (
-            <div
+            <GlassCard
               key={index}
-              className="flex items-center justify-center gap-3 p-4 rounded-[12px] bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40"
+              className="flex items-center justify-center gap-3 p-4"
             >
               <feature.icon className="w-5 h-5 text-primary flex-shrink-0" />
               <span className="text-foreground font-medium text-sm md:text-base">
                 {feature.title}
               </span>
-            </div>
+            </GlassCard>
           ))}
         </motion.div>
 
