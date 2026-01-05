@@ -113,7 +113,7 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
           a: ({ href, children }) => (
             <a
               href={href}
-              className="text-primary hover:text-primary/80 underline underline-offset-4 transition-colors"
+              className="text-[#6E83FB] hover:text-[#6E83FB]/80 underline underline-offset-4 transition-colors"
               target={href?.startsWith('http') ? '_blank' : undefined}
               rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
             >

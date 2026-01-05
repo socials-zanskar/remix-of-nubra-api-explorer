@@ -160,7 +160,7 @@ export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCa
             {info.cta && info.ctaLink && (
               <a
                 href={info.ctaLink}
-                className="inline-flex items-center gap-1 text-[11px] font-semibold text-primary hover:text-primary/80 transition-colors duration-150 mt-1"
+                className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#6E83FB] hover:text-[#6E83FB]/80 transition-colors duration-150 mt-1"
               >
                 {info.cta} <span aria-hidden>→</span>
               </a>
