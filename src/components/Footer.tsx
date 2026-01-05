@@ -2,7 +2,7 @@ import nubraLogo from "@/assets/nubra-logo-footer.avif";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-background border-t border-border/30">
+    <footer className="w-full bg-[#080808] border-t border-[#5E5E76]/40">
       <div className="max-w-6xl mx-auto px-6 py-12">
         {/* Quick Links Row */}
         <div className="flex justify-center gap-8 mb-10">
