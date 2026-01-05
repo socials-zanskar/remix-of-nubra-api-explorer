@@ -135,7 +135,7 @@ export const IntegrationSection = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="max-w-2xl mx-auto"
         >
-          <div className="rounded-2xl bg-[hsl(222_47%_9%)] border border-border/40 shadow-[0_8px_40px_hsl(0_0%_0%/0.4)] p-8 md:p-10">
+          <div className="rounded-[12px] bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40 shadow-[0_4px_16px_hsl(0_0%_0%/0.25)] p-8 md:p-10">
             <form onSubmit={handleSubmit} className="space-y-10">
               {/* Step 1: Contact Details */}
               <div className="space-y-5">
