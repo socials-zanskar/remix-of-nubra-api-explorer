@@ -35,7 +35,7 @@ const BlogSidebar = () => {
       {/* Header */}
       <div className="px-5 py-4 border-b border-[#5E5E76]/10">
         <div className="flex items-center gap-2">
-          <BookOpen className="h-4 w-4 text-primary" />
+          <BookOpen className="h-4 w-4 text-[#6E83FB]" />
           <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
             Engineering Blogs
           </h3>
@@ -72,7 +72,7 @@ const BlogSidebar = () => {
                   className="group block p-3 rounded-[12px] hover:bg-white/[0.04] hover:backdrop-blur-sm border border-transparent hover:border-[#5E5E76]/40 transition-all duration-200"
                 >
                   <div className="flex items-start justify-between gap-2">
-                    <h4 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors leading-tight">
+                    <h4 className="text-sm font-medium text-foreground transition-colors leading-tight">
                       {blog.title}
                     </h4>
                     <ChevronRight className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0 mt-0.5" />
@@ -110,7 +110,7 @@ const BlogSidebar = () => {
       <div className="px-5 py-3 border-t border-[#5E5E76]/10">
         <Link 
           to="/blogs" 
-          className="text-xs text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-colors"
+          className="text-xs text-[#6E83FB] hover:text-[#6E83FB]/80 font-medium flex items-center gap-1 transition-colors"
         >
           View all articles
           <ChevronRight className="h-3 w-3" />
