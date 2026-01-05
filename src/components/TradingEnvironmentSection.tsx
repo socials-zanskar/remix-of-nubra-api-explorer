@@ -54,11 +54,11 @@ export const TradingEnvironmentSection = () => {
               UAT Trading
             </h3>
             <div 
-              className="relative rounded-lg overflow-hidden p-2 flex items-center justify-center w-[75%]
-                         bg-[hsl(222_47%_10%)] border border-primary/15
+              className="relative rounded-[12px] overflow-hidden p-2 flex items-center justify-center w-[75%]
+                         bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40
                          shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]
                          transition-all duration-300 ease-out
-                         hover:scale-[1.02] hover:border-primary/30
+                         hover:scale-[1.02] hover:border-[#5E5E76]/60
                          hover:shadow-[0_8px_24px_hsl(0_0%_0%/0.35),0_0_20px_hsl(245_82%_67%/0.08)]"
             >
               <img
@@ -84,11 +84,11 @@ export const TradingEnvironmentSection = () => {
               Live Trading
             </h3>
             <div 
-              className="relative rounded-lg overflow-hidden p-2 flex items-center justify-center w-[75%]
-                         bg-[hsl(222_47%_10%)] border border-primary/15
+              className="relative rounded-[12px] overflow-hidden p-2 flex items-center justify-center w-[75%]
+                         bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40
                          shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]
                          transition-all duration-300 ease-out
-                         hover:scale-[1.02] hover:border-primary/30
+                         hover:scale-[1.02] hover:border-[#5E5E76]/60
                          hover:shadow-[0_8px_24px_hsl(0_0%_0%/0.35),0_0_20px_hsl(245_82%_67%/0.08)]"
             >
               <img
