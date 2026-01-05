@@ -6,7 +6,15 @@ import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <main className="min-h-screen">
+    <main 
+      className="min-h-screen"
+      style={{ 
+        backgroundImage: "url('/images/bg-2.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       <NavBar />
       <HeroSection />
       <TradingEnvironmentSection />
