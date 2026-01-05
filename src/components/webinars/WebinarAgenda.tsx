@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Clock } from "lucide-react";
+import { GlassCard } from "@/components/ui/glass-card";
 
 interface AgendaItem {
   time: string;
@@ -13,7 +14,7 @@ interface WebinarAgendaProps {
 
 const WebinarAgenda = ({ items }: WebinarAgendaProps) => {
   return (
-    <div className="bg-card/50 border border-border/50 rounded-xl p-6 lg:p-8">
+    <GlassCard className="p-6 lg:p-8">
       <h3 className="text-xl font-bold text-foreground mb-2">
         What This Webinar Covers
       </h3>
@@ -51,7 +52,7 @@ const WebinarAgenda = ({ items }: WebinarAgendaProps) => {
           </motion.div>
         ))}
       </div>
-    </div>
+    </GlassCard>
   );
 };
 
