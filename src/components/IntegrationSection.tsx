@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { toast } from "sonner";
 import { GlassCard } from "@/components/ui/glass-card";
+import { SelectablePill } from "@/components/ui/selectable-pill";
 
 // Country codes for phone input
 const countryCodes = [
@@ -201,18 +202,13 @@ export const IntegrationSection = () => {
                   </label>
                   <div className="flex flex-wrap gap-2">
                     {userTypes.map((type) => (
-                      <button
+                      <SelectablePill
                         key={type}
-                        type="button"
+                        isSelected={selectedUserType === type}
                         onClick={() => setSelectedUserType(type)}
-                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                          selectedUserType === type
-                            ? "bg-[#586fed]/20 text-white border border-[#F5F5FF]/40"
-                            : "bg-transparent text-white/50 border border-[#5E5E76]/40 hover:border-[#5E5E76]/60 hover:text-white/70"
-                        }`}
                       >
                         {type}
-                      </button>
+                      </SelectablePill>
                     ))}
                   </div>
                 </div>
@@ -225,18 +221,13 @@ export const IntegrationSection = () => {
                   </label>
                   <div className="flex flex-wrap gap-2">
                     {interests.map((interest) => (
-                      <button
+                      <SelectablePill
                         key={interest}
-                        type="button"
+                        isSelected={selectedInterests.includes(interest)}
                         onClick={() => toggleInterest(interest)}
-                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                          selectedInterests.includes(interest)
-                            ? "bg-[#586fed]/20 text-white border border-[#F5F5FF]/40"
-                            : "bg-transparent text-white/50 border border-[#5E5E76]/40 hover:border-[#5E5E76]/60 hover:text-white/70"
-                        }`}
                       >
                         {interest}
-                      </button>
+                      </SelectablePill>
                     ))}
                   </div>
                 </div>
@@ -248,18 +239,13 @@ export const IntegrationSection = () => {
                   </label>
                   <div className="flex flex-wrap gap-2">
                     {experienceLevels.map((level) => (
-                      <button
+                      <SelectablePill
                         key={level}
-                        type="button"
+                        isSelected={selectedExperience === level}
                         onClick={() => setSelectedExperience(level)}
-                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                          selectedExperience === level
-                            ? "bg-[#586fed]/20 text-white border border-[#F5F5FF]/40"
-                            : "bg-transparent text-white/50 border border-[#5E5E76]/40 hover:border-[#5E5E76]/60 hover:text-white/70"
-                        }`}
                       >
                         {level}
-                      </button>
+                      </SelectablePill>
                     ))}
                   </div>
                 </div>
