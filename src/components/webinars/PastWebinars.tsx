@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Play, Clock, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { GlassCard } from "@/components/ui/glass-card";
 
 interface PastWebinar {
   id: string;
@@ -30,8 +31,8 @@ const PastWebinars = ({ webinars }: PastWebinarsProps) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
-            className="group bg-card/30 border border-border/30 rounded-lg p-5 hover:border-border/60 hover:bg-card/50 transition-all duration-300"
           >
+            <GlassCard hover className="group p-5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
@@ -80,6 +81,7 @@ const PastWebinars = ({ webinars }: PastWebinarsProps) => {
                 </Button>
               )}
             </div>
+            </GlassCard>
           </motion.div>
         ))}
       </div>
