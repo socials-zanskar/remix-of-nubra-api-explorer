@@ -208,7 +208,7 @@ export const IntegrationSection = () => {
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                           selectedUserType === type
                             ? "bg-[#586fed]/20 text-white border border-[#F5F5FF]/40"
-                            : "bg-transparent text-white/60 border border-[#5E5E76]/40 hover:border-[#5E5E76]/60 hover:text-white/80"
+                            : "bg-transparent text-white/50 border border-[#5E5E76]/40 hover:border-[#5E5E76]/60 hover:text-white/70"
                         }`}
                       >
                         {type}
@@ -232,7 +232,7 @@ export const IntegrationSection = () => {
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                           selectedInterests.includes(interest)
                             ? "bg-[#586fed]/20 text-white border border-[#F5F5FF]/40"
-                            : "bg-transparent text-white/60 border border-[#5E5E76]/40 hover:border-[#5E5E76]/60 hover:text-white/80"
+                            : "bg-transparent text-white/50 border border-[#5E5E76]/40 hover:border-[#5E5E76]/60 hover:text-white/70"
                         }`}
                       >
                         {interest}
@@ -255,7 +255,7 @@ export const IntegrationSection = () => {
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                           selectedExperience === level
                             ? "bg-[#586fed]/20 text-white border border-[#F5F5FF]/40"
-                            : "bg-transparent text-white/60 border border-[#5E5E76]/40 hover:border-[#5E5E76]/60 hover:text-white/80"
+                            : "bg-transparent text-white/50 border border-[#5E5E76]/40 hover:border-[#5E5E76]/60 hover:text-white/70"
                         }`}
                       >
                         {level}
