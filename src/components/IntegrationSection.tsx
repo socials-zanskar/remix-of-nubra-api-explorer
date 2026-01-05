@@ -87,7 +87,6 @@ export const IntegrationSection = () => {
   if (isSubmitted) {
     return (
       <section id="integrate" className="relative w-full py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(222_50%_3%)] via-background to-background" />
         
         <div className="relative z-10 container mx-auto px-6 md:px-8">
           <motion.div
@@ -110,11 +109,6 @@ export const IntegrationSection = () => {
 
   return (
     <section id="integrate" className="relative w-full py-24 md:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(222_50%_3%)] via-background to-background" />
-      
-      {/* Subtle glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 container mx-auto px-6 md:px-8">
         {/* Section Header */}

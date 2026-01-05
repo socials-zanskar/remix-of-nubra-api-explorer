@@ -21,12 +21,6 @@ const features = [
 export const TradingEnvironmentSection = () => {
   return (
     <section className="relative w-full py-24 md:py-32 overflow-hidden">
-      {/* Background matching hero */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(222_50%_5%)] to-[hsl(222_50%_3%)]" />
-      
-      {/* Subtle glow accents */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[hsl(260_82%_55%)]/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 container mx-auto px-6 md:px-8">
         {/* Section Heading */}

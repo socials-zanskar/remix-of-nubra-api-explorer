@@ -96,14 +96,6 @@ export const HeroSection = () => {
         className="relative min-h-screen pt-24 pb-12 px-4 overflow-hidden"
         onClick={handleOutsideClick}
       >
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-nubra-darker" />
-        <div 
-          className="absolute inset-0 opacity-25"
-          style={{
-            background: "radial-gradient(ellipse at 50% 40%, hsl(245 82% 67% / 0.12), transparent 55%)",
-          }}
-        />
 
         <div className="relative z-10 flex flex-col items-center">
           {/* Hero Text */}
@@ -227,14 +219,6 @@ export const HeroSection = () => {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-20 pb-40"
       onClick={handleOutsideClick}
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-nubra-darker/70" />
-      <div 
-        className="absolute inset-0 opacity-20"
-        style={{
-          background: "radial-gradient(ellipse at 50% 45%, hsl(245 82% 67% / 0.15), transparent 50%)",
-        }}
-      />
 
       {/* Main content container */}
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6">
