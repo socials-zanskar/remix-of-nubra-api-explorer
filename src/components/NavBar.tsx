@@ -36,7 +36,7 @@ export const NavBar = () => {
           `;
           
           const activeClass = active
-            ? "bg-primary/20 text-primary-foreground"
+            ? "bg-primary/25 text-primary-foreground shadow-[0_0_20px_rgba(139,92,246,0.4),inset_0_0_12px_rgba(139,92,246,0.15)]"
             : "text-muted-foreground hover:text-foreground hover:bg-white/5";
 
           const className = `${baseClass} ${activeClass}`;
