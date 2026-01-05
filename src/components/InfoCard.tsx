@@ -132,9 +132,9 @@ export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCa
           transition={{ duration: 0.15, ease: "easeOut" }}
         >
           <div 
-            className="backdrop-blur-xl bg-card/85 border border-border/40 rounded-lg px-4 py-3 shadow-lg"
+            className="backdrop-blur-sm bg-white/[0.04] border border-[#5E5E76]/40 rounded-[12px] px-4 py-3"
             style={{
-              boxShadow: '0 4px 20px hsl(0 0% 0% / 0.3)',
+              boxShadow: '0 4px 16px hsl(0 0% 0% / 0.25)',
             }}
           >
             {info.title && (
