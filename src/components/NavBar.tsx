@@ -24,7 +24,7 @@ export const NavBar = () => {
   };
 
   return (
-    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
       {/* Pill container */}
       <div className="flex items-center gap-1 px-1.5 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/20">
         {navItems.map((item) => {
