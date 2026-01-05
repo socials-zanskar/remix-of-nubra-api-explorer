@@ -1,8 +1,8 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import activePill from "@/assets/active-pill.png";
+import nubraLogo from "@/assets/nubra-logo.png";
 interface NavItem {
   label: string;
   href: string;
@@ -115,9 +115,9 @@ export const NavBar = () => {
                 to={item.href}
                 className={className}
               >
-                {item.hasIcon && <Zap className="w-4 h-4" />}
-                {item.label}
-              </Link>
+              {item.hasIcon && <img src={nubraLogo} alt="" className="w-4 h-4" />}
+              {item.label}
+            </Link>
             );
           })}
         </div>
