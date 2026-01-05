@@ -51,7 +51,7 @@ export const TradingEnvironmentSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex flex-col items-center group"
           >
-            <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4 text-center transition-colors duration-300 group-hover:text-primary/90">
+            <h3 className="text-sm font-semibold text-[#6E83FB] uppercase tracking-wider mb-4 text-center transition-colors duration-300 group-hover:text-[#6E83FB]/90">
               UAT Trading
             </h3>
             <GlassCard hover className="relative overflow-hidden p-2 flex items-center justify-center w-[75%]">
@@ -74,7 +74,7 @@ export const TradingEnvironmentSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col items-center group"
           >
-            <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4 text-center transition-colors duration-300 group-hover:text-primary/90">
+            <h3 className="text-sm font-semibold text-[#6E83FB] uppercase tracking-wider mb-4 text-center transition-colors duration-300 group-hover:text-[#6E83FB]/90">
               Live Trading
             </h3>
             <GlassCard hover className="relative overflow-hidden p-2 flex items-center justify-center w-[75%]">
