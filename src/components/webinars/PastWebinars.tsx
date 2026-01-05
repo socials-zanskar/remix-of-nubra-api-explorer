@@ -33,20 +33,34 @@ const PastWebinars = ({ webinars }: PastWebinarsProps) => {
             transition={{ duration: 0.3, delay: index * 0.1 }}
           >
             <GlassCard hover className="group p-5">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <h4 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {webinar.title}
-                  </h4>
+              <div className="flex flex-col gap-3">
+                {/* Header row with title and button */}
+                <div className="flex items-start sm:items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <h4 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {webinar.title}
+                    </h4>
+                    {webinar.hasRecording && (
+                      <Badge variant="outline" className="text-xs border-green-500/30 text-green-500 bg-green-500/10">
+                        Recording Available
+                      </Badge>
+                    )}
+                  </div>
+
                   {webinar.hasRecording && (
-                    <Badge variant="outline" className="text-xs border-green-500/30 text-green-500 bg-green-500/10">
-                      Recording Available
-                    </Badge>
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      className="shrink-0 border-border/50 hover:border-primary hover:bg-primary hover:text-white"
+                    >
+                      <Play className="h-4 w-4 mr-2" />
+                      View Recap
+                    </Button>
                   )}
                 </div>
                 
-                <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
+                {/* Meta info */}
+                <div className="flex items-center gap-4 text-xs text-muted-foreground">
                   <div className="flex items-center gap-1.5">
                     <Calendar className="h-3 w-3" />
                     <span>{webinar.date}</span>
@@ -57,6 +71,7 @@ const PastWebinars = ({ webinars }: PastWebinarsProps) => {
                   </div>
                 </div>
 
+                {/* Topics */}
                 <div className="flex flex-wrap gap-1.5">
                   {webinar.topics.map((topic) => (
                     <Badge 
@@ -69,18 +84,6 @@ const PastWebinars = ({ webinars }: PastWebinarsProps) => {
                   ))}
                 </div>
               </div>
-
-              {webinar.hasRecording && (
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="shrink-0 border-border/50 hover:border-primary hover:text-primary"
-                >
-                  <Play className="h-4 w-4 mr-2" />
-                  View Recap
-                </Button>
-              )}
-            </div>
             </GlassCard>
           </motion.div>
         ))}
