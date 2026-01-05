@@ -6,7 +6,15 @@ import BlogSidebar from "@/components/webinars/BlogSidebar";
 
 const Webinars = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div 
+      className="min-h-screen bg-background"
+      style={{ 
+        backgroundImage: "url('/images/bg-2.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       <NavBar />
       <WebinarHero />
       
