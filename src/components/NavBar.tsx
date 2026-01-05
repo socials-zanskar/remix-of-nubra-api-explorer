@@ -115,7 +115,7 @@ export const NavBar = () => {
                 to={item.href}
                 className={className}
               >
-              {item.hasIcon && <img src={nubraLogo} alt="" className="w-4 h-4" />}
+              {item.hasIcon && <img src={nubraLogo} alt="" className="w-[18px] h-[12px]" />}
               {item.label}
             </Link>
             );
