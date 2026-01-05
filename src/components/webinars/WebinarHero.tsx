@@ -36,7 +36,7 @@ const WebinarHero = () => {
 
           <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6 leading-tight">
             Powering Serious Trading{' '}
-            <span className="text-gradient">Infrastructure</span>
+            <span className="text-[#6E83FB]">Infrastructure</span>
           </h1>
           
           <p className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
