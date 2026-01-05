@@ -148,7 +148,7 @@ export const IntegrationSection = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Your name"
-                    className="w-full px-4 py-3 rounded-[12px] bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
+                    className="w-full px-4 py-3 rounded-[12px] bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40 text-foreground placeholder:text-white/40 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
                   />
                   
                   {/* Email */}
@@ -158,7 +158,7 @@ export const IntegrationSection = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Work email"
-                    className="w-full px-4 py-3 rounded-[12px] bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
+                    className="w-full px-4 py-3 rounded-[12px] bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40 text-foreground placeholder:text-white/40 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
                   />
                   
                   {/* Phone with Country Code */}
@@ -180,7 +180,7 @@ export const IntegrationSection = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="Mobile number"
-                      className="flex-1 px-4 py-3 rounded-[12px] bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
+                      className="flex-1 px-4 py-3 rounded-[12px] bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40 text-foreground placeholder:text-white/40 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
                     />
                   </div>
                 </div>
