@@ -1,8 +1,10 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 import activePill from "@/assets/active-pill.png";
 import nubraLogo from "@/assets/nubra-logo.png";
+
 interface NavItem {
   label: string;
   href: string;
@@ -20,6 +22,7 @@ const navItems: NavItem[] = [
 export const NavBar = () => {
   const location = useLocation();
   const navRef = useRef<HTMLDivElement>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const itemWidth = 120;
   const gap = 4;
@@ -42,6 +45,10 @@ export const NavBar = () => {
     setIndicatorLeft(calculateLeft(activeIndex));
   }, [location.pathname]);
 
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const isActive = (item: NavItem) => {
     if (item.isExternal) return false;
     return location.pathname === item.href;
@@ -50,6 +57,7 @@ export const NavBar = () => {
   const navigate = useNavigate();
 
   const handleIntegrateClick = () => {
+    setMobileMenuOpen(false);
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
@@ -61,8 +69,9 @@ export const NavBar = () => {
   };
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-      <div className="flex items-center gap-4">
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] md:w-auto">
+      {/* Desktop Navigation */}
+      <div className="hidden md:flex items-center gap-4">
         {/* Pill container */}
         <div 
           ref={navRef}
@@ -130,6 +139,65 @@ export const NavBar = () => {
           Integrate with Nubra
         </Button>
       </div>
+
+      {/* Mobile Navigation */}
+      <div className="md:hidden flex items-center justify-between px-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/20">
+        <Link to="/" className="flex items-center gap-2">
+          <img src={nubraLogo} alt="Nubra" className="w-[18px] h-[12px]" />
+          <span className="text-sm font-medium text-foreground">Nubra API</span>
+        </Link>
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="p-2 text-foreground"
+        >
+          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="md:hidden mt-2 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/20 overflow-hidden">
+          <div className="flex flex-col p-2">
+            {navItems.slice(1).map((item) => {
+              const active = isActive(item);
+
+              if (item.isExternal) {
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-white/5 rounded-lg transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+
+              return (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className={`px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                    active 
+                      ? "text-primary bg-white/10" 
+                      : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            <Button 
+              onClick={handleIntegrateClick}
+              className="mt-2 rounded-full px-6 py-2 text-sm font-medium"
+            >
+              Integrate with Nubra
+            </Button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
