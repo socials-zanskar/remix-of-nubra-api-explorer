@@ -53,10 +53,10 @@ export const NavBar = () => {
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
-        document.getElementById('integrate-section')?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('integrate')?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     } else {
-      document.getElementById('integrate-section')?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('integrate')?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
