@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Zap } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import activePill from "@/assets/active-pill.png";
 interface NavItem {
   label: string;
@@ -32,8 +32,14 @@ export const NavBar = () => {
     return index >= 0 ? index : 0;
   };
 
-  const activeIndex = getActiveIndex();
-  const indicatorLeft = padding + activeIndex * (itemWidth + gap);
+  const calculateLeft = (index: number) => padding + index * (itemWidth + gap);
+
+  const [indicatorLeft, setIndicatorLeft] = useState(() => calculateLeft(getActiveIndex()));
+
+  useEffect(() => {
+    const activeIndex = getActiveIndex();
+    setIndicatorLeft(calculateLeft(activeIndex));
+  }, [location.pathname]);
 
   const isActive = (item: NavItem) => {
     if (item.isExternal) return false;
