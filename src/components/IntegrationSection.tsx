@@ -229,10 +229,10 @@ export const IntegrationSection = () => {
                         key={interest}
                         type="button"
                         onClick={() => toggleInterest(interest)}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                           selectedInterests.includes(interest)
-                            ? "bg-primary/20 text-primary border border-primary/50 shadow-[0_0_12px_hsl(245_82%_67%/0.25)]"
-                            : "bg-secondary/40 text-muted-foreground border border-border/40 hover:border-border/60 hover:text-foreground"
+                            ? "bg-[#586fed]/20 text-white border border-[#F5F5FF]/40"
+                            : "bg-transparent text-white/60 border border-[#5E5E76]/40 hover:border-[#5E5E76]/60 hover:text-white/80"
                         }`}
                       >
                         {interest}
@@ -252,10 +252,10 @@ export const IntegrationSection = () => {
                         key={level}
                         type="button"
                         onClick={() => setSelectedExperience(level)}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                           selectedExperience === level
-                            ? "bg-primary/20 text-primary border border-primary/50 shadow-[0_0_12px_hsl(245_82%_67%/0.25)]"
-                            : "bg-secondary/40 text-muted-foreground border border-border/40 hover:border-border/60 hover:text-foreground"
+                            ? "bg-[#586fed]/20 text-white border border-[#F5F5FF]/40"
+                            : "bg-transparent text-white/60 border border-[#5E5E76]/40 hover:border-[#5E5E76]/60 hover:text-white/80"
                         }`}
                       >
                         {level}
