@@ -37,7 +37,7 @@ const PastWebinars = ({ webinars }: PastWebinarsProps) => {
                 {/* Header row with title and button */}
                 <div className="flex items-start sm:items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <h4 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
+                    <h4 className="text-base font-semibold text-foreground transition-colors">
                       {webinar.title}
                     </h4>
                     {webinar.hasRecording && (

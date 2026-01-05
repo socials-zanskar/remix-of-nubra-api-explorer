@@ -5,6 +5,7 @@ import { BookOpen, Clock, ChevronRight } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { getAllPosts, type BlogPost } from "@/lib/blog";
+import { GlassCard } from "@/components/ui/glass-card";
 
 const BlogSidebar = () => {
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
@@ -30,7 +31,7 @@ const BlogSidebar = () => {
   }, []);
 
   return (
-    <div className="lg:sticky lg:top-8 bg-card/30 border border-border/30 rounded-xl overflow-hidden">
+    <GlassCard className="lg:sticky lg:top-24 overflow-hidden">
       {/* Header */}
       <div className="px-5 py-4 border-b border-border/30 bg-card/50">
         <div className="flex items-center gap-2">
@@ -68,7 +69,7 @@ const BlogSidebar = () => {
               >
                 <Link
                   to={`/blogs/${blog.slug}`}
-                  className="group block p-3 rounded-lg hover:bg-card/80 border border-transparent hover:border-border/50 transition-all duration-200"
+                  className="group block p-3 rounded-[12px] hover:bg-white/[0.04] hover:backdrop-blur-sm border border-transparent hover:border-[#5E5E76]/40 transition-all duration-200"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <h4 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors leading-tight">
@@ -115,7 +116,7 @@ const BlogSidebar = () => {
           <ChevronRight className="h-3 w-3" />
         </Link>
       </div>
-    </div>
+    </GlassCard>
   );
 };
 
