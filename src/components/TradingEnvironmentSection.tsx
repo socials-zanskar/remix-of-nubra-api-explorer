@@ -54,7 +54,7 @@ export const TradingEnvironmentSection = () => {
               UAT Trading
             </h3>
             <div 
-              className="relative rounded-[12px] overflow-hidden p-2 flex items-center justify-center w-[75%] aspect-[16/10]
+              className="relative rounded-[12px] overflow-hidden p-2 flex items-center justify-center w-[75%] aspect-video
                          bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40
                          shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]
                          transition-all duration-300 ease-out
@@ -84,7 +84,7 @@ export const TradingEnvironmentSection = () => {
               Live Trading
             </h3>
             <div 
-              className="relative rounded-[12px] overflow-hidden p-2 flex items-center justify-center w-[75%] aspect-[16/10]
+              className="relative rounded-[12px] overflow-hidden p-2 flex items-center justify-center w-[75%] aspect-video
                          bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40
                          shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]
                          transition-all duration-300 ease-out
