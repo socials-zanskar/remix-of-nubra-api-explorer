@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Zap } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import activePill from "@/assets/active-pill.png";
 interface NavItem {
   label: string;
@@ -18,8 +18,11 @@ const navItems: NavItem[] = [
 
 export const NavBar = () => {
   const location = useLocation();
-  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 120 });
   const navRef = useRef<HTMLDivElement>(null);
+  
+  const itemWidth = 120;
+  const gap = 4;
+  const padding = 6;
 
   const getActiveIndex = () => {
     const index = navItems.findIndex((item) => {
@@ -29,15 +32,8 @@ export const NavBar = () => {
     return index >= 0 ? index : 0;
   };
 
-  useEffect(() => {
-    const activeIndex = getActiveIndex();
-    // Each item is 120px + 4px gap (gap-1)
-    const itemWidth = 120;
-    const gap = 4;
-    const padding = 6; // px-1.5 = 6px
-    const left = padding + activeIndex * (itemWidth + gap);
-    setIndicatorStyle({ left, width: itemWidth });
-  }, [location.pathname]);
+  const activeIndex = getActiveIndex();
+  const indicatorLeft = padding + activeIndex * (itemWidth + gap);
 
   const isActive = (item: NavItem) => {
     if (item.isExternal) return false;
@@ -55,10 +51,10 @@ export const NavBar = () => {
         <img
           src={activePill}
           alt=""
-          className="absolute top-1.5 bottom-1.5 h-[calc(100%-12px)] object-contain transition-all duration-300 ease-out pointer-events-none"
+          className="absolute top-1.5 bottom-1.5 h-[calc(100%-12px)] transition-all duration-300 ease-out pointer-events-none"
           style={{
-            left: indicatorStyle.left,
-            width: indicatorStyle.width,
+            left: indicatorLeft,
+            width: itemWidth,
           }}
         />
 
