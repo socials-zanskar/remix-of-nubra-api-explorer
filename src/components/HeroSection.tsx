@@ -101,7 +101,7 @@ export const HeroSection = () => {
           {/* Hero Text */}
           <div className="text-center mb-10">
             <h1 className="text-3xl font-bold text-foreground mb-2">
-              Nubra <span className="text-gradient">APIs</span>
+              Nubra <span className="text-[#6E83FB]">APIs</span>
             </h1>
             <p className="text-muted-foreground text-sm mb-2">
               Powerful trading infrastructure for developers
@@ -225,7 +225,7 @@ export const HeroSection = () => {
         {/* Hero Text */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-3 tracking-tight">
-            Nubra <span className="text-gradient">APIs</span>
+            Nubra <span className="text-[#6E83FB]">APIs</span>
           </h1>
           <p className="text-sm md:text-base text-muted-foreground mb-2">
             Powerful trading infrastructure for developers
