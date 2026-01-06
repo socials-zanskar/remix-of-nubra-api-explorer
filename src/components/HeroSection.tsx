@@ -216,7 +216,7 @@ export const HeroSection = () => {
 
   return (
     <section 
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-32 pb-20"
+      className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20"
       onClick={handleOutsideClick}
     >
 
