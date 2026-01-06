@@ -5,8 +5,8 @@ import { IntegrationSection } from "@/components/IntegrationSection";
 import { Footer } from "@/components/Footer";
 
 const SectionDivider = () => (
-  <div className="w-full max-w-4xl mx-auto px-6">
-    <div className="h-px bg-[#5E5E76]/40" />
+  <div className="w-full">
+    <div className="border-t border-dashed border-[#5E5E76]/20" />
   </div>
 );
 
