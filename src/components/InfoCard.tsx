@@ -87,7 +87,7 @@ export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCa
           <motion.div
             className="absolute top-full mt-3 z-[100]"
             style={{
-              left: '50%',
+              left: '0%',
               transform: 'translateX(-50%)',
             }}
             variants={getAnimationVariants()}
