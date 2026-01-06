@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 
 const SectionDivider = () => (
   <div className="w-full">
-    <div className="border-t border-dashed border-[#5E5E76]/20" />
+    <div className="border-t border-dashed border-[#5E5E76]/30" />
   </div>
 );
 
