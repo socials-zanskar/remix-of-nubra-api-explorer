@@ -85,10 +85,9 @@ export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCa
       <AnimatePresence>
         {isVisible && (
           <motion.div
-            className="absolute top-full mt-3 z-[100]"
+            className="absolute top-full mt-3 z-[100] w-[380px] left-1/2"
             style={{
-              left: '-50%',
-              transform: 'translateX(-50%)',
+              marginLeft: '-190px', // Half of tooltip width to center it
             }}
             variants={getAnimationVariants()}
             initial="hidden"
@@ -97,7 +96,7 @@ export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCa
             transition={{ duration: 0.2, ease: "easeOut" }}
           >
             <div 
-              className="px-4 py-4 rounded-[12px] bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40 shadow-[0_4px_16px_hsl(0_0%_0%/0.25)] w-[380px]"
+              className="px-4 py-4 rounded-[12px] bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40 shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]"
             >
               <p className="text-[13px] md:text-[14px] text-foreground/95 font-medium leading-relaxed text-center">
                 {info.bullets[0]}
