@@ -79,7 +79,7 @@ export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCa
     }
   };
 
-  // Hero brand panel - premium styling (centered below logo)
+  // Hero brand panel - premium styling with GlassCard effect
   if (isHero) {
     return (
       <AnimatePresence>
@@ -93,23 +93,13 @@ export const InfoCard = ({ info, isVisible, position, isMobile, isHero }: InfoCa
             transition={{ duration: 0.2, ease: "easeOut" }}
           >
             <div 
-              className="relative px-6 py-4 rounded-xl border border-primary/30"
+              className="relative px-4 py-4 rounded-[12px] bg-white/[0.04] backdrop-blur-sm border border-[#5E5E76]/40 shadow-[0_4px_16px_hsl(0_0%_0%/0.25)]"
               style={{
-                background: 'linear-gradient(135deg, hsl(245 82% 67% / 0.12) 0%, hsl(260 82% 55% / 0.08) 100%)',
-                backdropFilter: 'blur(20px)',
-                boxShadow: '0 8px 40px hsl(245 82% 67% / 0.2), 0 2px 8px hsl(0 0% 0% / 0.3)',
                 minWidth: '380px',
                 maxWidth: '420px',
               }}
             >
-              {/* Subtle inner glow */}
-              <div 
-                className="absolute inset-0 rounded-xl opacity-40 pointer-events-none"
-                style={{
-                  background: 'radial-gradient(ellipse at top, hsl(245 82% 75% / 0.15), transparent 60%)',
-                }}
-              />
-              <p className="relative text-[13px] md:text-[14px] text-foreground/95 font-medium leading-relaxed text-center">
+              <p className="text-[13px] md:text-[14px] text-foreground/95 font-medium leading-relaxed text-center">
                 {info.bullets[0]}
               </p>
             </div>
