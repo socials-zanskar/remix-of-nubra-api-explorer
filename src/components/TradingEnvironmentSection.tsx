@@ -21,7 +21,7 @@ const features = [
 
 export const TradingEnvironmentSection = () => {
   return (
-    <section className="relative w-full py-24 md:py-32 overflow-hidden">
+    <section className="relative w-full py-16 md:py-20 overflow-hidden">
 
       <div className="relative z-10 container mx-auto px-6 md:px-8">
         {/* Section Heading */}

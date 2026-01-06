@@ -4,6 +4,12 @@ import { TradingEnvironmentSection } from "@/components/TradingEnvironmentSectio
 import { IntegrationSection } from "@/components/IntegrationSection";
 import { Footer } from "@/components/Footer";
 
+const SectionDivider = () => (
+  <div className="w-full max-w-4xl mx-auto px-6">
+    <div className="h-px bg-[#5E5E76]/40" />
+  </div>
+);
+
 const Index = () => {
   return (
     <main 
@@ -17,7 +23,9 @@ const Index = () => {
     >
       <NavBar />
       <HeroSection />
+      <SectionDivider />
       <TradingEnvironmentSection />
+      <SectionDivider />
       <IntegrationSection />
       <Footer />
     </main>
