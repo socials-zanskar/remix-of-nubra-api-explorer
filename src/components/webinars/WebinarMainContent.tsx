@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import UpcomingWebinarCard from "./UpcomingWebinarCard";
 import WebinarAgenda from "./WebinarAgenda";
 import PastWebinars from "./PastWebinars";
+import WebinarRegistrationModal from "./WebinarRegistrationModal";
 
 // Mock data - in production, this would come from GitHub
 const upcomingWebinar = {
@@ -82,10 +84,15 @@ const pastWebinars = [
 ];
 
 const WebinarMainContent = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="space-y-12">
       <section id="upcoming-webinar">
-        <UpcomingWebinarCard webinar={upcomingWebinar} />
+        <UpcomingWebinarCard 
+          webinar={upcomingWebinar} 
+          onRegisterClick={() => setIsModalOpen(true)}
+        />
       </section>
 
       <section id="webinar-agenda" className="scroll-mt-24">
@@ -95,6 +102,13 @@ const WebinarMainContent = () => {
       <section id="past-webinars">
         <PastWebinars webinars={pastWebinars} />
       </section>
+
+      <WebinarRegistrationModal
+        open={isModalOpen}
+        onOpenChange={setIsModalOpen}
+        webinarId={upcomingWebinar.id}
+        webinarTitle={upcomingWebinar.title}
+      />
     </div>
   );
 };
