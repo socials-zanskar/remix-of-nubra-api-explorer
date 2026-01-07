@@ -15,9 +15,10 @@ interface WebinarProps {
     topics: string[];
     registrationUrl: string;
   };
+  onRegisterClick?: () => void;
 }
 
-const UpcomingWebinarCard = ({ webinar }: WebinarProps) => {
+const UpcomingWebinarCard = ({ webinar, onRegisterClick }: WebinarProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -88,6 +89,7 @@ const UpcomingWebinarCard = ({ webinar }: WebinarProps) => {
         <Button 
           size="lg" 
           className="group w-full sm:w-auto px-8 py-6 text-base font-semibold"
+          onClick={onRegisterClick}
         >
           Register Now
           <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
