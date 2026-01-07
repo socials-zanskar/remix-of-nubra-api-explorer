@@ -1,4 +1,4 @@
-// Blog content types and utilities for GitHub-driven markdown loading
+// Blog content types and utilities for folder-based markdown loading
 
 export interface BlogPost {
   slug: string;
@@ -20,49 +20,17 @@ export interface BlogFrontmatter {
   author: string;
 }
 
-// Blog registry - maps slugs to their markdown file paths
-// When switching to GitHub, only this configuration needs to change
-const blogRegistry: { slug: string; path: string; meta: Omit<BlogPost, 'content' | 'slug'> }[] = [
-  {
-    slug: 'authentication',
-    path: '/content/blogs/authentication.md',
-    meta: {
-      title: 'Authentication: Why it Matters in Algo Trading',
-      summary: 'Authentication is the foundation of every algorithmic trading system. Learn how Nubra solves friction with multiple authentication pathways built for automation.',
-      tags: ['Authentication', 'SDK', 'Automation'],
-      readTime: '8 min',
-      publishDate: '2024-12-20',
-      author: 'Nubra Engineering',
-    },
-  },
-  {
-    slug: 'uat-vs-live',
-    path: '/content/blogs/uat-vs-live.md',
-    meta: {
-      title: 'UAT vs LIVE: Why Sandbox Testing Matters in Algo Trading',
-      summary: 'Before deploying automation into production, every serious algo trader should deeply understand how UAT and LIVE environments differ.',
-      tags: ['Testing', 'UAT', 'Infrastructure'],
-      readTime: '6 min',
-      publishDate: '2024-12-18',
-      author: 'Nubra Engineering',
-    },
-  },
-  {
-    slug: 'place-order',
-    path: '/content/blogs/place-order.md',
-    meta: {
-      title: 'Placing Orders: The Core of Algo Execution',
-      summary: 'Placing orders is where signals turn into real action. Learn about the 4 pillars of every order and how to use Nubra\'s Trading API.',
-      tags: ['Trading', 'API', 'Orders'],
-      readTime: '12 min',
-      publishDate: '2024-12-15',
-      author: 'Nubra Engineering',
-    },
-  },
+// Blog registry - list of blog folder slugs
+// Each slug corresponds to a folder in public/content/blogs/{slug}/
+// containing index.md and an assets/ subfolder
+const blogSlugs = [
+  'authentication',
+  'uat-vs-live',
+  'place-order',
 ];
 
 // Parse frontmatter from markdown content
-function parseFrontmatter(content: string): { frontmatter: Record<string, string>; body: string } {
+function parseFrontmatter(content: string): { frontmatter: Record<string, unknown>; body: string } {
   const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n/;
   const match = content.match(frontmatterRegex);
   
@@ -73,72 +41,151 @@ function parseFrontmatter(content: string): { frontmatter: Record<string, string
   const frontmatterStr = match[1];
   const body = content.slice(match[0].length);
   
-  const frontmatter: Record<string, string> = {};
+  const frontmatter: Record<string, unknown> = {};
   frontmatterStr.split('\n').forEach(line => {
     const colonIndex = line.indexOf(':');
     if (colonIndex > 0) {
       const key = line.slice(0, colonIndex).trim();
-      const value = line.slice(colonIndex + 1).trim();
-      frontmatter[key] = value;
+      let value = line.slice(colonIndex + 1).trim();
+      
+      // Handle arrays (e.g., tags: ["a", "b"])
+      if (value.startsWith('[') && value.endsWith(']')) {
+        try {
+          frontmatter[key] = JSON.parse(value);
+        } catch {
+          // If JSON parse fails, store as string
+          frontmatter[key] = value;
+        }
+      } else {
+        // Remove surrounding quotes if present
+        if ((value.startsWith('"') && value.endsWith('"')) || 
+            (value.startsWith("'") && value.endsWith("'"))) {
+          value = value.slice(1, -1);
+        }
+        frontmatter[key] = value;
+      }
     }
   });
   
   return { frontmatter, body };
 }
 
-// Fetch markdown content from path
-async function fetchMarkdownContent(path: string): Promise<string> {
+// Get the base path for a blog's assets
+function getBlogBasePath(slug: string): string {
+  return `/content/blogs/${slug}`;
+}
+
+// Transform relative asset paths in markdown to absolute paths
+function transformAssetPaths(content: string, slug: string): string {
+  const basePath = getBlogBasePath(slug);
+  
+  // Transform markdown image syntax: ![alt](./assets/image.png) -> ![alt](/content/blogs/slug/assets/image.png)
+  let transformed = content.replace(
+    /!\[([^\]]*)\]\(\.\/(assets\/[^)]+)\)/g,
+    `![$1](${basePath}/$2)`
+  );
+  
+  // Transform HTML img src: src="./assets/image.png" -> src="/content/blogs/slug/assets/image.png"
+  transformed = transformed.replace(
+    /src=["']\.\/assets\/([^"']+)["']/g,
+    `src="${basePath}/assets/$1"`
+  );
+  
+  return transformed;
+}
+
+// Fetch markdown content from a blog folder
+async function fetchBlogContent(slug: string): Promise<{ frontmatter: Record<string, unknown>; body: string } | null> {
+  const path = `${getBlogBasePath(slug)}/index.md`;
+  
   try {
     const response = await fetch(path);
     if (!response.ok) {
-      throw new Error(`Failed to fetch ${path}`);
+      console.error(`Failed to fetch blog: ${slug}`);
+      return null;
     }
-    return await response.text();
+    
+    const rawContent = await response.text();
+    const { frontmatter, body } = parseFrontmatter(rawContent);
+    
+    // Transform relative asset paths to absolute paths
+    const transformedBody = transformAssetPaths(body, slug);
+    
+    return { frontmatter, body: transformedBody };
   } catch (error) {
-    console.error(`Error fetching markdown from ${path}:`, error);
-    return '';
+    console.error(`Error fetching blog ${slug}:`, error);
+    return null;
   }
 }
 
-// Get all blog posts with metadata (content loaded on demand)
+// Get all blog posts with metadata (loads frontmatter from each blog)
 export async function getAllPosts(): Promise<BlogPost[]> {
-  return blogRegistry.map(entry => ({
-    slug: entry.slug,
-    ...entry.meta,
-    content: '', // Content loaded separately via getPostBySlug
-  })).sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+  const posts: BlogPost[] = [];
+  
+  // Fetch frontmatter from all blogs in parallel
+  const results = await Promise.all(
+    blogSlugs.map(async (slug) => {
+      const result = await fetchBlogContent(slug);
+      if (!result) return null;
+      
+      const { frontmatter } = result;
+      
+      return {
+        slug,
+        title: (frontmatter.title as string) || slug,
+        summary: (frontmatter.summary as string) || '',
+        tags: (frontmatter.tags as string[]) || [],
+        readTime: (frontmatter.readTime as string) || '5 min',
+        publishDate: (frontmatter.publishDate as string) || new Date().toISOString().split('T')[0],
+        author: (frontmatter.author as string) || 'Nubra Engineering',
+        content: '', // Content loaded separately via getPostBySlug
+      };
+    })
+  );
+  
+  // Filter out nulls and sort by date
+  results.forEach(post => {
+    if (post) posts.push(post);
+  });
+  
+  return posts.sort((a, b) => 
+    new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+  );
 }
 
 // Get a single post by slug with full content
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-  const entry = blogRegistry.find(e => e.slug === slug);
-  
-  if (!entry) {
+  if (!blogSlugs.includes(slug)) {
     return null;
   }
   
-  const rawContent = await fetchMarkdownContent(entry.path);
+  const result = await fetchBlogContent(slug);
   
-  if (!rawContent) {
+  if (!result) {
     return null;
   }
   
-  // Parse and strip frontmatter, return only the body
-  const { body } = parseFrontmatter(rawContent);
+  const { frontmatter, body } = result;
   
   return {
-    slug: entry.slug,
-    ...entry.meta,
+    slug,
+    title: (frontmatter.title as string) || slug,
+    summary: (frontmatter.summary as string) || '',
+    tags: (frontmatter.tags as string[]) || [],
+    readTime: (frontmatter.readTime as string) || '5 min',
+    publishDate: (frontmatter.publishDate as string) || new Date().toISOString().split('T')[0],
+    author: (frontmatter.author as string) || 'Nubra Engineering',
     content: body.trim(),
   };
 }
 
 // Get all unique tags from posts
 export async function getAllTags(): Promise<string[]> {
+  const posts = await getAllPosts();
   const allTags = new Set<string>();
   
-  blogRegistry.forEach(entry => {
-    entry.meta.tags.forEach(tag => allTags.add(tag));
+  posts.forEach(post => {
+    post.tags.forEach(tag => allTags.add(tag));
   });
   
   return Array.from(allTags).sort();
