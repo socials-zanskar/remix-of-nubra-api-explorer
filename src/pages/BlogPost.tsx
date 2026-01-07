@@ -129,7 +129,7 @@ const BlogPostPage = () => {
       <NavBar />
 
       {/* Article Header */}
-      <header className="relative pt-24 pb-8 md:pt-32 md:pb-12 overflow-hidden">
+      <header className="relative pt-24 pb-4 md:pt-28 md:pb-6 overflow-hidden">
         {/* Ambient background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/3 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -144,7 +144,7 @@ const BlogPostPage = () => {
             {/* Back link */}
             <Link
               to="/blogs"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-4"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Blogs
