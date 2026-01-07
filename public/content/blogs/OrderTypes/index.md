@@ -7,8 +7,6 @@ publishDate: "2026-01-04"
 author: "Nubra Engineering"
 ---
 
-
-# Why One “Place Order” Is Not Enough  
 ### Understanding Modern Trading Order Types
 
 If trading were simple, a single **Place Order** button would be enough.

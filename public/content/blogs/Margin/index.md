@@ -8,7 +8,6 @@ author: "Nubra Engineering"
 ---
 
 
-# Why Margin Is Not Just a Number  
 ### Understanding Modern Margin Systems in Trading
 
 If margin were simple, it would just be:

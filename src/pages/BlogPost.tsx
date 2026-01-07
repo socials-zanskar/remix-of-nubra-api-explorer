@@ -135,11 +135,11 @@ const BlogPostPage = () => {
           <div className="absolute top-0 left-1/3 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative container mx-auto px-4">
+        <div className="relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl mx-auto"
+            className="mx-auto max-w-3xl px-6 md:px-8"
           >
             {/* Back link */}
             <Link
@@ -188,17 +188,22 @@ const BlogPostPage = () => {
 
       {/* Article Content */}
       <article className="pb-16">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="max-w-3xl mx-auto blog-content"
-          >
-            {post && <MarkdownRenderer content={post.content} />}
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="
+            mx-auto 
+            max-w-5xl 
+            px-6 
+            md:px-8 
+            blog-content
+          "
+        >
+          {post && <MarkdownRenderer content={post.content} />}
+        </motion.div>
       </article>
+
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (

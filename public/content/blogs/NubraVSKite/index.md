@@ -8,10 +8,7 @@ author: "Nubra Engineering"
 ---
 
 
-
-# The Algo Trader’s Dilemma: Nubra API vs Zerodha API
-
-![Main Title](./MainTitle.png)
+![Main Title](./assets/MainTitle.png)
 
 Algo trading in India has matured rapidly, but the **choice of API infrastructure** still defines how scalable, automated, and reliable your trading system can become.
 
@@ -31,7 +28,7 @@ This blog breaks down the **real-world differences** between Nubra API and Zerod
 
   ### Zerodha Kite Connect Authentication
 
-  ![Zerodha Authentication](./ZerodhaAuthenticationGIF.gif)
+  ![Zerodha Authentication](./assets/ZerodhaAuthenticationGIF.gif)
 
   When you build live trading systems, the **first bottleneck isn’t latency — it’s login**.
 
@@ -54,7 +51,7 @@ This blog breaks down the **real-world differences** between Nubra API and Zerod
 
   ### Nubra Authentication
 
-  ![Nubra Authentication](./NubraAuthenticationGIF.gif)
+  ![Nubra Authentication](./assets/NubraAuthenticationGIF.gif)
 
   Nubra skips the browser entirely.  
   Authentication happens **directly inside your code** using the SDK:
@@ -172,7 +169,7 @@ This blog breaks down the **real-world differences** between Nubra API and Zerod
   <!-- Short Strangle Image -->
   <div style="flex: 1; min-width: 260px; text-align: center;">
 
-  ![Delta Neutral Short Strangle](./ShortStrangle.png)
+  ![Delta Neutral Short Strangle](./assets/ShortStrangle.png)
 
   </div>
 
@@ -200,7 +197,7 @@ This blog breaks down the **real-world differences** between Nubra API and Zerod
 
   ### Strategy Deployment on Zerodha
 
-  ![Zerodha Strategy Execution](./6.png)
+  ![Zerodha Strategy Execution](./assets/6.png)
 
   **Zerodha (Kite Connect): Manual Multi-Leg Execution**
 
@@ -221,7 +218,7 @@ This blog breaks down the **real-world differences** between Nubra API and Zerod
 
   ### Strategy Deployment on Nubra
 
-  ![Nubra Strategy Execution](./7.png)
+  ![Nubra Strategy Execution](./assets/7.png)
 
   **Nubra (Flexi Basket SDK): Unified Multi-Leg Execution**
 
@@ -245,7 +242,7 @@ This blog breaks down the **real-world differences** between Nubra API and Zerod
 
 <div style="margin-bottom: 24px;">
 
-![Latency and Infrastructure Comparison](./ComparisonTable.png)
+![Latency and Infrastructure Comparison](./assets/ComparisonTable.png)
 
 </div>
 

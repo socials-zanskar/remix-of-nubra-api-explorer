@@ -8,9 +8,6 @@ author: "Nubra Engineering"
 ---
 
 
-
-# 5-Minute Python Quickstart with Nubra SDK
-
 This quickstart walks you through **installing the Nubra Python SDK**, authenticating securely, and getting ready to stream realtime market data, place orders with just a few lines of code, and retrieve portfolio status — all in under 5 minutes.
 
 Nubra’s APIs are designed to be developer-first: **minimal setup, intuitive workflows, and consistent patterns** across streaming, trading, and portfolio access.

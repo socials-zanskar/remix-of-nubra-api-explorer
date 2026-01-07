@@ -81,7 +81,7 @@ const Blogs = () => {
 
       {/* Blog Grid */}
       <section className="pb-20">
-        <div className="container mx-auto px-6 md:px-12 lg:px-16">
+        <div className="mx-auto max-w-6xl px-6 md:px-8">
           {isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(6)].map((_, i) => (

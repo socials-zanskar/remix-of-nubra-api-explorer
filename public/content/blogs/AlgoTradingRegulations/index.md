@@ -7,9 +7,7 @@ publishDate: "2025-12-20"
 author: "Nubra Engineering"
 ---
 
-
-
-# SEBI Regulations on API-Based Trading & Retail Algo Approvals  
+ 
 *A Practical Guide for Brokers, Fintechs, and Algo Traders*
 
 Algorithmic trading in India has entered a **formal regulatory phase**.  
@@ -21,7 +19,7 @@ This guide distills the **most operationally relevant rules** around API trading
 
 ## Algo Registration Process (High-Level Flow)
 
-![SEBI Algo Registration Process](./AlgoRegistration.png)
+![SEBI Algo Registration Process](./assets/AlgoRegistration.png)
 
 > **Key Idea**  
 > If a retail order is automated **and** sent via API, it is treated as an **algorithmic order** and must follow this framework.
@@ -98,7 +96,7 @@ align-items:stretch;
 ">
 
 <div style="border:1px solid #334155; border-radius:10px; padding:12px;">
-<h4>🔒 Open APIs Are Effectively Banned</h4>
+<h4>Open APIs Are Effectively Banned</h4>
 <p>
 Generic or shared API access is no longer permitted.
 All API calls must use <strong>unique client–vendor keys</strong> and
@@ -107,7 +105,7 @@ All API calls must use <strong>unique client–vendor keys</strong> and
 </div>
 
 <div style="border:1px solid #334155; border-radius:10px; padding:12px;">
-<h4>🧭 Brokers Are the Principal Party</h4>
+<h4>Brokers Are the Principal Party</h4>
 <p>
 Regardless of who builds or hosts the algo,
 <strong>the broker owns full responsibility</strong>.
@@ -115,7 +113,7 @@ Regardless of who builds or hosts the algo,
 </div>
 
 <div style="border:1px solid #334155; border-radius:10px; padding:12px;">
-<h4>⛔ Mandatory Kill Switch</h4>
+<h4>Mandatory Kill Switch</h4>
 <p>
 Exchanges can <strong>unilaterally disable any Algo ID</strong>.
 Correct Algo ID tagging is <strong>mission critical</strong>.
@@ -123,7 +121,7 @@ Correct Algo ID tagging is <strong>mission critical</strong>.
 </div>
 
 <div style="border:1px solid #334155; border-radius:10px; padding:12px;">
-<h4>🔐 Daily API Logout & 2FA</h4>
+<h4>Daily API Logout & 2FA</h4>
 <p>
 API sessions must be logged out <strong>daily</strong> and
 re-authenticated with <strong>2FA</strong>.
@@ -131,7 +129,7 @@ re-authenticated with <strong>2FA</strong>.
 </div>
 
 <div style="border:1px solid #334155; border-radius:10px; padding:12px;">
-<h4>🌐 Static IP Rules Are Strict</h4>
+<h4>Static IP Rules Are Strict</h4>
 <p>
 Each client must use a <strong>dedicated static IP</strong>.
 Shared office or VPS IPs are not allowed.
@@ -139,7 +137,7 @@ Shared office or VPS IPs are not allowed.
 </div>
 
 <div style="border:1px solid #334155; border-radius:10px; padding:12px;">
-<h4>⚠️ OPS ≤ 10 Is Not a Free Pass</h4>
+<h4>OPS ≤ 10 Is Not a Free Pass</h4>
 <p>
 ≤10 OPS applies only to tech-savvy retail clients.
 Orders remain algo orders and must be monitored.
@@ -147,7 +145,7 @@ Orders remain algo orders and must be monitored.
 </div>
 
 <div style="border:1px solid #334155; border-radius:10px; padding:12px;">
-<h4>🆔 Vendors Never Own Algo IDs</h4>
+<h4>Vendors Never Own Algo IDs</h4>
 <p>
 Algo IDs are issued <strong>member-wise by the exchange</strong>.
 The broker remains the <strong>single point of control</strong>.
@@ -191,7 +189,7 @@ Nubra acts as the **single point of control** for registration, execution, risk 
 
 <div style="flex:1; min-width:300px; border:1px solid #334155; border-radius:10px; padding:16px;">
 
-### 👤 Retail Traders (Including Tech-Savvy Retail)
+### Retail Traders (Including Tech-Savvy Retail)
 
 You should reach out to Nubra if:
 
@@ -219,7 +217,7 @@ You should reach out to Nubra if:
 
 <div style="flex:1; min-width:300px; border:1px solid #334155; border-radius:10px; padding:16px;">
 
-### 🧠 Algo Providers / Fintech Platforms
+### Algo Providers / Fintech Platforms
 
 You should reach out to Nubra if:
 
@@ -257,7 +255,7 @@ You should reach out to Nubra if you are unsure whether:
 - You fall under the **tech-savvy retail exemption**  
 - Your current API usage is fully SEBI-compliant  
 
-👉 **Reach out to Nubra before going live.**  
+**Reach out to Nubra before going live.**  
 Designing for compliance upfront is far easier than fixing violations later.
 
 ---
