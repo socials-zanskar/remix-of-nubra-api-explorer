@@ -1,5 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -22,6 +23,7 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
     <div className="prose prose-invert prose-lg max-w-none">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
         components={{
           // Headings with anchor links
           h1: ({ children }) => {
@@ -121,7 +123,7 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             </a>
           ),
           
-          // Images - render from markdown as-is
+          // Images - supports png, jpg, gif
           img: ({ src, alt }) => (
             <figure className="my-6">
               <img 
@@ -131,6 +133,18 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
                 loading="lazy"
               />
               {alt && <figcaption className="text-sm text-muted-foreground mt-2 text-center">{alt}</figcaption>}
+            </figure>
+          ),
+          
+          // Video elements for mp4 support
+          video: ({ src, ...props }) => (
+            <figure className="my-6">
+              <video 
+                src={src}
+                className="rounded-lg border border-border/40 max-w-full h-auto"
+                controls
+                {...props}
+              />
             </figure>
           ),
           
@@ -216,18 +230,28 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             </td>
           ),
           
-          // Handle raw HTML div elements (render as styled containers)
-          div: ({ className, children }) => {
-            // Style custom div classes from the markdown
-            if (className) {
-              return (
-                <div className={`my-4 ${className}`}>
-                  {children}
-                </div>
-              );
-            }
-            return <div>{children}</div>;
+          // Handle raw HTML div elements (for custom layouts in markdown)
+          div: ({ className, children, style, ...props }) => {
+            return (
+              <div className={className} style={style} {...props}>
+                {children}
+              </div>
+            );
           },
+          
+          // Figure elements
+          figure: ({ children, className }) => (
+            <figure className={`my-6 ${className || ''}`}>
+              {children}
+            </figure>
+          ),
+          
+          // Figcaption
+          figcaption: ({ children }) => (
+            <figcaption className="text-sm text-muted-foreground mt-2 text-center">
+              {children}
+            </figcaption>
+          ),
         }}
       >
         {content}

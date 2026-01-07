@@ -5,15 +5,16 @@ import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
 import { NavBar } from "@/components/NavBar";
 import { MarkdownRenderer } from "@/components/blog/MarkdownRenderer";
 import { BlogCard } from "@/components/blog/BlogCard";
-import { getPostBySlug, getAllPosts, type BlogPost } from "@/lib/blog";
+import { getPostBySlug, getAllPosts, getBlogStylesUrl, type BlogPost } from "@/lib/blog";
 
-const BlogPost = () => {
+const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
+  // Load blog post
   useEffect(() => {
     async function loadPost() {
       if (!slug) return;
@@ -43,6 +44,30 @@ const BlogPost = () => {
     }
     loadPost();
   }, [slug]);
+
+  // Inject per-blog CSS when blog has custom styles
+  useEffect(() => {
+    if (!post?.hasCustomStyles || !slug) return;
+
+    const styleId = `blog-styles-${slug}`;
+    
+    // Don't add if already exists
+    if (document.getElementById(styleId)) return;
+
+    const link = document.createElement('link');
+    link.id = styleId;
+    link.rel = 'stylesheet';
+    link.href = getBlogStylesUrl(slug);
+    document.head.appendChild(link);
+
+    // Cleanup: remove stylesheet when navigating away
+    return () => {
+      const existingLink = document.getElementById(styleId);
+      if (existingLink) {
+        existingLink.remove();
+      }
+    };
+  }, [post?.hasCustomStyles, slug]);
 
   const formattedDate = post
     ? new Date(post.publishDate).toLocaleDateString("en-US", {
@@ -168,7 +193,7 @@ const BlogPost = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="max-w-3xl mx-auto"
+            className="max-w-3xl mx-auto blog-content"
           >
             {post && <MarkdownRenderer content={post.content} />}
           </motion.div>
@@ -205,4 +230,4 @@ const BlogPost = () => {
   );
 };
 
-export default BlogPost;
+export default BlogPostPage;
