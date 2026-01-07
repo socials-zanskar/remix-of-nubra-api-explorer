@@ -129,7 +129,7 @@ const BlogPostPage = () => {
       <NavBar />
 
       {/* Article Header */}
-      <header className="relative pt-24 pb-4 md:pt-28 md:pb-6 overflow-hidden">
+      <header className="relative pt-24 pb-2 md:pt-28 md:pb-4 overflow-hidden">
         {/* Ambient background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/3 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -139,7 +139,7 @@ const BlogPostPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mx-auto max-w-3xl px-6 md:px-8"
+            className="mx-auto max-w-5xl px-6 md:px-8"
           >
             {/* Back link */}
             <Link
