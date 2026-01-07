@@ -65,7 +65,7 @@ Each order is executed independently, making it suitable for quick bulk placemen
 
 | **Single Orders** | **Multi Order (Basket)** |
 |------------------|--------------------------|
-| ![Single Order](./SingleOrder.gif) | ![Multi Order](./MultiOrder.gif) |
+| ![Single Order](./assets/SingleOrder.gif) | ![Multi Order](./assets/MultiOrder.gif) |
 | **What’s happening**<br/>Each order is sent individually to the exchange.<br/><br/>• Separate execution paths<br/>• Separate lifecycle<br/>• No shared context<br/><br/>**Impact**<br/>• No hedge awareness<br/>• No margin optimization<br/>• Strategy logic handled manually | **What’s happening**<br/>Multiple orders are submitted together in a single request.<br/><br/>• Orders travel together<br/>• Execution remains independent<br/>• Reduced API overhead<br/><br/>**Impact**<br/>• Faster submission<br/>• Cleaner execution flow<br/>• Still no shared risk or margin logic |
 
 ---
@@ -78,7 +78,7 @@ It optimizes execution, margin usage, and risk across all legs, enabling smoothe
 
 | ❌ **Without Flexi (Individual Orders)** | ✅ **With Flexi Basket (Net Strategy Execution)** |
 |-----------------------------------------|--------------------------------------------------|
-| ![Individual Orders](./IndividualOrder.gif) | ![Flexi Basket](./FlexiOrder.gif) |
+| ![Individual Orders](./assets/IndividualOrder.gif) | ![Flexi Basket](./assets/FlexiOrder.gif) |
 | **What happens**<br/>Strategy legs are placed as separate orders.<br/><br/>• Each leg blocks margin independently<br/>• Exchange cannot recognize the hedge<br/>• Capital usage is high<br/>• Risk management is fragmented<br/><br/>**Result**<br/>Higher margin blocked, despite lower net risk | **What happens**<br/>All legs are submitted as **one strategy**.<br/><br/>• Exchange evaluates **net exposure**<br/>• Hedge benefits are applied automatically<br/>• Margin is optimized at basket level<br/><br/>**What Flexi does differently**<br/>• Risk applied at basket level<br/>• Margin calculated on net position<br/>• Legs executed as one idea<br/>• Supports OCO logic (stop-loss *or* target)<br/><br/>**Benefits**<br/>• Strategy-level risk control<br/>• One stop-loss, one target<br/>• Time-based exits<br/>• Cleaner P&L tracking<br/>• **Significant margin savings** |
 
 ---
