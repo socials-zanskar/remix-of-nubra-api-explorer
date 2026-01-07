@@ -1,0 +1,218 @@
+/* ======================================================
+PLACE ORDER — THEME VARIABLES (LIGHT MODE DEFAULT)
+====================================================== */
+
+.place-order {
+  /* Core colors */
+  --po-bg-card: var(--md-default-bg-color);
+  --po-bg-shadow: rgba(0, 0, 0, 0.08);
+
+  --po-text-primary: var(--md-default-fg-color);
+  --po-text-secondary: var(--md-default-fg-color--light);
+
+  /* Code pill */
+  --po-code-bg: #2b2f36;
+  --po-code-text: #ffffff;
+
+  /* Semantic option colors */
+  --po-buy-bg: #e6f4ea;
+  --po-buy-text: #137333;
+
+  --po-sell-bg: #fce8e6;
+  --po-sell-text: #a50e0e;
+
+  --po-regular-bg: #eef2ff;
+  --po-stoploss-bg: #fff4e5;
+  --po-iceberg-bg: #e8f0fe;
+
+  --po-limit-bg: #e6f4ea;
+  --po-market-bg: #fef7e0;
+
+  --po-day-bg: #e8f0fe;
+  --po-ioc-bg: #fde7f3;
+}
+
+/* ======================================================
+DARK MODE — MKDOCS MATERIAL (SLATE)
+====================================================== */
+
+[data-md-color-scheme="slate"] .place-order {
+  --po-bg-card: #1e222a;
+  --po-bg-shadow: rgba(0, 0, 0, 0.6);
+
+  --po-text-primary: #e6edf3;
+  --po-text-secondary: #9da7b3;
+
+  --po-code-bg: #111827;
+  --po-code-text: #e6edf3;
+
+  --po-buy-bg: #123d2a;
+  --po-buy-text: #6ee7b7;
+
+  --po-sell-bg: #3b1d1b;
+  --po-sell-text: #fca5a5;
+
+  --po-regular-bg: #252a33;
+  --po-stoploss-bg: #3b3a1d;
+  --po-iceberg-bg: #1f2a44;
+
+  --po-limit-bg: #123d2a;
+  --po-market-bg: #3b3a1d;
+
+  --po-day-bg: #1f2a44;
+  --po-ioc-bg: #3b1f33;
+}
+
+/* ======================================================
+LAYOUT
+====================================================== */
+
+.place-order {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.po-pillar {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======================================================
+HEADER CARD (TOP HALF)
+====================================================== */
+
+.po-header-card {
+  background: var(--po-bg-card);
+  color: var(--po-text-primary);
+  border-radius: 18px;
+  padding: 20px 22px;
+  min-height: 260px;
+  text-align: center;
+  box-shadow: 0 10px 28px var(--po-bg-shadow);
+}
+
+/* Hide numeric index badge */
+.po-index {
+  display: none;
+}
+
+/* Title */
+.po-header-card h3 {
+  margin: 0;
+  justify-content: center;
+}
+
+/* Subtitle */
+.po-subtitle {
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+/* Description */
+.po-desc {
+  margin-top: 6px;
+  color: var(--po-text-secondary);
+}
+
+/* ======================================================
+API FIELD HIGHLIGHT (PILL)
+====================================================== */
+
+.po-field-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 14px 0 10px;
+}
+
+.po-field {
+  background: var(--po-code-bg);
+  color: var(--po-code-text);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  box-shadow: 0 0 0 2px rgba(79, 141, 247, 0.35);
+}
+
+/* Hover emphasis */
+.po-pillar:hover .po-field {
+  box-shadow:
+    0 0 0 2px rgba(79, 141, 247, 0.6),
+    0 0 18px rgba(79, 141, 247, 0.25);
+}
+
+.po-pillar:hover {
+  filter: brightness(1.05);
+}
+
+/* ======================================================
+OPTIONS GRID
+====================================================== */
+
+.po-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+/* ======================================================
+OPTION CARDS
+====================================================== */
+
+.po-option {
+  border-radius: 14px;
+  padding: 14px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 6px 16px var(--po-bg-shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.po-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px var(--po-bg-shadow);
+}
+
+/* Code label inside option */
+.po-option code {
+  display: inline-block;
+  background: var(--po-code-bg);
+  color: var(--po-code-text);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+/* Option description */
+.po-option-desc {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--po-text-secondary);
+}
+
+/* ======================================================
+OPTION COLOR MAPPING
+====================================================== */
+
+/* Order Side */
+.po-buy    { background: var(--po-buy-bg); color: var(--po-buy-text); }
+.po-sell   { background: var(--po-sell-bg); color: var(--po-sell-text); }
+
+/* Order Type */
+.po-regular   { background: var(--po-regular-bg); }
+.po-stoploss  { background: var(--po-stoploss-bg); }
+.po-iceberg   { background: var(--po-iceberg-bg); }
+
+/* Price Type */
+.po-limit   { background: var(--po-limit-bg); }
+.po-market  { background: var(--po-market-bg); }
+
+/* Validity */
+.po-day { background: var(--po-day-bg); }
+.po-ioc { background: var(--po-ioc-bg); }

@@ -1,0 +1,252 @@
+/* ============================================
+   GLOBAL SPACING FIXES
+   ============================================ */
+
+.md-content__inner {
+  padding-top: 0rem !important;
+}
+
+.md-content__inner > :first-child {
+  margin-top: 0rem !important;
+}
+
+.md-typeset h1 {
+  margin-top: 0rem !important;
+  margin-bottom: 0.10rem !important;
+}
+
+.md-typeset p,
+.md-typeset ul {
+  margin-top: 0.15rem !important;
+  margin-bottom: 0.30rem !important;
+}
+
+.md-typeset h2 {
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.15rem !important;
+}
+
+
+/* ============================================
+   API CARD GRID (Homepage Python + REST section)
+   ============================================ */
+
+.api-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.2rem;
+  margin-top: 0.15rem !important;
+}
+
+
+/* ============================================
+   SUPPORT GRID (Support / FAQs section)
+   ============================================ */
+
+.api-card-grid--support {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin-top: 0.15rem !important;
+  justify-content: start;
+}
+
+@media (max-width: 900px) {
+  .api-card-grid--support {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ============================================
+   API CARD STYLE (Homepage only)
+   ============================================ */
+
+.api-card {
+  display: block;
+  background: #f8f9fb;
+  padding: 1.2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border: 1px solid #e3e5e8;
+  text-decoration: none !important;
+  color: inherit;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.api-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  background: #f1f3f6;
+}
+
+.api-card-header {
+  font-size: 0.70rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 0.15rem;
+  letter-spacing: 0.05em;
+}
+
+.api-card h3 {
+  margin: 0;
+  margin-top: -0.05rem;
+  font-size: 1.30rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.api-card-icon {
+  height: 42px;
+  width: 42px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.api-card p {
+  margin-top: 0.35rem;
+  font-size: 0.88rem;
+  color: #374151;
+  line-height: 1.36;
+}
+
+.api-card-button {
+  margin-top: 0.6rem;
+  font-weight: 600;
+  color: #1b4ce0;
+}
+
+
+/* ============================================
+   DARK MODE (Homepage cards)
+   ============================================ */
+
+[data-md-color-scheme="slate"] .api-card {
+  background: #26282f;
+  border: 1px solid #2f323a;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.32);
+}
+
+[data-md-color-scheme="slate"] .api-card:hover {
+  background: #2d2f37;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.45);
+}
+
+[data-md-color-scheme="slate"] .api-card-header {
+  color: #9ca3af;
+}
+
+[data-md-color-scheme="slate"] .api-card h3 {
+  color: #ffffff;
+}
+
+[data-md-color-scheme="slate"] .api-card p {
+  color: #d1d5db;
+}
+
+[data-md-color-scheme="slate"] .api-card-button {
+  color: #93c5fd;
+}
+
+
+/* ============================================================
+   FAQ HOME — 4 Columns Compact Cards (does NOT affect homepage)
+   ============================================================ */
+
+.faq-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 0.15rem !important;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .faq-card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .faq-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .faq-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.faq-card {
+  display: block;
+  background: #f8f9fb;
+  padding: 0.65rem 0.75rem;  /* slightly reduced */
+  border-radius: 14px;
+  border: 1px solid #e3e5e8;
+  text-decoration: none !important;
+  color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.faq-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+}
+
+/* MUCH SMALLER TITLE */
+.faq-card h3 {
+  margin: 0;
+  font-size: 0.85rem;     /* <<< reduced from 1.05rem */
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* MUCH SMALLER DESCRIPTION TEXT */
+.faq-card p {
+  margin-top: 0.18rem;
+  font-size: 0.65rem;     /* <<< reduced from 0.78rem */
+  line-height: 1.25;
+  color: #374151;
+}
+
+/* Dark Mode */
+[data-md-color-scheme="slate"] .faq-card {
+  background: #26282f;
+  border: 1px solid #2f323a;
+}
+
+[data-md-color-scheme="slate"] .faq-card:hover {
+  background: #2d2f37;
+}
+
+[data-md-color-scheme="slate"] .faq-card p {
+  color: #d1d5db;
+}
+
+/* ============================================================
+   FIX LARGE VERTICAL GAP BETWEEN FAQ CARD ROWS
+   ============================================================ */
+
+/* Reduce spacing above section headings (like "Market Data & Trading") */
+.md-typeset h2 {
+  margin-top: 0.6rem !important;   /* reduce top space */
+  margin-bottom: 0.4rem !important; /* reduce bottom space */
+}
+
+/* Reduce margin above FAQ card grids */
+.api-card-grid,
+.faq-card-grid {
+  margin-top: 0.4rem !important;   /* reduces space above the cards */
+  margin-bottom: 0.4rem !important; /* reduces space below the cards */
+}
+
+/* Reduce spacing inside <div class="md-content"> */
+.md-content__inner > * {
+  margin-bottom: 0.6rem !important; /* general tighten */
+}

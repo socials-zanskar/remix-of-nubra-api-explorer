@@ -1,0 +1,158 @@
+/* ============================================================
+   Expired Options – Symbol Format Cards
+   ============================================================ */
+
+.place-order {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* ------------------------------------------------------------
+   Card container (CRITICAL FIXES)
+   ------------------------------------------------------------ */
+
+.po-pillar {
+  background: linear-gradient(180deg, #151a22, #0f141b);
+  border-radius: 18px;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  /* 🔒 layout containment */
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+/* ------------------------------------------------------------
+   Header
+   ------------------------------------------------------------ */
+
+.po-header-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.po-subtitle {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 6px;
+}
+
+.po-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.75;
+}
+
+/* ------------------------------------------------------------
+   Format / Example blocks
+   ------------------------------------------------------------ */
+
+.po-options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+
+  /* ensures consistent height distribution */
+  flex-grow: 1;
+}
+
+.po-option {
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.4;
+
+  /* 🔒 prevent bleed */
+  overflow: hidden;
+}
+
+/* Format blocks */
+.po-option.po-regular {
+  background: #111722;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Weekly example */
+.po-option.po-buy {
+  background: linear-gradient(180deg, #0f2a1e, #0b2017);
+  border: 1px solid rgba(0, 200, 120, 0.35);
+}
+
+/* Monthly example */
+.po-option.po-sell {
+  background: linear-gradient(180deg, #2a1212, #1f0b0b);
+  border: 1px solid rgba(255, 90, 90, 0.35);
+}
+
+/* ------------------------------------------------------------
+   Code blocks (ROOT CAUSE FIX)
+   ------------------------------------------------------------ */
+
+.po-option pre {
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  background: #0b0f15;
+  border-radius: 8px;
+
+  /* 🔥 FIXES */
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: pre;          /* ❌ no nowrap */
+  box-sizing: border-box;
+}
+
+.po-option code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  color: #e6edf3;
+}
+
+/* ------------------------------------------------------------
+   Prevent cross-card bleed (safety net)
+   ------------------------------------------------------------ */
+
+.po-pillar * {
+  max-width: 100%;
+}
+
+/* ------------------------------------------------------------
+   Breakdown list
+   ------------------------------------------------------------ */
+
+.po-breakdown {
+  margin-top: 12px;
+  padding-left: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.po-breakdown code {
+  background: #111722;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+/* ------------------------------------------------------------
+   Responsive fixes
+   ------------------------------------------------------------ */
+
+@media (max-width: 1100px) {
+  .place-order {
+    grid-template-columns: 1fr;
+  }
+}

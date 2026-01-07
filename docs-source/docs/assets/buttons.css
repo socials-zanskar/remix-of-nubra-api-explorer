@@ -1,0 +1,39 @@
+/* ================================================
+   GLOBAL BUTTON STYLES FOR MKDOCS MATERIAL
+   Used across all pages (FAQs, SDK docs, etc.)
+   ================================================ */
+
+/* Base button styling */
+.md-typeset .md-button,
+.md-typeset .md-button--primary {
+  padding: 0.45rem 1.1rem;      /* compact height */
+  border-radius: 16px !important; /* rounded edges */
+  font-size: 0.82rem !important;  /* slightly smaller text */
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.25;
+  transition: all 0.19s ease;   /* smooth hover */
+  display: inline-block;
+}
+
+/* Primary button (blue) */
+.md-typeset .md-button--primary {
+  background-color: #2962FF !important; /* light-mode blue */
+  color: white !important;
+  border: none !important;
+}
+
+/* Hover state */
+.md-typeset .md-button--primary:hover {
+  background-color: #0039CB !important; /* darker blue */
+  transform: translateY(-1px);
+}
+
+/* Dark mode */
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary {
+  background-color: #3d7dff !important; /* prettier dark-mode blue */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary:hover {
+  background-color: #1c4fd8 !important;
+}

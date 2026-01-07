@@ -26,7 +26,7 @@ const apiData: Record<string, APIInfo> = {
       "Python SDKs for beginner-to-expert workflows",
     ],
     cta: "View Docs",
-    ctaLink: "#",
+    ctaLink: "http://127.0.0.1:8000/products/api/docs/",
   },
   marketData: {
     id: "marketData",
@@ -38,7 +38,7 @@ const apiData: Record<string, APIInfo> = {
       "Real-time Option Chain and Greeks",
     ],
     cta: "View Docs",
-    ctaLink: "#",
+    ctaLink: "http://127.0.0.1:8000/products/api/docs/",
   },
   trading: {
     id: "trading",
@@ -50,7 +50,7 @@ const apiData: Record<string, APIInfo> = {
       "Place, modify, and cancel orders seamlessly",
     ],
     cta: "View Docs",
-    ctaLink: "#",
+    ctaLink: "http://127.0.0.1:8000/products/api/docs/",
   },
   portfolio: {
     id: "portfolio",
@@ -61,7 +61,7 @@ const apiData: Record<string, APIInfo> = {
       "Detailed position, PnL, margin benefit, and more",
     ],
     cta: "View Docs",
-    ctaLink: "#",
+    ctaLink: "http://127.0.0.1:8000/products/api/docs/",
   },
 };
 

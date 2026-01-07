@@ -1,0 +1,713 @@
+/* -----------------------------------------------------
+   Nubra API Docs – Complete Polished Styling
+   Matches https://nubra.io/products/api/docs/
+----------------------------------------------------- */
+
+/* ---------- Global Typography ---------- */
+.md-typeset {
+  font-size: 0.82rem !important;
+  line-height: 1.55;
+  color: #1c1c1c;
+  letter-spacing: 0.1px;
+}
+
+.md-typeset p {
+  margin-bottom: 0.6rem !important;
+}
+
+/* Headings */
+.md-typeset h1 {
+  font-size: 1.9rem;
+  font-weight: 650;
+  margin-bottom: 0.8rem;
+  color: #101010;
+}
+
+.md-typeset h2 {
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin-top: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #111;
+}
+
+.md-typeset h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  margin-bottom: 0.3rem;
+  color: #111;
+}
+
+/* ---------- Buttons (Rounded, Nubra style) ---------- */
+.md-typeset .md-button,
+.md-typeset .md-button--primary {
+  padding: 0.45rem 1.15rem;
+  border-radius: 16px !important;
+  font-size: 0.78rem !important;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  transition: all .18s ease;
+}
+
+.md-typeset .md-button--primary {
+  background-color: #2962FF !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.md-typeset .md-button--primary:hover {
+  background-color: #0039CB !important;
+  transform: translateY(-1px);
+}
+
+/* ---------- Code Blocks ---------- */
+.md-typeset pre code {
+  border-radius: 10px;
+  background: #f7f9fb !important;
+  padding: 0.75rem !important;
+  font-size: 0.72rem !important;
+  color: #2e2e2e;
+}
+
+.md-typeset pre {
+  border-radius: 10px !important;
+  background: #f7f9fb !important;
+  border: 1px solid #e3e3e3 !important;
+  padding: 0.6rem !important;
+}
+
+.md-typeset code {
+  background: #eef2f6;
+  padding: 0.24rem 0.38rem;
+  border-radius: 5px;
+  font-size: 0.72rem !important;
+}
+
+/* ---------- FAQ Collapsible Panels ---------- */
+.md-typeset details {
+  background: #fcfcfc;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 0;
+  margin-bottom: 1rem;
+  transition: box-shadow .15s ease;
+}
+
+.md-typeset details[open] {
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.04);
+}
+
+.md-typeset details summary {
+  padding: 0.85rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 12px;
+  position: relative;
+}
+
+.md-typeset details summary::marker,
+.md-typeset details summary::-webkit-details-marker {
+  display: none;
+}
+
+.md-typeset details summary::after {
+  content: "›";
+  position: absolute;
+  right: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform .15s ease;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.md-typeset details[open] summary::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* ---------- Inline Links ---------- */
+.md-typeset a {
+  color: #2962FF;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.md-typeset a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Lists ---------- */
+.md-typeset ul li,
+.md-typeset ol li {
+  margin-bottom: 0.25rem;
+}
+
+/* ---------- Table Styling ---------- */
+.md-typeset table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.md-typeset table tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.md-typeset table th {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+
+/* ---------- Remove Right-Side TOC ---------- */
+.md-sidebar--secondary {
+  display: none !important;
+}
+
+/* ---------- Expand Content Width ---------- */
+.md-content {
+  max-width: 100% !important;
+}
+
+.md-main__inner {
+  padding-top: 0.8rem !important;
+}
+
+/* ---------- Remove auto-generated top H1 ---------- */
+.md-content__inner h1:first-of-type,
+.md-content__heading {
+  display: none !important;
+}
+
+/* ---------- Previous / Next Footer (smaller) ---------- */
+.md-footer-nav {
+  padding: 0.3rem 0.8rem !important;
+  background: #101010 !important;
+}
+
+.md-footer-nav__link {
+  padding: 0.25rem 0 !important;
+}
+
+.md-footer-nav__title {
+  font-size: 0.73rem !important;
+  margin-bottom: 0.05rem !important;
+}
+
+.md-footer-nav__direction {
+  font-size: 0.6rem !important;
+  opacity: 0.7;
+}
+
+/* ---------- COPYRIGHT FOOTER (always visible) ---------- */
+.md-footer-meta {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background: #111827 !important;
+  color: #fff !important;
+  padding: 0.35rem 0 !important;
+  font-size: 0.7rem !important;
+  border-top: 1px solid #222 !important;
+}
+
+.md-footer-meta__inner {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.md-footer-meta a {
+  color: #93c5fd !important;
+}
+
+.md-footer-meta {
+  background: #111827 !important;
+  color: #fff !important;
+  padding: 0.35rem 0 !important;
+  font-size: 0.7rem !important;
+  text-align: center !important;
+}
+
+.md-footer-meta a {
+  color: #93c5fd !important;
+}
+
+/* ----------------------------------------
+   Shrink MkDocs Material footer nav height
+----------------------------------------- */
+
+.md-footer-nav {
+  padding: 6px 12px !important;      /* reduce vertical padding */
+  min-height: 32px !important;       /* much smaller height */
+  background: #111827 !important;    /* keep your dark background */
+}
+
+.md-footer-nav__inner {
+  padding: 0 !important;             /* remove extra padding */
+  align-items: center !important;    /* vertically center text/icons */
+}
+
+.md-footer-nav__title {
+  font-size: 0.72rem !important;      /* smaller title text */
+  margin-bottom: 0 !important;
+}
+
+.md-footer-nav__direction {
+  font-size: 0.6rem !important;       /* “Previous / Next” label */
+  opacity: 0.7 !important;
+}
+
+.md-footer-nav__link {
+  padding: 2px 0 !important;          /* tighter spacing */
+}
+
+.md-footer-nav__button {
+  margin: 0 !important;               /* shrink arrow area */
+}
+
+/* Reduce right arrow icon size */
+.md-footer-nav__button svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* ---------------------------------------------------
+   Shrink the Previous / Next footer bar completely
+--------------------------------------------------- */
+
+/* Outer footer container */
+.md-footer-nav {
+  padding: 4px 12px !important;
+  margin: 0 !important;
+  min-height: 32px !important;
+  height: 32px !important;
+}
+
+/* Middle wrapper (Material adds this) */
+.md-footer__inner {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 32px !important;
+  height: 32px !important;
+}
+
+/* Inner nav wrapper */
+.md-footer-nav__inner {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 32px !important;
+  height: 32px !important;
+  align-items: center !important;
+}
+
+/* Link buttons */
+.md-footer-nav__link {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Text sizes */
+.md-footer-nav__title {
+  font-size: 0.75rem !important;
+  margin-bottom: 0 !important;
+}
+
+.md-footer-nav__direction {
+  font-size: 0.6rem !important;
+}
+
+/* Arrow icons smaller */
+.md-footer-nav__button svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* ==========================================================
+   FINAL COMPACT FOOTER FIX — NO SCROLL, NO BLACK BAR,
+   VISIBLE TEXT, SMALL SIZE — OVERRIDES ALL PREVIOUS RULES
+   ========================================================== */
+
+/* Force footer background to transparent */
+.md-footer-nav,
+.md-footer,
+.md-footer__inner {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Remove scrollbars completely */
+.md-footer-nav,
+.md-footer-nav__inner,
+.md-footer-nav__link,
+.md-footer-nav__button {
+    overflow: hidden !important;
+}
+
+/* Compact height */
+.md-footer-nav {
+    height: 34px !important;
+    min-height: 34px !important;
+    padding: 4px 10px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Inner container */
+.md-footer-nav__inner {
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+/* Text inside Previous/Next */
+.md-footer-nav__direction,
+.md-footer-nav__title {
+    color: #1c1c1c !important;         /* match page text */
+    font-size: 0.70rem !important;     /* fits compact bar */
+    line-height: 1rem !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Smaller arrow icons */
+.md-footer-nav__button svg {
+    width: 14px !important;
+    height: 14px !important;
+    stroke: #1c1c1c !important;
+    fill: #1c1c1c !important;
+}
+
+/* Prevent text expanding horizontally */
+.md-footer-nav__link {
+    max-width: 40% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Change top navbar to black */
+.md-header {
+  background-color: #000000 !important;
+}
+
+/* Optional: make search bar match dark header */
+.md-search__form {
+  background-color: #111 !important;
+  border: 1px solid #222 !important;
+}
+
+.md-search__input {
+  color: #fff !important;
+}
+
+/* Optional: change icon colors to white */
+.md-header__button,
+.md-header__button svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Make site title text white */
+.md-header__title {
+  color: #ffffff !important;
+}
+
+/* Make the logo text (“Nubra”) white too */
+.md-logo + span {
+  color: #ffffff !important;
+}
+
+/* Hide the left-sidebar section title ("API FAQs") */
+.md-nav__title {
+  display: none !important;
+}
+
+.api-docs-right {
+  margin-right: 24px;
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.api-docs-right a {
+  text-decoration: none;
+  color: var(--md-primary-fg-color);
+  font-weight: 500;
+}
+
+.api-docs-right a:hover {
+  text-decoration: underline;
+}
+
+/* PERFECT MATCH - Make API Docs identical to API FAQs */
+.api-docs-right a {
+  color: #fff !important;
+
+  font-family: var(--md-text-font, "Roboto", sans-serif) !important;
+  font-size: 0.875rem !important;      /* Material header font size */
+  font-weight: 550 !important;         /* Material header weight */
+  letter-spacing: 0.0178571429em !important;  /* exact Material spacing */
+
+  display: flex;
+  align-items: center;
+  text-decoration: none !important;
+  margin-left: 0.75rem;                /* same spacing as other header elements */
+}
+
+.api-docs-right a:hover {
+  opacity: 0.85 !important;
+}
+
+/* ------------------------------------------------------
+   FIX DARK MODE — allow content to use theme colors
+   Header stays black, content switches properly
+------------------------------------------------------- */
+
+/* HEADER stays black always */
+.md-header {
+  background-color: #000 !important;
+}
+
+/* Header title & icons remain white */
+.md-header__title,
+.md-header__button,
+.md-header__button svg,
+.md-logo + span {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+/* --- FIX CONTENT TEXT COLORS --- */
+/* Use Material variables instead of hard colors */
+.md-typeset,
+.md-typeset p,
+.md-typeset li,
+.md-typeset table,
+.md-typeset details summary {
+  color: var(--md-typeset-color) !important;
+}
+
+/* Headings inherit proper light/dark styling */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  color: var(--md-typeset-headline-color) !important;
+}
+
+/* Inline links adapt color based on mode */
+.md-typeset a {
+  color: var(--md-primary-fg-color) !important;
+}
+
+/* Code blocks follow theme */
+.md-typeset pre,
+.md-typeset pre code,
+.md-typeset code {
+  background: var(--md-code-bg-color) !important;
+  color: var(--md-code-fg-color) !important;
+  border-color: var(--md-default-bg-color) !important;
+}
+
+/* Details block (FAQ expandable) */
+.md-typeset details {
+  background: var(--md-default-bg-color) !important;
+  border: 1px solid var(--md-default-fg-color--lighter) !important;
+}
+
+.md-typeset details summary::after {
+  color: var(--md-default-fg-color) !important;
+}
+
+/* Footer now adapts to light/dark mode */
+.md-footer-nav,
+.md-footer-meta {
+  background: var(--md-default-bg-color) !important;
+  color: var(--md-default-fg-color) !important;
+}
+
+/* --- FIX API DOCS link so it matches header --- */
+.api-docs-right a {
+  color: #fff !important;
+  font-family: var(--md-text-font, "Roboto") !important;
+  font-weight: 550 !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.018em !important;
+}
+
+/* ------------------------------------------------------
+   DARK-MODE SAFE NUBRA FAQ THEME
+   Header stays black, content follows Material palette
+------------------------------------------------------- */
+
+/* ---------- Header (always black) ---------- */
+.md-header {
+    background-color: #000 !important;
+}
+
+.md-header__title,
+.md-header__button,
+.md-header__button svg,
+.md-logo + span {
+    color: #fff !important;
+    fill: #fff !important;
+}
+
+/* API Docs link style */
+.api-docs-right a {
+    color: #fff !important;
+    font-family: var(--md-text-font, "Roboto") !important;
+    font-size: 0.875rem !important;
+    font-weight: 550 !important;
+    letter-spacing: 0.018em !important;
+}
+
+/* ---------- Global Text + Headings ---------- */
+
+.md-typeset,
+.md-typeset p,
+.md-typeset li {
+    color: var(--md-typeset-color) !important;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+    color: var(--md-typeset-headline-color) !important;
+}
+
+/* Inline links */
+.md-typeset a {
+    color: var(--md-primary-fg-color) !important;
+}
+
+/* ---------- Code Blocks ---------- */
+
+.md-typeset pre,
+.md-typeset pre code,
+.md-typeset code {
+    background: var(--md-code-bg-color) !important;
+    color: var(--md-code-fg-color) !important;
+    border-color: var(--md-default-fg-color--lighter) !important;
+}
+
+/* ---------- Tables (FULL DARK MODE FIX) ---------- */
+
+.md-typeset table {
+    background: var(--md-default-bg-color) !important;
+    border: 1px solid var(--md-default-fg-color--light) !important;
+    border-radius: 10px !important;
+}
+
+.md-typeset table th {
+    background: var(--md-default-bg-color--lighter) !important;
+    color: var(--md-default-fg-color) !important;
+    font-weight: 600 !important;
+    border-bottom: 1px solid var(--md-default-fg-color--light) !important;
+}
+
+.md-typeset table tr {
+    background: var(--md-default-bg-color) !important;
+}
+
+.md-typeset table tr:nth-child(even) {
+    background: var(--md-default-bg-color--light) !important;
+}
+
+.md-typeset table td {
+    border-top: 1px solid var(--md-default-fg-color--light) !important;
+    color: var(--md-typeset-color) !important;
+}
+
+/* Table pill-style labels (like "1m, 5m, 30m") */
+.md-typeset .chip,
+.md-typeset td span,
+.md-typeset td code {
+    background: var(--md-accent-bg-color, rgba(255,255,255,0.08)) !important;
+    color: var(--md-typeset-color) !important;
+    border-radius: 6px !important;
+    padding: 4px 8px !important;
+}
+
+/* ---------- FAQ Expanders ---------- */
+
+.md-typeset details {
+    background: var(--md-default-bg-color) !important;
+    border: 1px solid var(--md-default-fg-color--light) !important;
+    border-radius: 12px;
+}
+
+.md-typeset details summary {
+    color: var(--md-typeset-color) !important;
+}
+
+.md-typeset details summary::after {
+    color: var(--md-default-fg-color) !important;
+}
+
+/* ---------- Footer ---------- */
+.md-footer-nav,
+.md-footer-meta,
+.md-footer,
+.md-footer__inner {
+    background: var(--md-default-bg-color) !important;
+    color: var(--md-default-fg-color) !important;
+}
+
+/* Remove black bar issues */
+.md-footer-nav,
+.md-footer-nav__inner,
+.md-footer-nav__link {
+    overflow: hidden !important;
+}
+
+/* ---------- Remove auto-top H1 ---------- */
+.md-content__inner h1:first-of-type,
+.md-content__heading {
+    display: none !important;
+}
+
+/* ---------- Remove right-side TOC ---------- */
+.md-sidebar--secondary {
+    display: none !important;
+}
+
+/* ---------- Expand width ---------- */
+.md-content {
+    max-width: 100% !important;
+}
+
+/* ---------- Sidebar title hidden ---------- */
+.md-nav__title {
+    display: none !important;
+}
+
+/* -----------------------------------------------------
+   FIX TABLE INLINE CODE (e.g., execution_type, order_type)
+   Makes them match table dark mode style, not code block style
+------------------------------------------------------ */
+
+.md-typeset table code {
+    background: rgba(255, 255, 255, 0.06) !important;  /* subtle chip */
+    color: var(--md-typeset-color) !important;
+    border-radius: 8px !important;
+    padding: 4px 10px !important;
+    font-size: 0.78rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+
+    /* Ensure center alignment inside table cells */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Slight hover highlight (optional) */
+.md-typeset table code:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+

@@ -1,0 +1,235 @@
+site_name: API Documentation
+site_description: Documentation for Nubra APIs and Client SDKs or Libraries
+site_author: Nubra
+site_url: https://nubra.io/products/api/docs
+#repo_url: https://github.com/NubraHQ/nubra-api-examples
+use_directory_urls: false
+copyright: Copyright © 2025 Zanskar Securities Private Limited. All rights reserved.
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    #- navigation.indexes
+    # DO NOT ENABLE navigation.expand → keeps sections collapsed by default
+    - search.highlight
+    - search.suggest
+    - search.share
+    - content.tabs.link
+    - content.code.annotate
+    - content.code.copy
+    - content.grid
+    #- content.faq
+  palette:
+    - scheme: default
+      primary: black
+      accent: black
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: black
+      accent: black
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  #icon:
+  #  repo: fontawesome/brands/github
+  logo: assets/logo.avif
+
+extra_css:
+  - assets/custom.css
+  - assets/cards.css
+  - assets/buttons.css
+  - assets/faq.css
+  - assets/guides/Authentication.css
+  - assets/guides/UAT.css
+  - assets/guides/Instrument.css
+  - assets/guides/PlaceOrder.css
+  - assets/guides/MultiOrder.css
+  - assets/guides/FlexiOrder.css
+  - assets/guides/OrderBook.css
+  - assets/guides/ExpiredOptions.css
+
+#plugins:
+#  - include-markdown
+
+extra:
+  generator: false
+  version:
+    provider: mike
+    default: latest
+
+nav:
+  - Home: index.md
+
+  # =========================
+  # PYTHON SDK (new layout)
+  # =========================
+  - Python SDK:
+      - Introduction: python-sdk/index.md
+      - Release Notes: python-sdk/release-notes.md
+      - Authentication: python-sdk/authentication.md
+      - UAT Environment: python-sdk/UATEnvironment.md
+      - API Rate Limits: python-sdk/RateLimits.md
+      - Get Instruments: python-sdk/get-instruments.md
+
+      - Market Data:
+          - Market Quotes: python-sdk/market-data/market-quotes.md
+          - Historical Market Data: python-sdk/market-data/historical-market-data.md
+          - Option Chain: python-sdk/market-data/option-chain.md
+
+      - Realtime Data:
+          - Realtime Data: python-sdk/realtime-data/realtime-data.md
+          - Index Data: python-sdk/realtime-data/index-data.md
+          - Options Chain Data: python-sdk/realtime-data/optionchain-data.md
+          - Order Book Data: python-sdk/realtime-data/orderbook-data.md
+          - Greeks Data: python-sdk/realtime-data/greeks-data.md
+          - OHLCV Data: python-sdk/realtime-data/ohlcv-data.md
+          - Subscription Limits: python-sdk/realtime-data/subscription-limits.md
+      
+      - Trading:
+          - Overview: python-sdk/trading/orders/orders.md
+          - Place Order: python-sdk/trading/orders/place-order.md
+          - Place Multi Order: python-sdk/trading/orders/place-basket-order.md
+          - Place Flexi Order: python-sdk/trading/orders/place-flexi-order.md
+          - Modify Order: python-sdk/trading/orders/modify-order.md
+          - Modify Flexi Order: python-sdk/trading/orders/modify-flexiorder.md
+          - Cancel Order: python-sdk/trading/orders/cancel-order.md
+          - Cancel Flexi Order: python-sdk/trading/orders/cancel-flexi-order.md
+          - Get Order: python-sdk/trading/orders/get-order.md
+          - Get Flexi Order: python-sdk/trading/orders/get-basketorder.md
+          - Get Order Margin: python-sdk/trading/orders/get-margin.md
+          - Realtime Order Updates: python-sdk/trading/realtime-order-updates.md
+
+      - Portfolio:
+          - Holdings: python-sdk/trading/portfolio/holdings.md
+          - Positions: python-sdk/trading/portfolio/positions.md
+          - Funds: python-sdk/trading/portfolio/funds.md
+
+  # =========================
+  # REST API (new layout)
+  # =========================
+  - REST API:
+      # You didn’t originally have "Overview" or "Get Instruments"
+      # but you *do* have these files now, so we keep them.
+      - Overview: rest-api/index.md
+      - Authentication: rest-api/authentication.md
+      - UAT Environment: rest-api/UATEnvironment.md
+      - API Rate Limits: rest-api/RateLimits.md
+      - Errors and Exceptions: rest-api/errors_and_exceptions.md
+      - Get Instruments: rest-api/get-instruments.md      
+
+      - Market Data:
+          # previously: rest-apis/market-quotes.md etc.
+          - Market Quotes: rest-api/market-data/market-quotes.md
+          - Historical Market Data: rest-api/market-data/historical-market-data.md
+          - Option Chain: rest-api/market-data/option-chain.md
+
+      - Trading:
+          - Overview: rest-api/trading/orders/orders.md
+          - Place Order: rest-api/trading/orders/place-order.md
+          - Place Multi Order: rest-api/trading/orders/place-basket-order.md
+          - Place Flexi Order: rest-api/trading/orders/place-flexi-order.md
+          - Modify Order: rest-api/trading/orders/modify-order.md
+          - Modify Flexi Order: rest-api/trading/orders/modify-flexiorder.md
+          - Cancel Order: rest-api/trading/orders/cancel-order.md
+          - Cancel Flexi Order: rest-api/trading/orders/cancel-flexi-order.md
+          - Get Order: rest-api/trading/orders/get-order.md
+          - Get Flexi Order: rest-api/trading/orders/get-basketorder.md
+          - Get Order Margin: rest-api/trading/orders/get-margin.md
+
+      - Portfolio:
+          # previously: rest-apis/holdings.md etc.
+          - Holdings: rest-api/trading/portfolio/holdings.md
+          - Positions: rest-api/trading/portfolio/positions.md
+          - Funds: rest-api/trading/portfolio/funds.md
+
+  # =========================
+  # FAQs (unchanged)
+  # =========================
+  - FAQs:
+      - Overview: faq/index.md
+
+      - General:
+          - Overview: faq/general/index.md
+
+      - Authentication & Login Flow:
+          - Overview: faq/authentication/index.md
+
+      - UAT & LIVE Environments:
+          - Overview: faq/uat_live/index.md
+
+      - Market Data & WebSocket:
+          - Overview: faq/market_data/index.md
+
+      - Instruments & Reference Data:
+          - Overview: faq/instruments/index.md
+
+      - Historical Data & Analytics:
+          - Overview: faq/historical/index.md
+
+      - Orders & Execution:
+          - Overview: faq/orders/index.md
+
+      - Margins & Risk Management:
+          - Overview: faq/margins/index.md
+
+      - Positions & Holdings:
+          - Overview: faq/positions/index.md
+
+      - Rate Limits & API Usage:
+          - Overview: faq/rate_limits/index.md
+
+      - Options Greeks & Strategy APIs:
+          - Overview: faq/greeks/index.md
+
+      - Algo Registration & Compliance:
+          - Overview: faq/algo/index.md
+
+      - Integrations & Tools:
+          - Overview: faq/integrations/index.md
+
+      - Troubleshooting & Errors:
+          - Overview: faq/troubleshooting/index.md
+
+  # =========================
+  # Guides 
+  # =========================
+  - Guides & Examples:
+      - Overview: guides/index.md
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - codehilite
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.snippets

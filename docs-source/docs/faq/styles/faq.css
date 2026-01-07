@@ -1,0 +1,27 @@
+.md-typeset details {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 0 1rem 0 !important;
+}
+
+.md-typeset details summary {
+  padding: 0.75rem 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+}
+
+.md-typeset details summary::after {
+  content: "›";
+  float: right;
+  font-size: 1.2rem;
+  color: #444;
+  transition: transform 0.2s ease;
+}
+
+.md-typeset details[open] summary::after {
+  transform: rotate(90deg);
+}

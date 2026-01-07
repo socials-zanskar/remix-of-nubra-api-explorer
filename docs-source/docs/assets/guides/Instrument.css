@@ -1,0 +1,30 @@
+.symbol-guide .symbol-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.symbol-guide .symbol-card {
+  background: var(--md-surface);
+  border-radius: 12px;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  padding: 16px 18px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+  color: var(--md-default-fg-color);
+}
+
+.symbol-guide .symbol-card h3 {
+  color: var(--md-default-fg-color--strong);
+  margin-top: 0;
+}
+
+.symbol-guide .symbol-card p,
+.symbol-guide .symbol-card li {
+  color: var(--md-default-fg-color);
+}
+
+.symbol-guide .symbol-card code {
+  color: var(--md-code-fg-color);
+  background: var(--md-code-bg-color);
+}

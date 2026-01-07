@@ -1,0 +1,314 @@
+/* ============================================================
+   UNIVERSAL VARIABLES (auto adapt to dark/light mode)
+   ============================================================ */
+:root,
+[data-md-color-scheme="default"] {
+  --faq-bg: rgba(245, 245, 245, 0.55);
+  --faq-bg-open: rgba(235, 235, 235, 0.75);
+  --faq-border: rgba(0, 0, 0, 0.15);
+  --faq-text: #111;
+  --faq-chevron: #444;
+}
+
+[data-md-color-scheme="slate"] {
+  --faq-bg: rgba(255, 255, 255, 0.04);
+  --faq-bg-open: rgba(255, 255, 255, 0.07);
+  --faq-border: rgba(255, 255, 255, 0.15);
+  --faq-text: #e5e5e5;
+  --faq-chevron: #ccc;
+}
+
+/* ============================================================
+   FAQ QUESTION ACCORDIONS — Compact Professional Styling
+   ============================================================ */
+
+/* Remove default Material icon */
+.md-typeset .faq-question > summary::before {
+  content: none !important;
+}
+
+/* Main container */
+.md-typeset details.faq-question {
+  border: 1px solid var(--faq-border);
+  background: var(--faq-bg);
+  color: var(--faq-text);
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  margin: 0.35rem 0;
+  transition: background 0.2s ease, border 0.2s ease;
+}
+
+/* Hover effect */
+.md-typeset details.faq-question:hover {
+  border-color: var(--md-primary-fg-color);
+}
+
+/* Header line */
+.md-typeset details.faq-question > summary {
+  padding: 0.4rem 0;
+  font-weight: 500;
+  font-size: 0.92rem;
+  line-height: 1.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: var(--faq-text);
+}
+
+/* Remove ugly default marker */
+.md-typeset details.faq-question > summary::-webkit-details-marker,
+.md-typeset details.faq-question > summary::marker {
+  display: none !important;
+}
+
+/* Chevron */
+.md-typeset details.faq-question > summary::after {
+  content: "›";
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  color: var(--faq-chevron);
+  transition: transform 0.2s ease;
+}
+
+/* Chevron rotate on open */
+.md-typeset details[open].faq-question > summary::after {
+  transform: rotate(90deg);
+  color: var(--md-primary-fg-color);
+}
+
+/* Open state background */
+.md-typeset details.faq-question[open] {
+  background: var(--faq-bg-open);
+  padding-bottom: 0.4rem;
+}
+
+/* Answer text spacing */
+.md-typeset details.faq-question[open] p,
+.md-typeset details.faq-question[open] ul {
+  font-size: 0.84rem;
+  line-height: 1.35rem;
+  color: var(--faq-text);
+}
+
+/* ============================================================
+   MINI FAQ CARDS (bottom grid)
+   ============================================================ */
+
+.faq-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0 4rem 0;
+}
+
+/* Default card styling (auto-adapt for light/dark) */
+.faq-mini-card {
+  display: block;
+  padding: 1.3rem;
+  border-radius: 1rem;
+  text-decoration: none !important;
+  border: 1px solid var(--faq-border);
+  background: var(--faq-bg);
+  color: var(--faq-text);
+  transition: all 0.18s ease-in-out;
+}
+
+/* Title */
+.faq-mini-card h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+/* Subtitle */
+.faq-mini-card p {
+  margin: 0;
+  opacity: 0.85;
+  font-size: 0.85rem;
+}
+
+/* Hover effect */
+.faq-mini-card:hover {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  transform: translateY(-3px);
+  border-color: var(--md-primary-fg-color);
+}
+
+/* ================================
+   Compact, professional FAQ styling
+   ================================ */
+
+/* Remove Material's default icon */
+.md-typeset .faq-question > summary::before {
+  content: none !important;
+}
+
+/* Base container styling */
+.md-typeset details.faq-question {
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 6px;
+  padding: 0.15rem 0.5rem;
+  margin: 0.25rem 0;
+  background-color: var(--md-code-bg-color); /* adapts to light/dark mode */
+  transition: background 0.15s ease, border 0.15s ease;
+}
+
+/* Summary (question row) */
+.md-typeset details.faq-question > summary {
+  padding: 0.25rem 0;
+  font-size: 0.80rem !important;   /* → even smaller text */
+  font-weight: 500;
+  line-height: 1.15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Remove marker arrow */
+.md-typeset details.faq-question > summary::marker,
+.md-typeset details.faq-question > summary::-webkit-details-marker {
+  display: none !important;
+}
+
+/* Chevron */
+.md-typeset details.faq-question > summary::after {
+  content: "›";
+  font-size: 0.75rem;
+  margin-left: 0.4rem;
+  opacity: 0.6;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Chevron rotated when open */
+.md-typeset details[open].faq-question > summary::after {
+  transform: rotate(90deg);
+  opacity: 0.9;
+}
+
+/* Open state background */
+.md-typeset details.faq-question[open] {
+  background-color: var(--md-default-bg-color); /* softer for both themes */
+  border-color: var(--md-primary-fg-color--light);
+  padding-bottom: 0.4rem;
+}
+
+/* Inside open content */
+.md-typeset details.faq-question[open] p,
+.md-typeset details.faq-question[open] ul,
+.md-typeset details.faq-question[open] li {
+  font-size: 0.78rem;
+  line-height: 1.3rem;
+}
+
+/* Horizontal FAQ cards */
+.faq-card.horizontal {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: var(--md-default-bg-color);
+  border: 1px solid rgba(0,0,0,0.08);
+  text-decoration: none !important;
+  transition: 0.2s ease;
+}
+
+[data-md-color-scheme="slate"] .faq-card.horizontal {
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.05);
+}
+
+.faq-card.horizontal:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Smaller icons */
+.faq-icon-sm {
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+}
+
+/* Text layout */
+.faq-card-text h3 {
+  margin: 0 0 4px 0;
+  font-size: 0.90rem;   /* smaller title */
+  color: var(--md-default-fg-color);
+}
+
+.faq-card-text p {
+  margin: 0;
+  font-size: 0.70rem;   /* smaller description */
+  opacity: 0.75;
+}
+
+/* Grid */
+.faq-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.faq-icon-sm {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin: -8px;       /* removes invisible padding visually */
+  display: block;
+}
+
+/* Fix FAQ question text overflowing left */
+.md-typeset details.faq-question {
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+/* Ensure question text never touches the left border */
+.md-typeset details.faq-question > summary {
+  padding-left: 0.25rem !important;
+}
+
+/* Force FAQ grid to 4 cards per row */
+.faq-card-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 1.25rem;
+}
+
+@media (max-width: 1200px) {
+  .faq-card-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+@media (max-width: 900px) {
+  .faq-card-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 600px) {
+  .faq-card-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* FAQ search styling */
+.faq-search-input {
+  width: 100%;
+  padding: 10px 14px;
+  margin: 0.7rem 0 1.2rem 0;
+  border-radius: 8px;
+  border: 1px solid rgba(150,150,150,0.35);
+  font-size: 0.9rem;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+}
+
+#faq-no-results {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  margin: 0.5rem 0 1rem 0;
+}

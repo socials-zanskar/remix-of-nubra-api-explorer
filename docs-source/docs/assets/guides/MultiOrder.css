@@ -1,0 +1,135 @@
+/* ================================================================
+   MULTI ORDER GUIDE — PERFECT UAT-STYLE COMPARISON LAYOUT
+================================================================ */
+
+/* ------------------------------------------------
+   INFO / TIP BOXES
+------------------------------------------------ */
+.mo-guide .explain-box {
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.mo-guide .explain-box.info {
+  background: rgba(0, 180, 0, 0.12);
+  border-left: 4px solid #00c853;
+}
+
+.mo-guide .explain-box.tip {
+  background: rgba(0, 100, 255, 0.12);
+  border-left: 4px solid #2979ff;
+}
+
+/* ------------------------------------------------
+   GIF CARD (rounded container identical to UAT)
+------------------------------------------------ */
+.mo-guide .gif-card {
+  background: var(--md-default-bg-color);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  margin: 16px 0;
+}
+
+[data-md-color-scheme="default"] .mo-guide .gif-card {
+  border: 1px solid rgba(0,0,0,0.10);
+}
+
+.mo-guide .gif-card img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+/* ------------------------------------------------
+   SIDE-BY-SIDE GRID (real UAT-style alignment)
+------------------------------------------------ */
+
+.mo-guide .mo-compare-container {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  grid-template-rows: auto auto auto auto;  /* titles, info, gifs, bullet lists */
+  column-gap: 32px;
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 0 12px;
+  align-items: start;
+}
+
+/* Divider */
+.mo-guide .mo-divider {
+  grid-row: 1 / span 4;
+  background: var(--md-default-fg-color--lighter);
+  opacity: 0.35;
+  width: 1px;
+}
+
+/* COLUMN STRUCTURE USING GRID POSITIONING */
+.mo-guide .mo-column {
+  display: contents; /* allows children to align to global grid rows */
+}
+
+/* ROW 1 — TITLES */
+.mo-guide .mo-title {
+  grid-row: 1;
+  font-size: 1.35rem !important;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+  white-space: nowrap; /* keeps heights equal on zoom */
+  line-height: 1.3 !important;
+}
+
+/* ROW 2 — EXPLANATION BOXES */
+.mo-guide .explain-box {
+  grid-row: 2;
+}
+
+/* ROW 3 — GIF CARDS (alignment FIX: this guarantees matching top edges) */
+.mo-guide .mo-gif-wrap {
+  grid-row: 3;
+  width: 100%;
+  max-width: 520px;
+  margin: 14px auto 16px auto;
+}
+
+/* ROW 4 — BULLET LISTS */
+.mo-guide .mo-points {
+  grid-row: 4;
+  max-width: 520px;
+  padding-left: 20px;
+  margin-top: 12px;
+}
+
+/* ------------------------------------------------
+   MOBILE RESPONSIVE
+------------------------------------------------ */
+@media (max-width: 960px) {
+  .mo-guide .mo-compare-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 24px;
+  }
+
+  .mo-guide .mo-divider {
+    display: none;
+  }
+
+  .mo-guide .mo-title {
+    white-space: normal !important;
+  }
+
+  .mo-guide .mo-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .mo-guide .mo-points {
+    text-align: left;
+    padding-left: 20px;
+  }
+}

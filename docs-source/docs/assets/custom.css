@@ -1,0 +1,167 @@
+/* Logo styling */
+.md-header__button.md-logo {
+    padding: 0;
+}
+
+.md-header__button.md-logo img {
+    height: 2.5rem;
+    width: auto;
+}
+
+/* Header styling */
+.md-header {
+    background-color: #1a237e;
+}
+
+/* Navigation styling */
+/* .md-nav__title {
+    background-color: #1a237e;
+    color: white;
+} */
+
+.md-nav__source {
+    background-color: #0d47a1;
+}
+
+/* Search styling */
+.md-search__form {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.md-search__input {
+    color: white;
+}
+
+.md-search__input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Light mode search styling */
+[data-md-color-scheme="default"] .md-search__input {
+    color: #000000 !important;
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-md-color-scheme="default"] .md-search__input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+[data-md-color-scheme="default"] .md-search__input:focus-visible::placeholder {
+    color: #4d4d4d !important; /* Replace with your desired color */
+    opacity: 1 !important;
+}
+
+
+/* Dark mode search styling */
+[data-md-color-scheme="slate"] .md-search__input {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-md-color-scheme="slate"] .md-search__input::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Footer styling */
+.md-footer {
+    background-color: var(--md-default-bg-color) !important;
+    margin-top: 2rem;
+}
+
+.md-footer-meta {
+    background-color: #f5f5f5 !important;
+    padding: 1rem 0;
+}
+
+/* Override Material theme's footer text colors */
+.md-footer-meta .md-copyright,
+.md-footer-meta .md-copyright__highlight {
+    color: #000000 !important;
+}
+
+.md-footer-meta .md-copyright a {
+    color: #c3c1c1 !important;
+}
+
+/* Dark mode overrides */
+[data-md-color-scheme="slate"] .md-footer-meta {
+    background-color: #1a1a1a !important;
+}
+
+[data-md-color-scheme="slate"] .md-footer-meta .md-copyright,
+[data-md-color-scheme="slate"] .md-footer-meta .md-copyright__highlight {
+    color: #ffffff !important;
+}
+
+[data-md-color-scheme="slate"] .md-footer-meta .md-copyright a {
+    color: #b3b3b3 !important;
+} 
+
+/* === NEO CHAT DIALOG POPUP === */
+#neo-dialogue-image {
+  position: fixed;
+  bottom: 53px;     /* move DOWN, almost touching chatbot icon */
+  right: 13px;      /* move LEFT so it's right beside the icon */
+  width: 210px;     /* slightly smaller to fit cleanly */
+  z-index: 999999;
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeUp 0.45s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.md-header__github-below-search {
+  position: absolute;
+  top: 56px;          /* adjust slightly if needed */
+  right: 44px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  opacity: 0.85;
+  z-index: 20;
+}
+
+.md-header__github-below-search a {
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+}
+
+.md-header__github-below-search a:hover {
+  opacity: 1;
+}
+
+.md-header__github-below-search .md-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.md-header__github-below-search a {
+  background: #ffffff;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  color: #000 !important;
+}
+
+.md-header__github-below-search .md-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: #000 !important;
+}
+
+.md-header__github-below-search .github-text {
+  display: none; /* icon-only, cleaner */
+}

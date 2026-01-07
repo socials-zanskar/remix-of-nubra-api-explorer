@@ -1,0 +1,179 @@
+/* ================================================================
+   UAT GUIDE — LAYOUT & VISUALS ONLY (SAFE)
+   ================================================================ */
+
+/* ------------------------------------------------
+   INFO / TIP BOXES
+------------------------------------------------ */
+
+.uat-guide .explain-box {
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.uat-guide .explain-box.info {
+  background: rgba(0, 180, 0, 0.12);
+  border-left: 4px solid #00c853;
+}
+
+.uat-guide .explain-box.tip {
+  background: rgba(0, 100, 255, 0.12);
+  border-left: 4px solid #2979ff;
+}
+
+/* ------------------------------------------------
+   GIF CARD (BOX AROUND GIF)
+------------------------------------------------ */
+
+.uat-guide .gif-card {
+  background: var(--md-default-bg-color);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  margin: 16px 0;
+}
+
+[data-md-color-scheme="default"] .uat-guide .gif-card {
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.uat-guide .gif-card img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+/* ------------------------------------------------
+   SIDE-BY-SIDE GIF COMPARISON
+------------------------------------------------ */
+
+.uat-guide .uat-compare-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 0 12px;
+  align-items: start;
+}
+
+/* Divider */
+.uat-guide .uat-divider {
+  width: 1px;
+  background: var(--md-default-fg-color--lighter);
+  opacity: 0.35;
+}
+
+/* Columns */
+.uat-guide .uat-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Keep GIF size contained */
+.uat-guide .uat-gif-wrap {
+  width: 100%;
+  max-width: 520px;
+  margin: 14px auto 16px auto;
+}
+
+/* Bullet list width under GIF */
+.uat-guide .uat-points {
+  max-width: 520px;
+  padding-left: 20px;
+}
+
+/* ------------------------------------------------
+   INTRO SPLIT (IMAGE + TEXT)
+------------------------------------------------ */
+
+.uat-guide .intro-split {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 12px;
+}
+
+.uat-guide .intro-image img {
+  max-width: 340px;
+  width: 100%;
+  display: block;
+}
+
+/* ------------------------------------------------
+   FEATURE GRID (CARDS)
+------------------------------------------------ */
+
+.uat-guide .uat-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+  margin: 32px 0;
+}
+
+.uat-guide .uat-feature-card {
+  background: var(--md-default-bg-color);
+  padding: 16px 20px 18px; /* ⬅️ tighter top */
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.22);
+}
+
+[data-md-color-scheme="default"] .uat-guide .uat-feature-card {
+  border: 1px solid rgba(0,0,0,0.10);
+}
+
+/* ------------------------------------------------
+   FEATURE ICON — IMAGE SAFE (FIXED)
+------------------------------------------------ */
+
+.uat-guide .uat-feature-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.uat-guide .uat-feature-icon img {
+  width: 122px;
+  height: 122px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Optional subtle glow (remove if unwanted) */
+.uat-guide .uat-feature-icon img {
+  filter: drop-shadow(0 0 6px rgba(0, 180, 255, 0.18));
+}
+
+/* ------------------------------------------------
+   MOBILE FALLBACKS
+------------------------------------------------ */
+
+@media (max-width: 960px) {
+
+  .uat-guide .uat-compare-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .uat-guide .uat-divider {
+    display: none;
+  }
+
+  .uat-guide .intro-split {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .uat-guide .intro-image img {
+    margin: 0 auto;
+    max-width: 260px;
+  }
+}

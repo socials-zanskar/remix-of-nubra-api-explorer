@@ -1,0 +1,10 @@
+/* smooth animation */
+.md-nav__item.md-nav__item--section .md-nav__list {
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+/* highlight section when open */
+.md-nav__item.md-nav__item--section.open > .md-nav__link {
+  font-weight: 700;
+}

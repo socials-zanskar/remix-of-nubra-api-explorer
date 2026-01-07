@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block htmltitle %}
+<title>
+  {% if page and page.meta and page.meta.title %}
+    {{ page.meta.title }} -
+  {% endif %}
+  {{ config.site_name }} | Nubra
+</title>
+{% endblock %}
+
+{# =========================
+   HEADER OVERRIDE (SAFE)
+   ========================= #}
+{% block header %}
+  {{ super() }}
+
+  <!-- GitHub link below search -->
+  <div class="md-header__github-below-search">
+    <a href="https://github.com/NubraHQ/"
+       target="_blank"
+       rel="noopener"
+       title="NubraHQ GitHub Page">
+      <span class="md-icon">
+        {% include ".icons/fontawesome/brands/github.svg" %}
+      </span>
+      <span class="github-text">GitHub</span>
+    </a>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+
+  <!-- CHATBASE WIDGET CONFIG -->
+  <script>
+    window.chatbaseConfig = {
+      chatbotId: "_23uw7iIB8FjRihUIm7AV",
+      domain: "www.chatbase.co",
+      launcherPosition: "left"
+    };
+  </script>
+
+  <!-- CHATBASE WIDGET LOADER -->
+  <script>
+    (function() {
+      if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+        window.chatbase = (...arguments) => {
+          if (!window.chatbase.q) { window.chatbase.q = []; }
+          window.chatbase.q.push(arguments);
+        };
+        window.chatbase = new Proxy(window.chatbase, {
+          get(target, prop) {
+            if (prop === "q") { return target.q; }
+            return (...args) => target(prop, ...args);
+          }
+        });
+      }
+
+      const onLoad = function() {
+        const script = document.createElement("script");
+        script.src = "https://www.chatbase.co/embed.min.js";
+        script.id = "CafXmTi_cnvWzagxfBe4_";
+        script.domain = "www.chatbase.co";
+        document.body.appendChild(script);
+      };
+
+      if (document.readyState === "complete") {
+        onLoad();
+      } else {
+        window.addEventListener("load", onLoad);
+      }
+    })();
+  </script>
+
+  <!-- NEO IMAGE POPUP -->
+  <img 
+    id="neo-dialogue-image"
+    src="{{ base_url }}/assets/chatbot/dialogue.png"
+    alt="NEO Assistant"
+  />
+
+  <script>
+    const neoImg = document.getElementById("neo-dialogue-image");
+
+    // On click → hide image + open chatbot
+    neoImg.addEventListener("click", () => {
+      neoImg.style.display = "none";
+      if (window.chatbase) {
+        window.chatbase("open");
+      }
+    });
+
+    // Auto-show when chatbot closes/minimizes
+    const interval = setInterval(() => {
+      try {
+        const state = window.chatbase && window.chatbase("getState");
+        if (state === "closed" || state === "idle") {
+          neoImg.style.display = "block";
+        }
+      } catch (e) {}
+    }, 800);
+  </script>
+{% endblock %}
