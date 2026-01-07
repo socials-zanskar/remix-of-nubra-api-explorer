@@ -1,5 +1,6 @@
 // Blog content types and utilities for folder-based markdown loading
-import matter from 'gray-matter';
+// Uses virtual:blog-registry for auto-discovery of blog folders
+import { blogSlugs } from 'virtual:blog-registry';
 
 export interface BlogPost {
   slug: string;
@@ -15,18 +16,45 @@ export interface BlogPost {
 
 const BLOGS_BASE_PATH = '/content/blogs';
 
-// Dynamically discover blogs from blog-registry.json
-async function discoverBlogSlugs(): Promise<string[]> {
-  try {
-    const response = await fetch(`${BLOGS_BASE_PATH}/blog-registry.json`);
-    if (response.ok) {
-      const registry = await response.json();
-      return registry.blogs || [];
-    }
-  } catch (error) {
-    console.error('Failed to fetch blog registry:', error);
+// Browser-compatible frontmatter parser (no Node.js dependencies)
+function parseFrontmatter(content: string): { data: Record<string, unknown>; content: string } {
+  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n/;
+  const match = content.match(frontmatterRegex);
+  
+  if (!match) {
+    return { data: {}, content };
   }
-  return [];
+  
+  const frontmatterStr = match[1];
+  const body = content.slice(match[0].length);
+  
+  const data: Record<string, unknown> = {};
+  
+  frontmatterStr.split('\n').forEach(line => {
+    const colonIndex = line.indexOf(':');
+    if (colonIndex > 0) {
+      const key = line.slice(0, colonIndex).trim();
+      let value = line.slice(colonIndex + 1).trim();
+      
+      // Handle arrays (e.g., tags: ["a", "b"])
+      if (value.startsWith('[') && value.endsWith(']')) {
+        try {
+          data[key] = JSON.parse(value);
+        } catch {
+          data[key] = value;
+        }
+      } else {
+        // Remove surrounding quotes if present
+        if ((value.startsWith('"') && value.endsWith('"')) || 
+            (value.startsWith("'") && value.endsWith("'"))) {
+          value = value.slice(1, -1);
+        }
+        data[key] = value;
+      }
+    }
+  });
+  
+  return { data, content: body };
 }
 
 // Get the base path for a blog's assets
@@ -91,7 +119,7 @@ async function fetchBlogContent(slug: string): Promise<BlogPost | null> {
     }
     
     const rawContent = await response.text();
-    const { data: frontmatter, content } = matter(rawContent);
+    const { data: frontmatter, content } = parseFrontmatter(rawContent);
     
     // Transform relative asset paths to absolute paths
     const transformedContent = transformAssetPaths(content, slug);
@@ -113,12 +141,10 @@ async function fetchBlogContent(slug: string): Promise<BlogPost | null> {
   }
 }
 
-// Get all blog posts with metadata
+// Get all blog posts with metadata (auto-discovered from folders)
 export async function getAllPosts(): Promise<BlogPost[]> {
-  const slugs = await discoverBlogSlugs();
-  
   const results = await Promise.all(
-    slugs.map(slug => fetchBlogContent(slug))
+    blogSlugs.map(slug => fetchBlogContent(slug))
   );
   
   return results
@@ -128,6 +154,9 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 
 // Get a single post by slug with full content
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+  if (!blogSlugs.includes(slug)) {
+    return null;
+  }
   return fetchBlogContent(slug);
 }
 
@@ -153,3 +182,6 @@ export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
 export function getBlogStylesUrl(slug: string): string {
   return `${getBlogBasePath(slug)}/styles.css`;
 }
+
+// Export the discovered slugs for use elsewhere if needed
+export { blogSlugs };

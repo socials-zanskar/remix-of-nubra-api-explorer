@@ -1,0 +1,120 @@
+/* Authentication Blog - Custom Styles */
+/* These styles are injected only when viewing this blog */
+
+.auth-guide {
+  margin: 2rem 0;
+}
+
+.auth-compare-container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .auth-compare-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .auth-divider {
+    display: none;
+  }
+}
+
+.auth-column {
+  background: hsl(var(--card) / 0.6);
+  border: 1px solid hsl(var(--border) / 0.4);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.auth-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.auth-image {
+  width: 100%;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.auth-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.auth-points li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+}
+
+.auth-points li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: hsl(var(--primary));
+}
+
+.auth-divider {
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    hsl(var(--border)),
+    transparent
+  );
+  min-height: 300px;
+  align-self: stretch;
+}
+
+/* Intro split layout */
+.intro-split {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .intro-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.intro-image img {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid hsl(var(--border) / 0.4);
+}
+
+.intro-text {
+  color: hsl(var(--muted-foreground));
+  line-height: 1.7;
+}
+
+/* Auth mode headings */
+.auth-mode-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin: 2rem 0 1rem;
+}
+
+.auth-inline-icon {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}
