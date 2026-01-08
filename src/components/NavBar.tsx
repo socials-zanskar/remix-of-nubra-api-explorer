@@ -16,7 +16,8 @@ const navItems: NavItem[] = [
   { label: "Nubra API", href: "/", hasIcon: true },
   { label: "Webinars", href: "/webinars" },
   { label: "Blogs", href: "/blogs" },
-  { label: "API Docs", href: "http://127.0.0.1:8000/products/api/docs/", isExternal: true },
+  { label: "API Docs", href: "/products/api/docs/", isExternal: true },
+  { label: "Pricing", href: "https://nubra.io/pricing", isExternal: true },
 ];
 
 export const NavBar = () => {

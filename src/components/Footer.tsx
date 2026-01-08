@@ -7,7 +7,7 @@ const Footer = () => {
         {/* Quick Links Row */}
         <div className="flex justify-center gap-8 mb-10">
           <a
-            href="http://127.0.0.1:8000/products/api/docs/"
+            href="/products/api/docs/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground/80 transition-colors font-medium"
