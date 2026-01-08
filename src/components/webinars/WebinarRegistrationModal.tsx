@@ -33,12 +33,14 @@ interface WebinarRegistrationModalProps {
   onOpenChange: (open: boolean) => void;
   webinarId: string;
   webinarTitle: string;
+  onSuccess?: () => void;
 }
 const WebinarRegistrationModal = ({
   open,
   onOpenChange,
   webinarId,
   webinarTitle,
+  onSuccess,
 }: WebinarRegistrationModalProps) => {
   const isMobile = useIsMobile();
   const [selectedPersona, setSelectedPersona] = useState<Persona | null>(null);
@@ -141,6 +143,7 @@ const WebinarRegistrationModal = ({
       console.log("Registration request successful");
       toast.success("Registered — we will email you with details.");
       onOpenChange(false);
+      onSuccess?.();
     } catch (err) {
       console.error("Network error sending registration:", err);
       toast.error("Network error. Please check your connection and try again.");
