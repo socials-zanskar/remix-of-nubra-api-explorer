@@ -59,7 +59,8 @@ export const IntegrationSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
+    // Validations (unchanged)
     if (!formData.name || !formData.email || !formData.phone) {
       toast.error("Please fill in all contact details");
       return;
@@ -78,13 +79,43 @@ export const IntegrationSection = () => {
     }
 
     setIsSubmitting(true);
-    
-    // Simulate API call
+
+    // ✅ BUILD PAYLOAD (this is what backend wants)
+    const mailbodyText = `
+    New Integration Request
+
+    Name: ${formData.name}
+    Email: ${formData.email}
+    Phone: ${formData.countryCode} ${formData.phone}
+
+    User Type:
+    ${selectedUserType}
+
+    Interests:
+    ${selectedInterests.map((i) => `- ${i}`).join("\n")}
+
+    Experience Level:
+    ${selectedExperience}
+    `.trim();
+
+    const payload = {
+      subject: `Integration - ${formData.email}`,
+      mailbody: mailbodyText,
+    };
+
+
+    // ✅ PRINT JSON LOCALLY (for testing)
+    console.log("Integration Payload Object:", payload);
+    console.log("Integration Payload JSON:");
+    console.log(JSON.stringify(payload, null, 2));
+
+    // ⏳ simulate submit delay (optional, keeps UI smooth)
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    
+
     setIsSubmitting(false);
     setIsSubmitted(true);
   };
+
 
   if (isSubmitted) {
     return (

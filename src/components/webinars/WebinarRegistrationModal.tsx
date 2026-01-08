@@ -73,13 +73,33 @@ const WebinarRegistrationModal = ({
   }, [open, reset]);
 
   const onSubmit = (data: RegistrationFormData) => {
+    // Build mail body as ONE formatted text string
+    const mailbodyText = `
+  Webinar Registration
+
+  Name: ${data.name}
+  Phone: ${data.phone}
+  Email: ${data.email}
+
+  Who are you:
+  ${personaOptions.find(p => p.value === data.persona)?.label}
+  `.trim();
+
+    // Final payload exactly as backend wants
     const payload = {
-      ...data,
-      webinarId,
+      subject: `Webinar - ${data.email}`,
+      mailbody: mailbodyText,
     };
-    console.log("Registration payload:", payload);
+
+    // Print locally for verification
+    console.log("Webinar Payload Object:", payload);
+    console.log("Webinar Payload JSON:");
+    console.log(JSON.stringify(payload, null, 2));
+
+    // Close modal after submit
     onOpenChange(false);
   };
+
 
   const formContent = (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
