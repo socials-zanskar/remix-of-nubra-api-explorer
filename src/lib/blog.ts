@@ -14,7 +14,9 @@ export interface BlogPost {
   hasCustomStyles: boolean;
 }
 
-const BLOGS_BASE_PATH = '/content/blogs';
+const BASE_URL = import.meta.env.BASE_URL;
+const BLOGS_BASE_PATH = `${BASE_URL}content/blogs`;
+
 
 // Browser-compatible frontmatter parser (no Node.js dependencies)
 function parseFrontmatter(content: string): { data: Record<string, unknown>; content: string } {
