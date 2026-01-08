@@ -37,6 +37,7 @@ interface WebinarRegistrationModalProps {
   onOpenChange: (open: boolean) => void;
   webinarId: string;
   webinarTitle: string;
+  onSuccess?: () => void;
 }
 
 const WebinarRegistrationModal = ({
@@ -44,6 +45,7 @@ const WebinarRegistrationModal = ({
   onOpenChange,
   webinarId,
   webinarTitle,
+  onSuccess,
 }: WebinarRegistrationModalProps) => {
   const isMobile = useIsMobile();
   const [selectedPersona, setSelectedPersona] = useState<Persona | null>(null);
@@ -96,8 +98,9 @@ const WebinarRegistrationModal = ({
     console.log("Webinar Payload JSON:");
     console.log(JSON.stringify(payload, null, 2));
 
-    // Close modal after submit
+    // Close modal and trigger success callback
     onOpenChange(false);
+    onSuccess?.();
   };
 
 

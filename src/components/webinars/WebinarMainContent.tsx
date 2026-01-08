@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 import UpcomingWebinarCard from "./UpcomingWebinarCard";
 import WebinarAgenda from "./WebinarAgenda";
 import PastWebinars from "./PastWebinars";
@@ -85,14 +86,41 @@ const pastWebinars = [
 
 const WebinarMainContent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  const handleRegistrationSuccess = () => {
+    setIsRegistered(true);
+  };
 
   return (
     <div className="space-y-12">
       <section id="upcoming-webinar">
-        <UpcomingWebinarCard 
-          webinar={upcomingWebinar} 
-          onRegisterClick={() => setIsModalOpen(true)}
-        />
+        {isRegistered ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="relative rounded-xl overflow-hidden"
+          >
+            <div className="absolute -inset-[1px] bg-gradient-to-r from-primary/50 via-primary/20 to-primary/50 rounded-xl blur-sm" />
+            <div className="relative bg-card border border-primary/20 rounded-xl p-8 lg:p-12 text-center">
+              <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
+                <Check className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-2xl font-semibold text-foreground mb-3">
+                Thanks! You're registered for the webinar.
+              </h3>
+              <p className="text-muted-foreground">
+                We'll share the joining details with you shortly.
+              </p>
+            </div>
+          </motion.div>
+        ) : (
+          <UpcomingWebinarCard 
+            webinar={upcomingWebinar} 
+            onRegisterClick={() => setIsModalOpen(true)}
+          />
+        )}
       </section>
 
       <section id="webinar-agenda" className="scroll-mt-24">
@@ -108,6 +136,7 @@ const WebinarMainContent = () => {
         onOpenChange={setIsModalOpen}
         webinarId={upcomingWebinar.id}
         webinarTitle={upcomingWebinar.title}
+        onSuccess={handleRegistrationSuccess}
       />
     </div>
   );
