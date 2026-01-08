@@ -6,6 +6,7 @@ import { blogDiscoveryPlugin } from "./vite-plugins/blog-discovery";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: '/products/api',
   server: {
     host: "::",
     port: 8080,
