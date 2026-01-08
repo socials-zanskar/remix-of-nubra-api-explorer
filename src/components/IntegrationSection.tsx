@@ -104,16 +104,38 @@ export const IntegrationSection = () => {
     };
 
 
-    // ✅ PRINT JSON LOCALLY (for testing)
+    // ✅ PRINT JSON LOCALLY (optional, keep for debugging)
     console.log("Integration Payload Object:", payload);
     console.log("Integration Payload JSON:");
     console.log(JSON.stringify(payload, null, 2));
 
-    // ⏳ simulate submit delay (optional, keeps UI smooth)
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch(
+        "https://nubra-dev.zanskar.xyz/api2/public/send_web_mail",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      if (!response.ok) {
+        throw new Error("Failed to send email");
+      }
+
+      const result = await response.json();
+      console.log("Email API response:", result);
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Email send error:", error);
+      toast.error("Something went wrong while sending the request. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+
   };
 
 

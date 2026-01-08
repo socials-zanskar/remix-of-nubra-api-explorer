@@ -253,7 +253,7 @@ export const HeroSection = () => {
             onActivate={() => handleActivate("portfolio")}
             onDeactivate={handleDeactivate}
             hasActiveAsset={activeAsset !== null}
-            className="w-[150px] md:w-[180px] lg:w-[210px] opacity-60"
+            className="w-[195px] md:w-[235px] lg:w-[275px] opacity-60"
           />
         </div>
 
@@ -338,7 +338,7 @@ export const HeroSection = () => {
             onDeactivate={handleDeactivate}
             hasActiveAsset={activeAsset !== null}
             isLogo={true}
-            className="w-[165px] md:w-[195px] lg:w-[225px]"
+            className="w-[231px] md:w-[273px] lg:w-[315px]"
           />
         </div>
       </div>

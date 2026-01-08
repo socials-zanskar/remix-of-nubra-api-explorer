@@ -127,9 +127,11 @@ const WebinarMainContent = () => {
         <WebinarAgenda items={agendaItems} />
       </section>
 
+      {/*
       <section id="past-webinars">
         <PastWebinars webinars={pastWebinars} />
       </section>
+      */}
 
       <WebinarRegistrationModal
         open={isModalOpen}

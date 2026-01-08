@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { toast } from "sonner";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Drawer, DrawerContent, DrawerTitle } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
@@ -11,16 +12,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SelectablePill } from "@/components/ui/selectable-pill";
 import { useIsMobile } from "@/hooks/use-mobile";
-
 const personaOptions = [
   { value: "retail", label: "Retail Trader" },
   { value: "institution", label: "Institution / Fund / PMS" },
   { value: "algo_platform", label: "Algo Platform / Trading Desk" },
   { value: "developer", label: "Developer / Builder" },
 ] as const;
-
 type Persona = typeof personaOptions[number]["value"];
-
 const registrationSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
   phone: z.string().trim().min(1, "Phone number is required").regex(/^[0-9+\-\s()]+$/, "Invalid phone number"),
@@ -29,27 +27,21 @@ const registrationSchema = z.object({
     required_error: "Please select who you are",
   }),
 });
-
 type RegistrationFormData = z.infer<typeof registrationSchema>;
-
 interface WebinarRegistrationModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   webinarId: string;
   webinarTitle: string;
-  onSuccess?: () => void;
 }
-
 const WebinarRegistrationModal = ({
   open,
   onOpenChange,
   webinarId,
   webinarTitle,
-  onSuccess,
 }: WebinarRegistrationModalProps) => {
   const isMobile = useIsMobile();
   const [selectedPersona, setSelectedPersona] = useState<Persona | null>(null);
-
   const {
     register,
     handleSubmit,
@@ -60,50 +52,102 @@ const WebinarRegistrationModal = ({
     resolver: zodResolver(registrationSchema),
     mode: "onChange",
   });
-
   useEffect(() => {
     if (selectedPersona) {
       setValue("persona", selectedPersona, { shouldValidate: true });
     }
   }, [selectedPersona, setValue]);
-
   useEffect(() => {
     if (!open) {
       reset();
       setSelectedPersona(null);
     }
   }, [open, reset]);
-
   const onSubmit = (data: RegistrationFormData) => {
-    // Build mail body as ONE formatted text string
-    const mailbodyText = `
-  Webinar Registration
-
-  Name: ${data.name}
-  Phone: ${data.phone}
-  Email: ${data.email}
-
-  Who are you:
-  ${personaOptions.find(p => p.value === data.persona)?.label}
-  `.trim();
-
-    // Final payload exactly as backend wants
-    const payload = {
-      subject: `Webinar - ${data.email}`,
-      mailbody: mailbodyText,
-    };
-
-    // Print locally for verification
-    console.log("Webinar Payload Object:", payload);
-    console.log("Webinar Payload JSON:");
-    console.log(JSON.stringify(payload, null, 2));
-
-    // Close modal and trigger success callback
-    onOpenChange(false);
-    onSuccess?.();
+    // When the form is submitted, send payload to integration API.
+    // Build payload and POST it. This mirrors the integration flow used elsewhere.
+    handleRequestIntegration(data);
   };
-
-
+  // Integration endpoint (same as used in IntegrationSection)
+  const INTEGRATION_API_URL = "https://nubra-dev.zanskar.xyz/api2/public/send_web_mail";
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  /**
+   * buildIntegrationPayload
+   * Build the JSON payload expected by the integration endpoint.
+   * We reuse the same `subject` / `mailbody` structure as the Integrate form.
+   */
+  const buildIntegrationPayload = (
+    form: RegistrationFormData,
+    personaLabel: string | null,
+    webinarTitle: string,
+    webinarId: string
+  ) => {
+    const interestsBlock = `    - Webinar: ${webinarTitle}`;
+    const mailbody = [
+      "New Integration Request",
+      "",
+      `    Name: ${form.name}`,
+      `    Email: ${form.email}`,
+      `    Phone: ${form.phone}`,
+      "",
+      "    User Type:",
+      `    ${personaLabel ?? ""}`,
+      "",
+      "    Interests:",
+      interestsBlock,
+      "",
+      "    Experience Level:",
+      `    Webinar Registration (ID: ${webinarId})`,
+    ].join("\n");
+    return {
+      subject: `Integration - ${form.email}`,
+      mailbody,
+    };
+  };
+  /**
+   * handleRequestIntegration
+   * - Validates and sends registration form data to the integration API
+   * - Provides console logging and user-facing toasts for success/failure
+   */
+  const handleRequestIntegration = async (form: RegistrationFormData) => {
+    if (!form.name || !form.email || !form.phone) {
+      toast.error("Please fill in all contact details");
+      return;
+    }
+    if (!selectedPersona) {
+      toast.error("Please select who you are");
+      return;
+    }
+    const personaLabel = personaOptions.find((p) => p.value === selectedPersona)?.label ?? null;
+    const payload = buildIntegrationPayload(form, personaLabel, webinarTitle, webinarId);
+    setIsSubmitting(true);
+    try {
+      console.info("Registration request payload:", payload);
+      const resp = await fetch(INTEGRATION_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!resp.ok) {
+        let errText = `${resp.status} ${resp.statusText}`;
+        try {
+          const j = await resp.json();
+          if (j && j.message) errText = j.message;
+        } catch (_) {}
+        console.error("Registration request failed:", errText);
+        toast.error("Failed to register. Please try again later.");
+        return;
+      }
+      console.log("Registration request successful");
+      toast.success("Registered — we will email you with details.");
+      onOpenChange(false);
+    } catch (err) {
+      console.error("Network error sending registration:", err);
+      toast.error("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const formContent = (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
       {/* Name */}
@@ -122,7 +166,6 @@ const WebinarRegistrationModal = ({
           <p className="text-xs text-destructive">{errors.name.message}</p>
         )}
       </div>
-
       {/* Phone */}
       <div className="space-y-2">
         <Label htmlFor="phone" className="text-sm text-foreground/80">
@@ -139,7 +182,6 @@ const WebinarRegistrationModal = ({
           <p className="text-xs text-destructive">{errors.phone.message}</p>
         )}
       </div>
-
       {/* Email */}
       <div className="space-y-2">
         <Label htmlFor="email" className="text-sm text-foreground/80">
@@ -156,7 +198,6 @@ const WebinarRegistrationModal = ({
           <p className="text-xs text-destructive">{errors.email.message}</p>
         )}
       </div>
-
       {/* Persona Selection */}
       <div className="space-y-3">
         <Label className="text-sm text-foreground/80">
@@ -177,7 +218,6 @@ const WebinarRegistrationModal = ({
           <p className="text-xs text-destructive">{errors.persona.message}</p>
         )}
       </div>
-
       {/* Submit Button */}
       <Button
         type="submit"
@@ -189,14 +229,12 @@ const WebinarRegistrationModal = ({
       </Button>
     </form>
   );
-
   const modalHeader = (
     <div className="mb-6">
       <h2 className="text-xl font-semibold text-foreground">Register for Webinar</h2>
       <p className="text-sm text-muted-foreground mt-1 line-clamp-1">{webinarTitle}</p>
     </div>
   );
-
   if (isMobile) {
     return (
       <Drawer open={open} onOpenChange={onOpenChange}>
@@ -209,7 +247,6 @@ const WebinarRegistrationModal = ({
       </Drawer>
     );
   }
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="bg-card border border-[#5E5E76]/40 sm:max-w-md p-6">
@@ -227,5 +264,4 @@ const WebinarRegistrationModal = ({
     </Dialog>
   );
 };
-
 export default WebinarRegistrationModal;
