@@ -86,7 +86,7 @@ const WebinarRegistrationModal = ({
   ) => {
     const interestsBlock = `    - Webinar: ${webinarTitle}`;
     const mailbody = [
-      "New Integration Request",
+      "Webinar Registration",
       "",
       `    Name: ${form.name}`,
       `    Email: ${form.email}`,
@@ -102,7 +102,7 @@ const WebinarRegistrationModal = ({
       `    Webinar Registration (ID: ${webinarId})`,
     ].join("\n");
     return {
-      subject: `Integration - ${form.email}`,
+      subject: `Webinar Registration - ${form.email}`,
       mailbody,
     };
   };
